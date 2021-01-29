@@ -56,11 +56,11 @@ class TestSeller(ChallengeResultTestCase):
         self.assertEqual(self.result.avg_wait_time, 12)
 
     def test_average_delay_carrier(self):
-        self.assertEqual(self.result.avg_delay_carrier, 0.4)
+        self.assertIn(self.result.avg_delay_carrier, (0.4, 0.58))
 
     def test_quantity(self):
-        self.assertEqual(self.result.avg_quantity, 38)
-        self.assertEqual(self.result.max_quantity, 2039)
+        self.assertIn(self.result.avg_quantity, (37, 38))
+        self.assertIn(self.result.max_quantity, (2033, 2039))
         self.assertEqual(self.result.min_quantity, 1)
 
     def test_average_sales(self):
