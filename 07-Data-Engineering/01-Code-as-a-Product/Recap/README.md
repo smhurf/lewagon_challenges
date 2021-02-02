@@ -145,11 +145,17 @@ There are multiple reasons for introducing testing in our projects and all of th
 **3️⃣ We can create a new app on Heroku and push our code with additional configuration.**
 
 In order to be able to display our project on an accessible url we have to use a cloud platform enabling us to build, run and operate applications. Heroku is one of such providers. In order to deploy our application and display the functionality of the `get_quote` method we can:
-1️⃣ Create an `app.py` file with simple frontend calling the method
-2️⃣ Add a `setup.sh` and `Procfile` for configuration
-3️⃣ Create a new app on heroku by running: `heroku create <unique-app-name>`
-4️⃣ Push our code to Heroku: `git push heroku master`
+
+1. Create an `app.py` file with simple frontend calling the method
+
+2. Add a `setup.sh` and `Procfile` for configuration
+
+3. Create a new app on heroku by running: `heroku create <unique-app-name>`
+
+4. Push our code to Heroku: `git push heroku master`
+
 5. Set the dynos to run our web application: `heroku ps:scale web=1`
+
 
 In case the application has an error, don't forget to check the logs: `heroku logs --tail`.
 </details>
