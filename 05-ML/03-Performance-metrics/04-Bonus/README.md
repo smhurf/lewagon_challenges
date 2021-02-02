@@ -6,7 +6,7 @@ The dataset is available [here](https://wagon-public-datasets.s3.amazonaws.com/M
 
 ```bash
 cd ~/code/<user.github_nickname>/data-challenges/05-ML/03-Performance-metrics/04-Bonus
-curl https://wagon-public-datasets.s3.amazonaws.com/Machine%20Learning%20Datasets/ML_Creditcard_fraud.csv > data/creditcard.csv
+curl https://wagon-public-datasets.s3.amazonaws.com/Machine%20Learning%20Datasets/ML_creditcard_fraud.csv > data/creditcard.csv
 ```
 
 ## The dataset
