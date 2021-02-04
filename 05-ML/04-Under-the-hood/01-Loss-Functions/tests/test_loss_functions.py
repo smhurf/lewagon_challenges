@@ -9,4 +9,4 @@ class TestLossFunctions(ChallengeResultTestCase):
         self.assertGreater(self.result.r2_mae, 0.7)
 
     def test_max_error_order(self):
-        self.assertLess(self.result.max_error, self.result.max_error_mae)
+        self.assertLess(abs(self.result.max_error), abs(self.result.max_error_mae))
