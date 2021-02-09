@@ -3,6 +3,7 @@
 
 
 ## Let's start and play a quiz on Slack 🎲
+It's best to open the **Slack app on your phone** so that you can see lecturer's screen on your computer at all times.
 
 <br>
 
