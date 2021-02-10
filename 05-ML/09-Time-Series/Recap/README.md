@@ -4,7 +4,6 @@ Let's correct the flashcards of the day below together with your teacher!
 
 #### Q): List some advantages of using autoregressive models like ARIMA over conventional ML models for Time Serie
 <details>
-    <summary>Answer</summary>
 
 - Only one single ARIMA model is required to forecast _any_ time horizon ahead.
 - Indeed, they model the **recursive** behavior of the data, forecasting one data point after the other
@@ -17,7 +16,6 @@ Let's correct the flashcards of the day below together with your teacher!
 
 #### Q): Describe what does a stationary time series look like, in one sentence? (plain english)
 <details>
-    <summary>Answer</summary>
 
 "Wherever you look at it, your conclusions about its properties should be roughly the same."
 
@@ -27,7 +25,6 @@ Let's correct the flashcards of the day below together with your teacher!
 
 #### Q): Give 3 statistical properties of stationary time series that remain constant over time ?
 <details>
-    <summary>Answer</summary>
 
 Constant mean, constant variance, and constant autocorrelation
 
@@ -37,7 +34,6 @@ Constant mean, constant variance, and constant autocorrelation
 
 #### Q): What is the name of the statistical test used to check for stationarity?
 <details>
-    <summary>Answer</summary>
 
 - Augmented Dickey Fuller - ADF Tests
 - Consider the time series stationary when its `p-value` is below 0.05
@@ -48,7 +44,6 @@ Constant mean, constant variance, and constant autocorrelation
 
 #### Q): What are the 3 fundamental steps to model a time series?
 <details>
-    <summary>Answer</summary>
 
 - First, stationarize your time series
 - Then, forecast the stationary TS by prolongating its constant statistical properties over time. (AR/MA modeling is one way of doing so)
@@ -61,7 +56,6 @@ Constant mean, constant variance, and constant autocorrelation
 
 #### Q): What is the fundamental reason we need to stationarize a time series before modeling it?
 <details>
-    <summary>Answer</summary>
 
 - As its statistical properties are by definition **constant over time**, we can safely prolongate them in the future!
 - We are never safe from unexpected changes (black swans), but we can quantify probabilities that they will stay constant (uncertainty intervals)
@@ -73,7 +67,6 @@ Constant mean, constant variance, and constant autocorrelation
 
 #### Q): Name 4 methods to stationarize a time series?
 <details>
-    <summary>Answer</summary>
 
 - Detrending (ex: taking the log, removing linear increase, etc...)
 - Deseasonalizing (ex: using statsmodels `seasonal_decompose`)
@@ -86,7 +79,6 @@ Constant mean, constant variance, and constant autocorrelation
 
 #### Q): Name two methods of seasonal decomposition?
 <details>
-    <summary>Answer</summary>
 
 - Additive Decomposition (y = Trend + Seasonal + Residuals)
 - Multiplicative Decomposition (y = Trend * Seasonal * Residuals)
@@ -97,7 +89,6 @@ Constant mean, constant variance, and constant autocorrelation
 
 #### Q): What does ARIMA stand for?
 <details>
-    <summary>Answer</summary>
 
 ARIMA stands for Auto-Regressive Integrated Moving-Average
 - Step 1: **stationarize** the TS using differencing
@@ -111,7 +102,6 @@ ARIMA stands for Auto-Regressive Integrated Moving-Average
 
 #### Q): What is an AR process? How could you characterize its behavior? Give one example.
 <details>
-    <summary>Answer</summary>
 
 - AR stands for "Auto-Regressive"
 - A process whose values are a direct linear combinations of its past values
@@ -124,7 +114,6 @@ ARIMA stands for Auto-Regressive Integrated Moving-Average
 
 #### Q): What is a MA process? How could you characterize its behavior? Give one example.
 <details>
-    <summary>Answer</summary>
 
 - MA stands for "Moving-Average"
 - A process whose values are a direct linear combinations of its past changes
@@ -137,7 +126,6 @@ ARIMA stands for Auto-Regressive Integrated Moving-Average
 
 #### Q): How many hyper-parameters do you have to set for ARIMA? For SARIMA?
 <details>
-    <summary>Answer</summary>
 
 - 3 for ARIMA(p,d,q)
 - 7 for SARIMA(p,d,q, P,D,Q, S)
@@ -148,7 +136,6 @@ ARIMA stands for Auto-Regressive Integrated Moving-Average
 
 #### Q): How do you choose for ARIMA hyperparameters?
 <details>
-    <summary>Answer</summary>
 
 - Diff (d): minimum number of differences before you achieve stationarity
 - AR term numbers (p): number of non-null terms in PACF plots of stationary TS
@@ -160,7 +147,6 @@ ARIMA stands for Auto-Regressive Integrated Moving-Average
 
 #### Q): What do ACF and PACF measure?
 <details>
-    <summary>Answer</summary>
 
 - ACF: Measure of the **simple correlation coefs** between $Y(t)$ and each lagged features $Y(t-i)$
 - PACF: Measure of the **partial correlation coefs** between $Y(t)$ and each lagged features $Y(t-i)$
