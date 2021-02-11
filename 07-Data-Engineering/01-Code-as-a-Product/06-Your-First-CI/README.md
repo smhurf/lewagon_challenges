@@ -6,7 +6,7 @@ Create your first CI pipeline
 
 Normally here you should just sit and observe.
 
-1. Go to the GitHub Page of the repository you created in the last exercices
+1. Go to the GitHub Page of the repository you created in the last exercises
 2. Click on `Actions` which is the GitHub name for CI-CD `actions`
 3. click on your latest commit, you should see that GitHub executed your CI pipeline for you
 
@@ -55,4 +55,4 @@ With this YAML file (see YAML as a config file just like a JSON file in python):
   => run the tests
 - Stops if any of preceding steps failed
 
-**NB: Here we setup the CI part of the CI/CD lifecycle of a software, we can easily imagine that once GitHub passed all the tests, you want to deploy your code somewhere, that you will see in next exercice**
+**NB: Here we setup the CI part of the CI/CD lifecycle of a software, we can easily imagine that once GitHub passed all the tests, you want to deploy your code somewhere, that you will see in next exercise**

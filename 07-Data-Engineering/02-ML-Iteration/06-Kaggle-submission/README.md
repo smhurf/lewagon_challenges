@@ -1,7 +1,7 @@
 # Use you saved model
 Now you will submit your first submission to kaggle.
 
-For that as you probably have different pipeline blocs, we will all retrain the same given pipeline inside `TaxiFareModel`, which is the correction from last exercice.
+For that as you probably have different pipeline blocs, we will all retrain the same given pipeline inside `TaxiFareModel`, which is the correction from last exercise.
 
 # Train on small sample
 Let us train our pipeline on 100 000 lines.

@@ -1,6 +1,6 @@
 # Objective
 
-In the previous exercice, we trained a basic model on GCP. We will now integrate a complete pipeline and use the trained model to make a prediction.
+In the previous exercise, we trained a basic model on GCP. We will now integrate a complete pipeline and use the trained model to make a prediction.
 
 Deploy, train and use your pipeline model with GCP.
 You've trained and evaluated your first Pipeline on your laptop, now you'll do everything on GCP.
@@ -15,7 +15,7 @@ You can start from the solution of `07-Data-Engineering/02-ML-Iteration/04-MLFlo
 
 Modify the `get_data()` function and add a `save_model()` method inside `trainer.py` in order to:
 👉 Get training data from Storage (still working on 1k sample for faster runs here)
-👉 Upload model to Storage just like in the last exercice
+👉 Upload model to Storage just like in the last exercise
 
 💡 Check that all your variables (`BUCKET_NAME` etc...) are correctly defined insice `params.py`
 

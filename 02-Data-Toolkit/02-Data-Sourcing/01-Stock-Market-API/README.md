@@ -1,4 +1,4 @@
-In this exercice, we are going to play around with the stock market API [iexcloud.io](https://iexcloud.io/).
+In this exercise, we are going to play around with the stock market API [iexcloud.io](https://iexcloud.io/).
 
 The goal here is to get comfortable reading API documentation.
 

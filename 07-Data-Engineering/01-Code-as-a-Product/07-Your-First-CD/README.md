@@ -5,27 +5,27 @@ Create your first CD (continuous deployment)
 ## Where to deploy ?
 
 We want to be able to deploy a software/package on a remote machine
-Here you have many different possibilities, we chose Heroku for many reasons:  
-👉 It is free  
-👉 It is amazingly easy to use  
-👉 Smooth git integration  
+Here you have many different possibilities, we chose Heroku for many reasons:
+👉 It is free
+👉 It is amazingly easy to use
+👉 Smooth git integration
 
 ## Heroku setup
 
-- sign in to [heroku](https://signup.heroku.com/)  
+- sign in to [heroku](https://signup.heroku.com/)
 - install [heroku cli](https://devcenter.heroku.com/articles/heroku-cli)
 - test login
 ```bash
 heroku login
 ```
 
-## Deploy your first package to heroku  
-Deploying to heroku is as simple as:  
-👉 Adding a `Procfile` file indicating command to run on heroku servers  
-👉 Creating heroku app and run 3 commands from command line  
+## Deploy your first package to heroku
+Deploying to heroku is as simple as:
+👉 Adding a `Procfile` file indicating command to run on heroku servers
+👉 Creating heroku app and run 3 commands from command line
 
 Here is how to do
-- Go the root of your repository you created in last exercices
+- Go the root of your repository you created in last exercises
 - Add a file named `Procfile` at the root of your repository
 - Insert the following line inside `Procfile` (change the name of your package) in order to run your script when the application is deployed
 ```bash
@@ -55,16 +55,16 @@ heroku ps:scale web=1
 ```bash
 heroku logs --tail
 ```
-📣 And `voila` 📣  
-**NB: Here we only run one script once on heroku, so once the script finishes running, heroku will shut down the app.  
-==> don't be surprised if you see crash message in heroku logs**  
+📣 And `voila` 📣
+**NB: Here we only run one script once on heroku, so once the script finishes running, heroku will shut down the app.
+==> don't be surprised if you see crash message in heroku logs**
 
 ## Automate deployment inside your CI-CD Github Pipeline
 
 Running following command was boring right ?
 You'd rather automatically deploy your package anytime you change your code and push it to github
 
-Here we'll get back to our precious `.github/workflows`  
+Here we'll get back to our precious `.github/workflows`
 👉 Simply add a step called `deploy_heroku` following your `build` step (change your package name and your email address):
 ```yaml
    deploy_heroku:
@@ -84,11 +84,11 @@ heroku ps:scale web=1
 ```
 
 💡 How will Github do to authenticate as myself to heroku ?
-By providing to Github an API key you'll generate.  
-👉 Go to [heroku account](https://dashboard.heroku.com/account), generate and/or copy your API key  
-👉 Store it as a secret on your githug repository under `Settings` then `secrets`  
-   => name it `HEROKU_API_KEY` and paste your key you copied from heroku  
-👉 Then from terminal, inside your repo:  
+By providing to Github an API key you'll generate.
+👉 Go to [heroku account](https://dashboard.heroku.com/account), generate and/or copy your API key
+👉 Store it as a secret on your githug repository under `Settings` then `secrets`
+   => name it `HEROKU_API_KEY` and paste your key you copied from heroku
+👉 Then from terminal, inside your repo:
 ```bash
 git status
 ```

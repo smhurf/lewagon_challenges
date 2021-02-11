@@ -1,5 +1,5 @@
 
-In the previous exercice, we have built a **Prediction API** Docker image that we are able to run on our local machine.
+In the previous exercise, we have built a **Prediction API** Docker image that we are able to run on our local machine.
 
 There are 2 remaining steps in order to enable worldwide developers to play with it:
 - Push the **Docker image** to **Google Container Registry**

@@ -2,7 +2,7 @@
 
 It is time to move away from Jupyter Notebook, and start writing reusable code with python packages, modules and classes.
 
-In the exercice, nothing new, simply copy pasting functions we already implemented yesterday, and organize them inside different modules.
+In the exercise, nothing new, simply copy pasting functions we already implemented yesterday, and organize them inside different modules.
 
 ### Package structure 🗺
 

@@ -28,7 +28,7 @@ By default :
 Which in some cases is not optimized at all.
 For instance downcasting a dataframe containing only integer columns in range [0:20] from `int64` to `int8` would divide by 4 its size
 
-## Exercice
+## Exercise
 
 Implement a function `df_optimized` optimizing size of a dataset:
 
@@ -63,28 +63,28 @@ Here we might want to:
 - Optimize the size right after loading the dataset
 - Optimize the size after the preprocessing steps of our Pipeline (as usual add a custom Transfomer and add it as a step to your pipeline)
 
-# Memory and parallelisation 
+# Memory and parallelisation
 
 It is the trickiest part of scikitlearn and python in general, which is not the best student amongst programming language for fast and efficient parallelising tasks.
 
 ## Parallelisation
 Here are the parameters you can play with on sklearn classes
-- `n_jobs` inside `xgboost`, `RandomSearchCV` or `GridSearchCV` for example  
+- `n_jobs` inside `xgboost`, `RandomSearchCV` or `GridSearchCV` for example
 👉 When possible, sklearn includes parallel tasks, but keep in mind that not all algorithm are parallelisable
 
 ## Memory
-Memory issues either appear when Dataset size is bigger than RAM size, or during Hyperparameters tuning when sklearn actually duplicates a lot of times our data  
+Memory issues either appear when Dataset size is bigger than RAM size, or during Hyperparameters tuning when sklearn actually duplicates a lot of times our data
 
-Here are the parameters you can play with on sklearn classes:  
-- `memory` parameter of sklearn's well known `Pipeline()`  
-👉 when given `memory="local_path"` to a pipeline, it will keep in cache all the transform parts applied during preprocessing  
+Here are the parameters you can play with on sklearn classes:
+- `memory` parameter of sklearn's well known `Pipeline()`
+👉 when given `memory="local_path"` to a pipeline, it will keep in cache all the transform parts applied during preprocessing
 👉 Doc [here](https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html)
 
 - `pre_dispatch` inside `RandomSearchCV` or `GridSearchCV`
 👉 From sklearn [doc](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.GridSearchCV.html)
-```python 
-Controls the number of jobs that get dispatched during parallel execution.   
-Reducing this number can be useful to avoid an explosion of memory consumption when more jobs get dispatched than CPUs can process.  
+```python
+Controls the number of jobs that get dispatched during parallel execution.
+Reducing this number can be useful to avoid an explosion of memory consumption when more jobs get dispatched than CPUs can process.
 
 This parameter can be:
 - None, in which case all the jobs are immediately created and spawned. Use this for lightweight and fast-running jobs, to avoid delays due to on-demand spawning of the jobs
@@ -93,11 +93,11 @@ This parameter can be:
 ```
 👉 good stackoverflow explanation [here](https://stackoverflow.com/questions/32673579/scikit-learn-general-question-about-parallel-computing)
 
-## Exercice
+## Exercise
 
-We have provided the code integrating all these parameters  
+We have provided the code integrating all these parameters
 They are inside the `params` dictionary you feed to your `Trainer()` class:
-```python 
+```python
 params = dict(nrows=10000,
               upload=True,
               local=False,  # set to False to get data from GCP (Storage or BigQuery)
@@ -111,4 +111,4 @@ params = dict(nrows=10000,
               feateng=["distance_to_center", "direction", "distance", "time_features", "geohash"],
               n_jobs=-1) # Try with njobs=1 and njobs = -1
 ```
-Play with the parameters `n_jobs`, and check the influence on time  
+Play with the parameters `n_jobs`, and check the influence on time

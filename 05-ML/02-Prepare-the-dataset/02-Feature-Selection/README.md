@@ -1,6 +1,6 @@
 # Feature Selection
 
-🎯 This exercice is a continuation of the previous one, in which you will perform feature selection. It includes:
+🎯 This exercise is a continuation of the previous one, in which you will perform feature selection. It includes:
 
 - Pearson Collinearity investigation
 - Base modelling
