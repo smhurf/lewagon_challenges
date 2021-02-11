@@ -17,7 +17,7 @@ curl https://wagon-public-datasets.s3.amazonaws.com/Machine%20Learning%20Dataset
 
 ## Exercise
 
-The exercice decomposes the KNN algorithm and its mechanics. You will:
+The exercise decomposes the KNN algorithm and its mechanics. You will:
 
 - Discover it's sensitivity to scale
 - Voluntarily make it overfit

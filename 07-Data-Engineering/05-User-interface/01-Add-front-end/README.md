@@ -5,7 +5,7 @@ In the previous challenges, we created a project containing the code allowing us
 
 We now have a live API allowing developers all over the world 🌍 to predict the fare amount for a taxi ride in New-York 🎉
 
-👉 Optionally, we may start from the correction of the `07-Data-Engineering/04-Predict-in-production/03-GCR-cloud-run` exercice 👌
+👉 Optionally, we may start from the correction of the `07-Data-Engineering/04-Predict-in-production/03-GCR-cloud-run` exercise 👌
 
 Now, we want to allow users all over the internet to be able to use our model in order to make a fare amount prediction, not just developers.
 
@@ -34,7 +34,7 @@ This will give us an overview of what can be done in order to expose an API.
 
 We will create a new project directory for the code of our website. This directory will be located inside of our local GitHub directory where we store all of our GitHub repositories: `~/code/<user.github_nickname>`.
 
-In the next exercice, we will code our own website from scratch with Streamlit 🎉 And this second website will also have a project of its own...
+In the next exercise, we will code our own website from scratch with Streamlit 🎉 And this second website will also have a project of its own...
 
 # Let's go!
 
@@ -42,7 +42,7 @@ Let's use the [Le Wagon homemade TaxiFare frontend](https://github.com/lewagon/t
 
 We will start by creating a duplicate template of this repository on our own GitHub account, by clicking on the `Use this template` button in the page of the repository on GitHub or [using this link](https://github.com/lewagon/taxi-fare-interface/generate).
 
-👉 **VERY IMPORTANT** we need to make our new repository a **PUBLIC REPOSITORY**, otherwise the **GitHub Pages** hosting solution that we want to introduce for this exercice will not work.
+👉 **VERY IMPORTANT** we need to make our new repository a **PUBLIC REPOSITORY**, otherwise the **GitHub Pages** hosting solution that we want to introduce for this exercise will not work.
 
 👉 Let's name this repository `taxi-fare-interface`.
 

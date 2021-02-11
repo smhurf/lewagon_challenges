@@ -1,4 +1,4 @@
-In this exercice, your will:
+In this exercise, your will:
 - Optimize the regularization penalty of a Lasso classification model
 - Use the optimal model as a feature selection tool
 

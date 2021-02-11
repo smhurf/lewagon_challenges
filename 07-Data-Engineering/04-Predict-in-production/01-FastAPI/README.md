@@ -17,7 +17,7 @@ We want to use our best performing model in order to make predictions 🚀
 
 👌 If you prefer to do so, you may download the solution of the challenge `07-Data-Engineering/03-Train-at-scale/03-Train-taxiFare-on-gcp` 👌
 
-👌 In this case, you will quickly retrain a model on your machine. The code of the solution trains on very few rows and will allow you to proceed with the exercices of today 👌
+👌 In this case, you will quickly retrain a model on your machine. The code of the solution trains on very few rows and will allow you to proceed with the exercises of today 👌
 
 ## A few considerations
 

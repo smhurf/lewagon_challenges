@@ -18,9 +18,9 @@ cd 01-Linear-Regression
 - You can download a detailed description of the dataset [here](https://wagon-public-datasets.s3.amazonaws.com/Machine%20Learning%20Datasets/ML_Houses_dataset_description.txt)
 
 
-## Exercice
+## Exercise
 
-In this exercice, you will model the relationship between the price of houses and their living surface.
+In this exercise, you will model the relationship between the price of houses and their living surface.
 
 Along the way, you will:
 

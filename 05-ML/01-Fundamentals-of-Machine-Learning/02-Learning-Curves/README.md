@@ -1,6 +1,6 @@
 # Learning Curves
 
-🎯 This exercice consists of using the Learning Curves to diagnose:
+🎯 This exercise consists of using the Learning Curves to diagnose:
 
 - Bias
 - Variance

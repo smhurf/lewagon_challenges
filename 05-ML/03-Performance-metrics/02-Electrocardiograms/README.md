@@ -14,7 +14,7 @@ curl https://wagon-public-datasets.s3.amazonaws.com/Machine%20Learning%20Dataset
 - Each obervation of the dataset is a numerically represented heartbeat, taken from a patient's electrocardiogram (ECG).
 - The `target` is binary and defines whether the heartbeat is at risk of cardiovascular disease [1] or not [0].
 
-## Exercice
+## Exercise
 
 🎯 Your task is to flag heartbeats that are at risk of cardiovascular diseases. You will:
 

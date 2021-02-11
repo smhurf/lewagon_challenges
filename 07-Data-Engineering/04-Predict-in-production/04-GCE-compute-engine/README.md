@@ -1,5 +1,5 @@
 
-This exercice is optional.
+This exercise is optional.
 
 Do you have a internet connection with a limited bandwitdh or does your computer suffer in any way when building Docker images? Let's use Google Compute Engine in order to have a server in the cloud do the hard work for us.
 
@@ -13,7 +13,7 @@ Why would you want to use a virtual machine (VM) ?
 
 However, using monstrous amounts of processing power comes at a cost 💸
 
-⚠️ If you are playing with this exercice, make sure to **STOP** the virtual machine as soon as you are done ⚠️
+⚠️ If you are playing with this exercise, make sure to **STOP** the virtual machine as soon as you are done ⚠️
 
 Also, keep an eye on the [billing in the GCP console](https://console.cloud.google.com/billing).
 
@@ -23,7 +23,7 @@ In order to play with a VM, first we need to configure it, select an operating s
 
 But wait... Configuring a machine with a developer environment... We already did that! 💡 That is the **Le Wagon data setup**! 👌
 
-In this exercice, we will configure a VM instace, run the Le Wagon data setup on it. Then we will see how to drive it 🚀
+In this exercise, we will configure a VM instace, run the Le Wagon data setup on it. Then we will see how to drive it 🚀
 
 ## Create a Compute Engine instance
 

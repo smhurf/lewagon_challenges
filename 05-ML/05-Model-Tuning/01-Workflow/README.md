@@ -1,4 +1,4 @@
-In this exercice, you will implement the model tuning and evaluation workflow:
+In this exercise, you will implement the model tuning and evaluation workflow:
 
 1. Holdout
 2. Cross-validated parameter tuning on train set

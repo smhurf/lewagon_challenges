@@ -1,6 +1,6 @@
 # Preprocessing Workflow
 
-🎯 This exercice takes you through the preprocessing workflow. Step by step, feature by feature, you will investigate the dataset and take preprocessing decisions accordingly. You will:
+🎯 This exercise takes you through the preprocessing workflow. Step by step, feature by feature, you will investigate the dataset and take preprocessing decisions accordingly. You will:
 
 - Remove duplicates
 - Deal with missing values

@@ -13,7 +13,7 @@ curl https://wagon-public-datasets.s3.amazonaws.com/Machine%20Learning%20Dataset
 
 The datasets contains transactions made by credit cards. Due to confidentiality issues, the original features have been preprocessed and renamed V1 to V28. There are two features which have not been transformed: `Time` and `Amount`. Feature Time contains the seconds elapsed between each transaction and the first transaction in the dataset. The feature Amount is the transaction Amount. `Class` is the target and it takes value 1 in case of fraud and 0 otherwise.
 
-## Exercice
+## Exercise
 
 🎯 You are a Data Scientist for a bank. You are asked to develop a model that is able to detect at least 95% of fraudlent transactions. Go!
 

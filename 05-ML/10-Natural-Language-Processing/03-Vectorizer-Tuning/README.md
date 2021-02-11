@@ -1,6 +1,6 @@
 ## Vectorizer tuning
 
-The task of this exercice is to simultaneously tune a vectorizer and a model. You will:
+The task of this exercise is to simultaneously tune a vectorizer and a model. You will:
 
 - Preprocess text
 - Stack vectorizer and model in a Pipeline

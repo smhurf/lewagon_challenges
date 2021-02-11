@@ -1,15 +1,15 @@
 # Objective
 
-Let's improve our model either by 
+Let's improve our model either by
 - training it on bigger sample
 - tuning its hyperparameters
 
-This last part obviously takes longer than the time you have left today, the aim of the exercice if for you to see how you can take advantage of GCP's big machines
+This last part obviously takes longer than the time you have left today, the aim of the exercise if for you to see how you can take advantage of GCP's big machines
 
 ## Deploy to GCP and evaluate performance
 
-GCP AI Platform gives you the possibility to change machine types    
-🚨 Be carefull, bigger machine are obviously more expensive 🚨 
+GCP AI Platform gives you the possibility to change machine types
+🚨 Be carefull, bigger machine are obviously more expensive 🚨
 
 Try changing the machine types to speedup the training on bigger sample
 Check [GCP VM pricing](https://cloud.google.com/ai-platform/training/pricing?hl=fr), then add these parameters to your `gcp_submit_training` make command:
@@ -28,7 +28,7 @@ Check [documentation](https://cloud.google.com/ml-engine/docs/machine-types) if 
 
 ## HyperParameter tuning
 
-If you have time, try and run a RandomSearch on a larger data sample  
+If you have time, try and run a RandomSearch on a larger data sample
 ⚠️ Don't use more than 1 000 000 lines here, otherwise it will take too much time ⚠️
 
 - Open up `trainer.py`

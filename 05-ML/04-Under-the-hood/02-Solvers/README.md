@@ -1,6 +1,6 @@
 # Solvers ⚙️
 
-In this exercice, you will investigate the effects of solvers on the performance of Logistic Regression models. 
+In this exercise, you will investigate the effects of solvers on the performance of Logistic Regression models.
 
 ❓ Find out which solver:
 - Produces the best precision score?

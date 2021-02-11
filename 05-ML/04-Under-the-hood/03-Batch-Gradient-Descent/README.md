@@ -1,11 +1,11 @@
-# Gradient Descent 
+# Gradient Descent
 
-This exercice consists of coding a Gradient Descent by hand! 💪
+This exercise consists of coding a Gradient Descent by hand! 💪
 
 You will be creating functions for each of the following steps of a Gradient Descent epoch:
 
 1. Hypothesis Function ❓
-2. Loss function 
+2. Loss function
 3. Gradient computation
 4. Step sizes 👣
 5. Parameter update

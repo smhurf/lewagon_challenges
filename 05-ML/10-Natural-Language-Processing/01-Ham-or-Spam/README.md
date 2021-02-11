@@ -1,6 +1,6 @@
 ## Spam Identification
 
-In this exercice, you will train a spam email detection model. The exercice includes:
+In this exercise, you will train a spam email detection model. The exercise includes:
 
 - Text preprocessing
 - Bag of Word vectorizing

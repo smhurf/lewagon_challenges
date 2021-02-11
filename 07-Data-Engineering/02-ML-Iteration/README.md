@@ -1,7 +1,7 @@
 # Outline day 3
 Again here, quite a dense day, don't be discouraged if you don't go through the end
 
-**Every one should get to exercice 5 at 16:00 even if first exercices are not finished** 
+**Every one should get to exercise 5 at 16:00 even if first exercises are not finished**
 
 ## 01-Notebook-to-package
 - Creation of a minimal package structure to get rid of the notebook
@@ -16,14 +16,14 @@ Again here, quite a dense day, don't be discouraged if you don't go through the 
 
 
 ## 03-Iterate-with-Mlflow
-Exercice mainly about tweeking `Trainer()` class to make it as generic as possible  
+Exercise mainly about tweeking `Trainer()` class to make it as generic as possible
 - Implement more feature engineering Pipeline blocs
 - Integrate them in main `Trainer()` class
 - Check influence of feature engineering thanks to Mlflow
 
 
 ## 04-HyperparameterTuning
-Here first aprehension of Hyperparameter Tuning  
+Here first aprehension of Hyperparameter Tuning
 - First play manually with a few parameters of xgboost and check influence
 - Then integrate `RandomizedSearchCV` into `Trainer()` class for full tuning
 - logs output to Mlflow

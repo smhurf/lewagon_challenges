@@ -5,7 +5,7 @@ Let's scale massively using a cluster of hosts serving your API.
 
 Using massive amounts of processing power comes at a cost 💸
 
-⚠️ If you are playing with this exercice, make sure to **DELETE** the cluster as soon as you are done ⚠️
+⚠️ If you are playing with this exercise, make sure to **DELETE** the cluster as soon as you are done ⚠️
 
 Also, keep an eye on the [billing in the GCP console](https://console.cloud.google.com/billing).
 

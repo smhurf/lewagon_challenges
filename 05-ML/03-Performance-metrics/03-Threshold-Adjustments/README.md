@@ -15,9 +15,9 @@ curl https://wagon-public-datasets.s3.amazonaws.com/Machine%20Learning%20Dataset
 - Each column a characteristic of performance
 - The target `target_5y` defines whether the player has had a professional career of less than 5 years [0] or 5 years or more [1].
 
-## Exercice
+## Exercise
 
-🎯 In this exercice, you are the Data Scientist of a professional basketball team.
+🎯 In this exercise, you are the Data Scientist of a professional basketball team.
 
 The coach wants you to help him in the recruitment process. He needs you to identify players that will last 5 years minimum as professionals. He does not want to take any risks though, and warns you that he wants a 90% guarantee that any player you send his way would actually last 5 years as a pro.
 
