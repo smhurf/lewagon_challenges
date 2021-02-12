@@ -1,6 +1,6 @@
 ## Objective
 
-Create your first CI pipeline
+Create your first CI (Continuous Integration) pipeline
 
 ## Observe your first CI pipeline
 
@@ -11,7 +11,7 @@ Normally here you should just sit and observe.
 3. click on your latest commit, you should see that GitHub executed your CI pipeline for you
 
 💡 How on earth did it happen ?
- 👉 `packgenlite` created for you a file under `.github/workflows/pythonpackage.yml` at the root of your package.
+ 👉 `packgenlite` created for you a file under `.github/workflows/pythonpackage.yml` at the root of your package similar to this one. The tests validation step is commented by default, but you may uncomment it if you wrote some tests.
 
 ```yaml
 name: Python package
@@ -49,15 +49,19 @@ jobs:
         python-version: [3.7]
 ```
 
-With this YAML file (see YAML as a config file just like a JSON file in python):
- 👉 every time you push a modification to master, the CI pipeline above will execute the following steps
-- Get a docker image with ubuntu installed
+With this [YAML](https://en.wikipedia.org/wiki/YAML) file (see YAML as a config file just like a JSON file in python):
+ 👉 every time you push a modification to your `master` (or `main`) branch in your GitHub repository, the CI pipeline above will execute the following steps:
+- Get a Docker image with Ubuntu installed (we will talk more about Docker in the coming days, for now you can think of it as GitHub generating a full environment in which to run the Continuous Integration steps each time you push new code)
 - Say `Hello` to the World 😉
-- Install python 3
-- Upgrade pip and install requirements
-- Run `make install test clean`, meaning:
+- Configure python version to 3
+- Upgrade pip and install the requirements listed in your package
+- Run your tests using `make install test clean`, meaning:
   => install the package
   => run the tests
-- Stops if any of preceding steps failed
+  => clean temporary files once the tests are done
 
-**NB: Here we setup the CI part of the CI/CD lifecycle of a software, we can easily imagine that once GitHub passed all the tests, you want to deploy your code somewhere 👉 you will see that in next exercise**
+🚨 The Continuous Integration will stop at the first failing step
+
+Once your have implemented tests for the functionalities of your package, having them run automatically on GitHub instead of your own machine is extremely convenient 👍
+
+**NB: Here we setup the CI part of the CI/CD lifecycle of a software, we can easily imagine that once GitHub passed all the tests, you want to deploy your code somewhere 👉 you will see that in next challenge**

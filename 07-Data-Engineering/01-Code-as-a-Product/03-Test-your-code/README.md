@@ -3,7 +3,11 @@
 
 Understand how tests work and implement your first test.
 
-Install the [code coverage](https://en.wikipedia.org/wiki/Code_coverage) package with `pip install coverage`.
+Install the [code coverage](https://en.wikipedia.org/wiki/Code_coverage) package:
+
+``` bash
+pip install coverage
+```
 
 💡 __The `coverage` package will be used by the `make` command when we `make test` in order to assess the amount of code covered by the tests. How does that work ? The `coverage` command installed by the package will verify whenever we run the tests how much of the code of the package gets executed. This gives us an indication of the risk of our program being buggy (0%: not great, 100% coverage: highly tested)__
 
@@ -33,14 +37,15 @@ def test_length_of_hello_world():
     assert len(hello_world()) != 0
 ```
 
-
 Inspect `Makefile`, and run:
 
 ```bash
 make test
 ```
 
-You just ran all the tests under `test/`
+You just ran all the tests under `test/`.
+
+👉 You might notice that `pytest` indicates that 2 tests ran successfully, while `lib_test.py` only contains one... If you want to avoid that, you need to update the `Makefile` so that `__init__.py` is not called by `pytest`. For example, you could prefix all of your test files with `test_`, then modify the call to `pytest` in the `Makefile` using `tests/test_*.py`. Or you could run `python -m pytest` instead.
 
 ## Create your own test
 

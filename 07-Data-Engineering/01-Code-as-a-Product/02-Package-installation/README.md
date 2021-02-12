@@ -33,11 +33,13 @@ pip install -e .
 
 💡 __Thanks to the `setup.py` file, `pip` knows to install the dependencies of the package listed in the `requirements.txt` file__
 
+💡 __Once `mlproject` is installed using the `-e` flag on your machine, you do not need to reinstall it in order to for the changes in the code to be effective. The only case where you need to reinstall `mlproject` is if you create new scripts. Whenever you create a new script, it needs to be linked to by the virtual env. In this case, you need to `pip install -e .` again.__
+
 ## Project as a package
 
 Your mlproject is now a package, just like `pandas` or `sklearn`.
 
-Go anywhere you want in your machine and run inside either an `ipython` or a `python` interpreter, or user a notebook, and run:
+Go anywhere you want in your machine and run inside either an `ipython` or a `python` interpreter, or use a notebook, and run:
 
 ```python
 import mlproject
@@ -100,6 +102,8 @@ python -i mlproject/distance.py
 
 If you see `>>>` in your terminal after running this commmand, it is completely normal. the `-i` stands for interactive mode. This means that you can explore the variables you created in your python script. To exit the interactive mode either type `exit()` or `CTRL-D`.
 
+👉 Also, there seems to be an error when you run the code... Fix it before continuing 🙏
+
 💡 __You can also use `%run mlproject/distance.py` inside of a notebook or ipython interpreter (do not forget to `import mlproject`, you must be located in the main `mlproject/`)__
 
 Your new tree should look like this:
@@ -135,19 +139,22 @@ from mlproject.distance import haversine
 
 The objective here is to implement a new script under `scripts/` called mlproject-computedist taking 4 parameters (long1, lat1, long2, lat2) and returning the corresponding haversine distance.
 
-Install `termcolor` to allow your script to output colored text with `pip install termcolor`.
+Install `termcolor` to allow your script to output colored text:
+
+``` bash
+pip install termcolor
+```
 
 In order to understand how to pass arguments to a script, you can inspect the code of the `computedist.py` file located in:
 
 ```bash
 ~/code/<user.github_nickname>/data-challenges/07-Data-Engineering/01-Code-as-a-Product/02-Package-installation
-
 ```
 
 Run :
 
 ```bash
-python computedist.py --coords 48.865 2.380 48.235 2.393
+python ~/code/<user.github_nickname>/data-challenges/07-Data-Engineering/01-Code-as-a-Product/02-Package-installation/computedist.py --coords 48.865 2.380 48.235 2.393
 ```
 
 Basically you will want to run the exact same command but without `python` and anywhere on your laptop.
@@ -197,7 +204,8 @@ setup(name='mlproject',
       version="1.0",
       description="Project Description",
       packages=find_packages(),
-      test_suite = 'tests',
+      install_requires=requirements,
+      test_suite='tests',
       # include_package_data: to install data from MANIFEST.in
       include_package_data=True,
       scripts=['scripts/mlproject-run', 'scripts/mlproject-computedist'],

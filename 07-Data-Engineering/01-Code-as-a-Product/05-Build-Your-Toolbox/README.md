@@ -7,22 +7,22 @@ Every time you implement a cool function, you will add it to a file inside of yo
 
 ## First steps
 
-- Create a project with the `packgenlite` command
+- Create a project with the `packgenlite` command (remember, all new projects go to `~/code/<user.github_nickname>`)
 - Create a repository on GitHub for your package
 - Start filling in your package with awesome functions you already used
 
 ## Examples
 
 You can add to your repo:
-- Feature preprocessing functions you used on Time, Distance, or Geohash
+- Feature preprocessing functions that you can use on Time, Distance, or Geohash
 - Pipeline blocs
 - Functions getting data from BigQuery/Storage
-- Functions querying Weather API
-- Functions implementing PCA, Feature Selection, Converting categorical feature to numerical
-- Functions evaluating a regressor and a classifier
+- Functions querying the Weather API
+- Functions implementing PCA, Feature Selection, converting categorical features to numerical
+- Functions evaluating a Regressor and a Classifier
 - Functions implementing your favorite ARIMA forecasts
 - Functions calling for help from your TAs
-- Functions Sending Emails
+- Functions sending emails
 - ...
 
 Enjoy !
