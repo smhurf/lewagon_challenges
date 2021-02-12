@@ -240,7 +240,17 @@ upload_data:
 <summary>
   💡 Hint: how to find your local path to <code>train_1k.csv</code>?
 </summary>
-  From your terminal, go to the <code>raw_data</code> folder then print the local path with <code>pwd</code>.
+
+
+  From your terminal, go to the TaxiFareModel project that you created yesterday:
+
+  ``` bash
+  cd ~/code/<user.github_nickname>/TaxiFareModel
+  ```
+
+  From there, go to the <code>raw_data</code> directory. You should see the [train_1k.csv](https://wagon-public-datasets.s3.amazonaws.com/taxi-fare-ny/train_1k.csv) file inside.
+
+  In order to reference it, print the local path with <code>pwd</code>.
 </details>
 
 
