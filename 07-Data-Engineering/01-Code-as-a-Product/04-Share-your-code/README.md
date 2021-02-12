@@ -60,9 +60,9 @@ Your colleagues must have done the same thing. Add all their repositories to a `
 
 ## Bonus: Pypi, the last layer to Open Source
 
-You can skip the following section, it is pure bonus, but worth reading.
+You can skip the following section as it is a pure bonus but definitely worth reading.
 
-This section is for you general knowledge and will not be usefull until you really want to opensource a package.
+This section is for you general knowledge and will not be useful until you really want to opensource a package.
 
 You probably wondered how to install your package with the `pip install PACKAGE_NAME` command rather than `pip install git+https://github.com/<user.github_nickname>/PACKAGE_NAME`...
 
