@@ -104,6 +104,23 @@ Publish the `pip install` command on the slack channel of the batch, for your co
 
 Your colleagues must have done the same thing... Add all their packages to a `requirements.txt` file and test their functions 🔥
 
+If you wish to do that:
+- Create a `requirements.txt` file at the root of your project
+- List the decorated URLs of the packages of your classmates in the file
+- Learn more about [requirements files](https://pip.pypa.io/en/stable/user_guide/#requirements-files) and find out how to install all of the packages specified in the file in your virtual environment with a single command
+<details>
+  <summary>Hint</summary>
+
+  &nbsp;
+
+
+``` bash
+pip install -r requirements.txt
+```
+</details>
+
+Now that all their packages are installed in your virtual environment, write some code in order to call functions or classes from their packages.
+
 ## Bonus: Pypi, the last layer to Open Source
 
 You can skip the following section as it is a pure bonus, but definitely worth reading.
