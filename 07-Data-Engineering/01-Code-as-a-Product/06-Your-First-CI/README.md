@@ -64,4 +64,4 @@ With this [YAML](https://en.wikipedia.org/wiki/YAML) file (see YAML as a config 
 
 Once your have implemented tests for the functionalities of your package, having them run automatically on GitHub instead of your own machine is extremely convenient 👍
 
-**NB: Here we setup the CI part of the CI/CD lifecycle of a software, we can easily imagine that once GitHub passed all the tests, you want to deploy your code somewhere 👉 you will see that in next challenge**
+**NB: Here we setup the CI part of the CI/CD lifecycle of a software, we can easily imagine that once GitHub passed all the tests, you want to deploy your code somewhere 👉 you will see that in the next challenge**
