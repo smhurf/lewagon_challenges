@@ -26,12 +26,12 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        python-version: [3.6, 3.7]
 
     steps:
     - uses: actions/checkout@v2
+    - name: Say hello
+      run: |
+        echo "Hello, World!"
     - name: Set up Python ${{ matrix.python-version }}
       uses: actions/setup-python@v1
       with:
@@ -43,11 +43,16 @@ jobs:
     - name: Install package and test
       run: |
         make install test clean
+
+    strategy:
+      matrix:
+        python-version: [3.7]
 ```
 
 With this YAML file (see YAML as a config file just like a JSON file in python):
  👉 every time you push a modification to master, the CI pipeline above will execute the following steps
 - Get a docker image with ubuntu installed
+- Say `Hello` to the World 😉
 - Install python 3
 - Upgrade pip and install requirements
 - Run `make install test clean`, meaning:
@@ -55,4 +60,4 @@ With this YAML file (see YAML as a config file just like a JSON file in python):
   => run the tests
 - Stops if any of preceding steps failed
 
-**NB: Here we setup the CI part of the CI/CD lifecycle of a software, we can easily imagine that once GitHub passed all the tests, you want to deploy your code somewhere, that you will see in next exercise**
+**NB: Here we setup the CI part of the CI/CD lifecycle of a software, we can easily imagine that once GitHub passed all the tests, you want to deploy your code somewhere 👉 you will see that in next exercise**

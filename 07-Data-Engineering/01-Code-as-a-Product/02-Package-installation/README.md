@@ -16,8 +16,8 @@ The ultimate goals of our `mlproject` are:
 - install scripts
 
 Get inside of `mlproject`
-👉 Inspect the script in `scripts/mlproject-run`
-👉 Inspect the code you want to package as a module in the directory `mlproject/`
+👉 Inspect the empty generated script in `scripts/mlproject-run`
+👉 The code you want to package as a module will be placed in the directory `mlproject/`
 
 You will want to install the dependencies of the package and its script.
 
@@ -123,19 +123,13 @@ Your new tree should look like this:
     └── __init__.py
 ```
 
-Install the package (you need to be located inside of the `mlproject` directory), then start using your new function anywhere you want:
-
-```bash
-make install
-```
-
-In any notebook:
+Thanks to our initial installation using `pip install -e .` you can directly start using your new function anywhere you want.
 
 ```python
 from mlproject.distance import haversine
 ```
 
-👆You should now be able to use your `haversine` function in the notebook.
+👆You should now be able to use your `haversine` function in ipython or in a Jupyter Notebook.
 
 ## Fill the script of the package
 
@@ -143,7 +137,7 @@ The objective here is to implement a new script under `scripts/` called mlprojec
 
 Install `termcolor` to allow your script to output colored text with `pip install termcolor`.
 
-In order to understand how to pass arguments to a script, you can inspect the code of the `computedist.py` (or `script.py`) file located in:
+In order to understand how to pass arguments to a script, you can inspect the code of the `computedist.py` file located in:
 
 ```bash
 ~/code/<user.github_nickname>/data-challenges/07-Data-Engineering/01-Code-as-a-Product/02-Package-installation
@@ -156,23 +150,16 @@ Run :
 python computedist.py --coords 48.865 2.380 48.235 2.393
 ```
 
-or
-
-```bash
-python script.py --coords 48.865 2.380 48.235 2.393
-```
-
 Basically you will want to run the exact same command but without `python` and anywhere on your laptop.
 
 In order to do that, simply:
-- Create a `scripts/mlproject-computedist` file with the exact same code as `computedist.py`
+1. Create a `scripts/mlproject-computedist` file with the exact same code as `computedist.py`
 👉 __the name of a script file does not end by `.py`__
-- Add the following lines at the beginning of the file. The first line specifies that the file is a python script. The second line specifies that the file is encoded using UTF-8 characters.
+👉 Add the following lines at the beginning of the file. The first line specifies that the file is a python script. The second line specifies that the file is encoded using UTF-8 characters.
 ``` python
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 ```
-- Modify `setup.py` in order to add `mlproject-computedist` to the list of scripts
 
 Your new tree should look like:
 ```bash
@@ -194,6 +181,7 @@ Your new tree should look like:
 └── tests
     └── __init__.py
 ```
+2. Modify `setup.py` in order to add `mlproject-computedist` to the list of scripts
 
 Update your `setup.py` so that the script gets installed along with the package:
 
@@ -215,11 +203,10 @@ setup(name='mlproject',
       scripts=['scripts/mlproject-run', 'scripts/mlproject-computedist'],
       zip_safe=False)
 ```
-
-Finally you can install the package and its scripts:
+3. Reinstall the package so that `setup.py` notices the newly created script
 
 ```python
-make install
+pip install -e .
 ```
 
 You can now run your script anywhere on your machine:

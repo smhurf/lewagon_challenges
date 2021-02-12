@@ -9,7 +9,30 @@ Install the [code coverage](https://en.wikipedia.org/wiki/Code_coverage) package
 
 ## Run tests
 
-Inspect `mlproject/lib.py`  and `tests/lib_test.py`.
+Create two new files:
+
+```bash
+touch mlproject/lib.py
+touch tests/lib_test.py
+```
+
+and copy paste the below code into them:
+
+```python
+# mlproject/lib.py
+
+def hello_world():
+    return "Hello world from mlproject"
+```
+
+```python
+# tests/lib_test.py
+from mlproject.lib import hello_world
+
+def test_length_of_hello_world():
+    assert len(hello_world()) != 0
+```
+
 
 Inspect `Makefile`, and run:
 
@@ -23,7 +46,8 @@ You just ran all the tests under `test/`
 
 You will now test the `haversine()` function:
 
-- Create a `tools.py` file under `mlproject/` where you will implement the `haversine()` function taking 4 coordinates as input and returning the haversine distance
-- Create a `tool_test.py` file under `tests/` testing your `haversine()` function
+- Create a `distance_test.py` file under `tests/` testing your `haversine()` function.
+  *But what should I test? 🤔*
+  You want to make sure the functionality of your function is correct. You can check if the distance between given coordinates is valid or if the type returned by it is the right one. It's up to you!
 
 Run `make test` again and check that your test passes.
