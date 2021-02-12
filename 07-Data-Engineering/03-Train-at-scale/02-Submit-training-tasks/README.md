@@ -109,13 +109,12 @@ pip install -r requirements.txt
 
 In Sublime Text, open the `Makefile` and set the two first lines variables:
 
-- `PROJECT_ID`
 - `BUCKET_NAME` (where GCP will store training material)
 
 Then open the `SimpleTaxiFare/trainer.py` and set the two global variables:
 
 - `BUCKET_NAME` (where the training data is stored)
-- `PATH_INSIDE_BUCKET` (should be `data/UPLOADED_FILE_NAME.csv`, `data/train_1k.csv` if you did not change the makefile)
+- `BUCKET_TRAIN_DATA_PATH` (should be `data/UPLOADED_FILE_NAME.csv`, `data/train_1k.csv` if you did not change the makefile)
 
 Then launch:
 
