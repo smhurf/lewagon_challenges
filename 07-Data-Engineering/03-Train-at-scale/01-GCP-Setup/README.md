@@ -24,7 +24,7 @@ We need to install a new cli called gcloud. Once you are authenticated, this too
 ### MacOSX
 
 ```bash
-brew cask install google-cloud-sdk
+brew install --cask google-cloud-sdk
 ```
 
 Then copy these lines in your `~/.aliases`:
