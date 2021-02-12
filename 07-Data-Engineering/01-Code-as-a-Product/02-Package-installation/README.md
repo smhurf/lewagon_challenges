@@ -33,7 +33,7 @@ pip install -e .
 
 💡 __Thanks to the `setup.py` file, `pip` knows to install the dependencies of the package listed in the `requirements.txt` file__
 
-💡 __Once `mlproject` is installed using the `-e` flag on your machine, you do not need to reinstall it in order to for the changes in the code to be effective. The only case where you need to reinstall `mlproject` is if you create new scripts. Whenever you create a new script, it needs to be linked to by the virtual env. In this case, you need to `pip install -e .` again.__
+💡 __Once `mlproject` is installed using the `-e` flag on your machine, you do not need to reinstall it in order for the changes in the code to be effective. The only case where you need to reinstall `mlproject` is if you create new scripts. Whenever you create a new script, it needs to be linked to by the virtual env. In this case, you need to `pip install -e .` again.__
 
 ## Project as a package
 
