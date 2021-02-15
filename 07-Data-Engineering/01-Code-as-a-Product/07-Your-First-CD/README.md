@@ -1,54 +1,58 @@
 ## Objective
 
-Create your first CD (continuous deployment)
+Create your first CD (Continuous Deployment)
+
+Now that we have setup a CI on GitHub, our code will be automatically tested every time we push new commits to our GitHub repository.
+Would not it be nice if once our code has passed all the tests we wrote, and only if it passes all the tests, it would be automatically deployed to production? 👉 This is what CD is about.
 
 ## Where to deploy ?
 
-We want to be able to deploy a software/package on a remote machine.
+We want to be able to deploy a software/package on a remote machine living in the cloud.
 Where to deploy? You have many different options, we chose Heroku for many reasons:
 👉 It is free
 👉 It is amazingly easy to use
-👉 Smooth git integration
+👉 It has smooth git integration
 
 ## Heroku setup
 
-- sign in to [heroku](https://signup.heroku.com/)
-- install [heroku cli](https://devcenter.heroku.com/articles/heroku-cli)
-- test login
+- Sign in to [Heroku](https://signup.heroku.com/)
+- Install the [Heroku CLI (Command Line Interface)](https://devcenter.heroku.com/articles/heroku-cli)
+- Login the CLI
 ```bash
 heroku login
 ```
 
-## Deploy your first package to heroku
-Deploying to heroku is as simple as:
-👉 Adding a `Procfile` file indicating command to run on heroku servers
-👉 Creating heroku app and running 3 commands from the command line
+## Deploy your first package to Heroku
+
+Deploying to Heroku is as simple as:
+👉 Adding a `Procfile` file indicating the command to run on the Heroku servers in order to run your code
+👉 Creating a Heroku app and running 3 commands from the command line
 
 Here is how to do it:
-- Go the root of your repository you created in the last exercises
-- Add a file named `Procfile` at the root of your repository
-- Insert the following line inside `Procfile` (change the name of your package) in order to run your script when the application is deployed
+- Go to the root of the repository you used in the last challenges
+- Add a file named `Procfile` at the root of the repository
+- Insert the following line inside of the `Procfile` (change the name of your package/script in the line) in order to run your script when the application is deployed
 ```bash
 web: pip install . -U && YOUR_PACKAGE_NAME-run
 ```
-- Create your app (change the name of your package)
+- Create your Heroku app (change the name of your package, the name of the app must be unique worldwide)
 ```bash
 heroku create YOUR_PACKAGE_NAME
 ```
-- You should see in the console that heroku deployed a web server online exposing for you an empty app that is visible here:
+- You should see in the console that Heroku deployed a web server online exposing for you an empty app that is visible here:
 https://YOUR_PACKAGE_NAME.herokuapp.com/
-- Now we will deploy our package to this server. **Do not forget to commit your code** before pushing to heroku: only the commited code will be pushed to production!
+- Now we will deploy our package to this server. **Do not forget to commit your code** before pushing to Heroku: only the commited code will be pushed to production!
 
 ```bash
 git add Procfile
-git commit -m 'heroku Procfile added'
+git commit -m 'Heroku Procfile added'
 git status
 ```
-- Push your code to heroku
+- Push your code to Heroku
 ```bash
 git push heroku master
 ```
-- Deploy on free heroku dynos
+- Deploy on a free Heroku dyno
 ```bash
 heroku ps:scale web=1
 ```
@@ -57,16 +61,18 @@ heroku ps:scale web=1
 heroku logs --tail
 ```
 📣 And `voila` 📣
-**NB: Here we only run one script once on heroku, so once the script finishes running, heroku will shut down the app.
-==> don't be surprised if you see crash message in heroku logs**
+**NB: We only ran our script once on Heroku. Once the script finished running, Heroku considered that our app had unexpectedly terminated and decided to shutdown the service.
+==> You should see the corresponding crash message in the Heroku logs**
 
-## Automate deployment inside your CI-CD Github Pipeline
+👉 Do not worry, we will see by the end of the module how to deploy to Heroku something that does not crash right away 😉
 
-Running following command was boring right ?
-You'd rather automatically deploy your package anytime you change your code and push it to github
+## Automate the deployment inside of your GitHub CI-CD
 
-Here we'll get back to our precious `.github/workflows`
-👉 Simply add a step called `deploy_heroku` following your `build` step and change your package name in the code, then add your email address and Heroku API Key in the Secrets of your repository on Github (explained below):
+Running the previous commands was boring, right?
+You would rather have your package automatically deployed every time you change your code and push it to GitHub!
+
+Here we will get back to our precious `.github/workflows` GitHub configuration...
+👉 Simply add or uncomment the step called `deploy_heroku` and following the `build` step. Do not forget to change the name of the Heroku app that you created in the code:
 ```yaml
   deploy_heroku:
 
@@ -81,44 +87,47 @@ Here we'll get back to our precious `.github/workflows`
         heroku_email: ${{secrets.HEROKU_EMAIL}}
 ```
 
-What this will do is nothing more than executing the command you executed on last section, except that these command will be executed from **Github servers**:
+Then add your email address and your Heroku API key in the Secrets of your project repository on Github (follow the steps below).
+
+This CD configuration will do nothing more than executing the commands that you manually executed in the previous section. The only difference is that these commands will be executed automatically from the **Github servers** whenever the code that you push to your GitHub repository passes all the steps defined in the CI:
 ```bash
 git push heroku master
 heroku ps:scale web=1
 ```
 
-💡 How will Github authenticate itself as myself to heroku ?
+💡 How will GitHub authenticate itself as myself on Heroku in order to be allowed to push my code to production ?
 
-By providing to Github an API key you'll generate and your Heroku email address.
+In order to allow GitHub to do that, we will configure in GitHub a Heroku API key that we will generate on Heroku, and our email address.
 
-**API KEY**
+**HEROKU API KEY**
 
-👉 Go to [heroku account](https://dashboard.heroku.com/account), generate and/or copy your API key
+👉 Go to your [Heroku account](https://dashboard.heroku.com/account), and generate or copy (Reveal) your API key.
 
-👉 Store it as a secret on your github repository under `Settings` then `secrets`
-   => name it `HEROKU_API_KEY` and paste your key you copied from heroku
+👉 Store it as a Secret on your GitHub repository under `Settings` then `Secrets`
+   => name it `HEROKU_API_KEY` and paste the API key that you copied from Heroku
 
 **HEROKU EMAIL**
 
-👉 Store it as a secret on your github repository under `Settings` then `secrets`
-   => name it `HEROKU_EMAIL` and save your email you're using to log into Heroku
+👉 Store it as a Secret on your GitHub repository under `Settings` then `Secrets`
+   => name it `HEROKU_EMAIL` and save the email that you are using in order to login on Heroku
 
-
-👉 Then from terminal, inside your repo:
+👉 Then from the Terminal, inside of your project, update your code, push it to GitHub and see the CI/CD do its work:
+- Verify the status of your git repository
 ```bash
 git status
 ```
+- Look at the differences in the GitHub CI/CD configuration
 ```bash
 git diff
 ```
-Add `Procfile` and commit changes to `.github/workflows/pythonpackage.yml`
+- Add a `Procfile` file and commit the changes to `.github/workflows/pythonpackage.yml`
 ```bash
 git add Procfile
-git commit -am "added CD to deploy to heroku"
+git commit -am "added CD to deploy to Heroku"
 ```
-Finally
+- Finally
 ```bash
 git push origin master
 ```
 
-📣 Sit, relax, grab a beer and check Github doing all the work for you under `Actions` 📣
+📣 Sit back, relax, grab a drink and chill as GitHub is doing all the work for you in the `Actions` tab 📣
