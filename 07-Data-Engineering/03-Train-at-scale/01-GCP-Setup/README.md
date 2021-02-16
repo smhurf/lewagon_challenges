@@ -28,13 +28,11 @@ brew install --cask google-cloud-sdk
 ```
 
 Then copy these lines in your `~/.aliases`:
-
 ```bash
 export CLOUDSDK_PYTHON="/usr/local/opt/python@3.8/libexec/bin/python"
 source "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc"
 source "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc"
 ```
-
 **Restart** your terminal.
 
 ### Ubuntu/WSL2
@@ -53,7 +51,6 @@ sudo apt-get install google-cloud-sdk-app-engine-python
 
 
 ## Configure Cloud sdk
-
 - Authenticate the gcloud tool with the google account you used for GCP. This will open a browser tab for authentication to your google account
 ```bash
 gcloud auth login
@@ -176,7 +173,7 @@ As the `PROJECT_ID` is used in your code in order to identify your project, the 
 
 You can list the buckets of your project in [Navigation menu / Storage / Browser](https://console.cloud.google.com/storage/browser).
 
-💡 You should use the `train_1k.csv` training file in order to allow you to test the upload and the model training quickly. But eventually you are going to want to upload the full dataset in order to create an better model.
+💡 You should use the `train_1k.csv` training file in order to allow you to test the upload and the model training quickly. But eventually you are going to want to upload the full dataset in order to create a better model.
 
 There are 2 ways to create a bucket:
 
@@ -194,10 +191,10 @@ BUCKET_NAME=XXX # Use your Project's name as it should be unique
 REGION=europe-west1 # Choose your region https://cloud.google.com/storage/docs/locations#available_locations
 
 set_project:
-  -@gcloud config set project ${PROJECT_ID}
+    @gcloud config set project ${PROJECT_ID}
 
 create_bucket:
-  -@gsutil mb -l ${REGION} -p ${PROJECT_ID} gs://${BUCKET_NAME}
+    @gsutil mb -l ${REGION} -p ${PROJECT_ID} gs://${BUCKET_NAME}
 ```
 
 - Use the predefined bash commands from `Makefile` to create your bucket
@@ -232,8 +229,8 @@ BUCKET_FOLDER=data
 BUCKET_FILE_NAME=$(shell basename ${LOCAL_PATH})
 
 upload_data:
-  # -@gsutil cp train_1k.csv gs://wagon-ml-my-bucket-name/data/train_1k.csv
-  -@gsutil cp ${LOCAL_PATH} gs://${BUCKET_NAME}/${BUCKET_FOLDER}/${BUCKET_FILE_NAME}
+    # @gsutil cp train_1k.csv gs://wagon-ml-my-bucket-name/data/train_1k.csv
+    @gsutil cp ${LOCAL_PATH} gs://${BUCKET_NAME}/${BUCKET_FOLDER}/${BUCKET_FILE_NAME}
 ```
 
 <details>

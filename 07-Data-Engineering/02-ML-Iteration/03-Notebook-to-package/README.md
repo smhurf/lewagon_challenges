@@ -2,7 +2,7 @@
 
 It is time to move away from Jupyter Notebook, and start writing reusable code with python packages, modules and classes.
 
-In the exercise, nothing new, simply copy pasting functions we already implemented yesterday, and organize them inside different modules.
+In the exercise, nothing new, simply copy pasting functions we already implemented in the previous challenge and organize them inside different modules.
 
 ### Package structure 🗺
 
@@ -35,9 +35,7 @@ packgenlite TaxiFareModel
 
 - Copy the code we provide into your project
 
-<details>
-<summary>💡 Hint
-</summary>
+<details><summary>💡 Hint</summary>
 
 ```bash
 cp -r ~/code/<user.github_nickname>/data-challenges/07-Data-Engineering/02-ML-Iteration/03-Notebook-to-package/*.py ~/code/<user.github_nickname>/TaxiFareModel/TaxiFareModel
@@ -75,7 +73,7 @@ cp -r ~/code/<user.github_nickname>/data-challenges/07-Data-Engineering/02-ML-It
 
 #### Download the datasets locally
 
-- Download the datasets `train.csv` and `test.csv` from [Kaggle](https://www.kaggle.com/c/new-york-city-taxi-fare-prediction/data) if you didn't do it yet
+- Download the datasets `train.csv` and `test.csv` from [Kaggle (`Data` tab)](https://www.kaggle.com/c/new-york-city-taxi-fare-prediction/data) if you didn't do it yet
 - Move them under the `raw_data` folder
 - Download 2 subsets of the full `train.csv` dataset:
   - [train_1k.csv](https://wagon-public-datasets.s3.amazonaws.com/taxi-fare-ny/train_1k.csv) with 1_000 rows
