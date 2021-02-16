@@ -41,7 +41,7 @@ For each run you will logs parameters and metrics
 Open `ml_flow_test.py` and inspect the code that will allow you to log your first params on your local instance:
 
 ```python
-from mlflow.tracking import MlflowClient
+from  mlflow.tracking import MlflowClient
 EXPERIMENT_NAME = "test_experiment"
 client = MlflowClient()
 try:
@@ -54,8 +54,6 @@ for model in ["linear", "Randomforest"]:
     client.log_metric(run.info.run_id, "rmse", 4.5)
     client.log_param(run.info.run_id, "model", model)
 ```
-
-🔍 Now try to run that code in your terminal then inspect your mlflow console to check if you see your logs!
 
 ## Hosted MLFlow server
 
@@ -85,11 +83,11 @@ for model in ["linear", "Randomforest"]:
     client.log_param(run.info.run_id, "model", model)
     client.log_param(run.info.run_id, "student_name", yourname)
 ```
-Run the `ml_flow_test.py` file then check out [mlflow server](https://mlflow.lewagon.co/) to visualise your logs!
+Check out  [mlflow server](https://mlflow.lewagon.co/) to visualise your logs
 
 ## Mlfow integrated to our Taxifare ml project
-Now we will add a few methods to our existing class in order to start logging training runs. For that we will add following methods to our Trainer() class:
-
+Now we will add a few methods to our existing class in order to start logging training runs
+For that we will add following methods to our Trainer() class (don't forget the necessary imports!):
 ```python
 class Trainer():
     ...
@@ -117,13 +115,17 @@ class Trainer():
         self.mlflow_client.log_metric(self.mlflow_run.info.run_id, key, value)
 ```
 
-Notice how [@memoized_property](https://pypi.org/project/memoized-property/) is actually quite powerfull:
+Notice how [@memoized_property](https://pypi.org/project/memoized-property/) is actually quite powerful:
 - it is a decorator
 - is defines its following function as a [property](https://www.geeksforgeeks.org/python-property-function/)
 - the property is memoized <=> only set at first call
 
 ## Log first params and metrics
-We've done the hard work, we can now easily log any param and metric by simply adding `self.mlflow_log_param(param, value)` or `self.mlflow_log_metric(metric_name, metric_value)` anywhere in our class:
+We've done the hard work, we can now easily log any param and metric by simply adding
+
+`self.mlflow_log_param(param, value)` or `self.mlflow_log_metric(metric_name, metric_value)`
+
+anywhere in our class:
 - Define 2 global variables at the beginning `trainer.py`:
 ```python
 MLFLOW_URI = "https://mlflow.lewagon.co/"

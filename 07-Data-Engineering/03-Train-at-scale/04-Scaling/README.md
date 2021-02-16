@@ -65,23 +65,25 @@ Here we might want to:
 
 # Memory and parallelisation
 
-It is the trickiest part of scikitlearn and python in general, which is not the best student amongst programming language for fast and efficient parallelising tasks.
+It is the trickiest part of `scikit-learn` and Python in general which is not the best Python tool for fast and efficient parallelising tasks.
 
 ## Parallelisation
 Here are the parameters you can play with on sklearn classes
 - `n_jobs` inside `xgboost`, `RandomSearchCV` or `GridSearchCV` for example
-👉 When possible, sklearn includes parallel tasks, but keep in mind that not all algorithm are parallelisable
+👉 When possible, sklearn includes parallel tasks but keep in mind that not all algorithms are parallelisable
 
 ## Memory
-Memory issues either appear when Dataset size is bigger than RAM size, or during Hyperparameters tuning when sklearn actually duplicates a lot of times our data
+Memory issues either appear when the size of a dataset is bigger than RAM size or during hyperparameters tuning when sklearn actually duplicates our data many times.
 
 Here are the parameters you can play with on sklearn classes:
+
 - `memory` parameter of sklearn's well known `Pipeline()`
 👉 when given `memory="local_path"` to a pipeline, it will keep in cache all the transform parts applied during preprocessing
 👉 Doc [here](https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html)
 
 - `pre_dispatch` inside `RandomSearchCV` or `GridSearchCV`
 👉 From sklearn [doc](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.GridSearchCV.html)
+
 ```python
 Controls the number of jobs that get dispatched during parallel execution.
 Reducing this number can be useful to avoid an explosion of memory consumption when more jobs get dispatched than CPUs can process.
@@ -91,6 +93,7 @@ This parameter can be:
 - An int, giving the exact number of total jobs that are spawned
 - A str, giving an expression as a function of n_jobs, as in ‘2*n_jobs’
 ```
+
 👉 good stackoverflow explanation [here](https://stackoverflow.com/questions/32673579/scikit-learn-general-question-about-parallel-computing)
 
 ## Exercise

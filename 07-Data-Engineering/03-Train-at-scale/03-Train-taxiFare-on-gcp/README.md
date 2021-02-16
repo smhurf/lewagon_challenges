@@ -5,19 +5,19 @@ In the previous exercise, we trained a basic model on GCP. We will now integrate
 Deploy, train and use your pipeline model with GCP.
 You've trained and evaluated your first Pipeline on your laptop, now you'll do everything on GCP.
 
-## Complete TaxiFareModel/trainer.py to be trainable and deployable to GCP
+## Complete `TaxiFareModel/trainer.py` to be trainable and deployable to GCP
 
 Here we go back with the pipeline including:
 - Custom encoders
 - Mlfow tracking on remote server
 
-You can start from the solution of `07-Data-Engineering/02-ML-Iteration/04-MLFlow-quickstart`, but feel free to use your own package as well.
+You can start from the `TaxiFareModel` package solution of `07-Data-Engineering/02-ML-Iteration/04-MLFlow-quickstart`, but feel free to use your own package as well.
 
 Modify the `get_data()` function and add a `save_model()` method inside `trainer.py` in order to:
 👉 Get training data from Storage (still working on 1k sample for faster runs here)
 👉 Upload model to Storage just like in the last exercise
 
-💡 Check that all your variables (`BUCKET_NAME` etc...) are correctly defined insice `params.py`
+💡 For a better organization of your code you can create a new file `params.py` and move there all your variables (`BUCKET_NAME` etc...) which later on you will import in `data.py`, `trainer.py`, `encoders.py`, etc.
 
 Take a step back and ask yourself what information is now stored inside of our `model.joblib` ?
 🤔 Get help from [day 2 slides](https://kitt.lewagon.com/karr/data-lectures.kitt/07-Data-Engineering_02.slides.html)
@@ -36,7 +36,7 @@ Once everything is working ok, please make sure that:
 
 ## Train your model on GCP
 
-Edit the `Makefile` and run `make gcp_submit_training` to train your model on GCP
+Edit the `Makefile` and run `make gcp_submit_training` to train your model on GCP (go back to the previous exercise for correct command and to be sure you've defined all the necessary variables).
 
 Same as before here:
 - Submit a first training task on a few samples to check that your workflow runs without errors on GCP servers

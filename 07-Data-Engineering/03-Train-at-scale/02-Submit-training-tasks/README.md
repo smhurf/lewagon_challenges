@@ -7,15 +7,15 @@ This model will be a linear model **`fare_amount ~ C * distance`**
 # Reminders
 
 ## Packaging
-Here a quick reminder of our packaging notions from last monday, to package python code, nothing more than:
+Here a quick reminder of our packaging notions from last Monday: to package python code you have to do nothing more than:
  - structure your code in `.py` files (modules) in the directory of your package
  - make sure you have an `__init__.py` file
  - add a `setup.py` file
  - add an exhaustive list of the python packages required in order to run your code inside `setup.py`
 
-Packaging basically means I want my code to be able to run anywhere by any user.
+Packaging basically means that I want my code to be able to be run anywhere by any user.
 
-In our case we want our model to run on GCP servers.
+In our case we want our model to be run on GCP servers.
 
 ## Run python files from command line
 To run `trainer.py` file below:
@@ -35,7 +35,7 @@ python -m SimpleTaxiFare.trainer
 
 # Package structure
 
-To start we need to create a python module. We will use notion we saw on monday.
+To start we need to create a python module. We will use notion we saw on Monday.
 We will start by creating the following structure:
 
 ```bash
@@ -49,7 +49,7 @@ We will start by creating the following structure:
 ```
 
 Inspect `trainer.py` and implement the following functions.
-Here the function are quite simple and we have implemented all of them earlier on this week.
+Here the functions are quite simple and we have implemented all of them earlier on this week.
 The objective here is to implement on our own a very simple workflow that we will later run on GCP machines.
 
 ```python
@@ -94,7 +94,7 @@ if __name__ == '__main__':
 ```
 
 👉 Get help from [google documentation](https://pypi.org/project/google-cloud-storage/) to upload file to storage
-👉 [Why if __name__ == '__main__' ?](http://sametmax.com/pourquoi-if-__name__-__main__-en-python/)
+👉 [Why if __name__ == '__main__' ?](https://stackoverflow.com/a/419185)
 
 # Run the code locally
 Here we will run this simple workflow on our own machines
@@ -159,7 +159,7 @@ Make sure you have installed the dependencies from requirements.txt
 pip install -r requirements.txt
 ```
 
-Check version of python libraries we have installed in the virtualenv:
+Check version of the python libraries we have installed in the `virtualenv`:
 
 ```bash
 pip freeze | grep -E "pandas|scikit|google-cloud-storage|gcsfs"
@@ -169,7 +169,9 @@ Make sure they match with the package list in `requirements.txt`.
 
 ## Submit Training to GCP
 The GCP cli `gcloud` installed before allows us to communicate with GCP. It provides commands allowing to use all its APIs.
-In particular, it provides a command allowing to request the online training of a model provided in a package.
+In particular it provides a command which allows us to request the online training of the model provided in our package.
+
+**Don't be scared by the commands below! Read through first, then take a look at your `Makefile`.**
 
 The command is `gcloud ai-platform jobs submit training`.
 The command requires:
@@ -184,18 +186,18 @@ The command requires:
 
 ```bash
 gcloud ai-platform jobs submit training ${JOB_NAME} \
-	--job-dir gs://${BUCKET_NAME}/${BUCKET_TRAINING_FOLDER}  \
-	--package-path ${PACKAGE_NAME} \
-	--module-name ${PACKAGE_NAME}.${FILENAME} \
-	--python-version=${PYTHON_VERSION} \
-	--runtime-version=${RUNTIME_VERSION} \
-	--region ${REGION} \
-	--stream-logs
+  --job-dir gs://${BUCKET_NAME}/${BUCKET_TRAINING_FOLDER}  \
+  --package-path ${PACKAGE_NAME} \
+  --module-name ${PACKAGE_NAME}.${FILENAME} \
+  --python-version=${PYTHON_VERSION} \
+  --runtime-version=${RUNTIME_VERSION} \
+  --region ${REGION} \
+  --stream-logs
 ```
 
 👉 [Full documentation here](https://cloud.google.com/sdk/gcloud/reference/ai-platform/jobs/submit/training)
-You imagine how painfull it would be to write this very long command every time we want to submit a training task to GCP.
-That's where our precious `Makefile` enters in action with its variables and commands.
+You imagine how painful it would be to write this very long command every time we want to submit a training task to GCP.
+That's where our precious `Makefile` comes into action with its variables and commands.
 
 Variables:
 
@@ -214,9 +216,9 @@ FILENAME=trainer
 JOB_NAME=taxi_fare_training_pipeline_$(shell date +'%Y%m%d_%H%M%S')
 ```
 
-Fore more information about latest runtimes, check out the [documentation](https://cloud.google.com/ai-platform/training/docs/runtime-version-list?hl=en).
+Fore more information about latest runtimes check out the [documentation](https://cloud.google.com/ai-platform/training/docs/runtime-version-list?hl=en).
 
-After understanding and filling in variables, you can now submit your first training task on GCP:
+After understanding how the command is run and filling in variables with your own GCP details you can now submit your first training task on GCP:
 
 ```bash
 make gcp_submit_training
@@ -228,6 +230,6 @@ When your job is finished check on your [Storage Bucket](https://console.cloud.g
 
 You trained your first model completely online! 🎉
 
-Make sure you are confortable with the way the `run_locally` and `gcp_submit_training` commands of the `Makefile` work and how and in which context they call `trainer.py` (make a ticket if you need to).
+Make sure you are comfortable with the way the `run_locally` and `gcp_submit_training` commands of the `Makefile` work and how and in which context they call `trainer.py` (make a ticket if you need to).
 
 Next step... Let's make a prediction from that online model! 🚀

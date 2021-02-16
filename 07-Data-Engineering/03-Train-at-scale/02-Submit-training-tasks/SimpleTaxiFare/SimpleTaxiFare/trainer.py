@@ -48,7 +48,7 @@ MODEL_VERSION = 'v1'
 def get_data():
     """method to get the training data (or a portion of it) from google cloud bucket"""
     client = storage.Client()
-    df = pd.read_csv("gs://{}/{}".format(BUCKET_NAME, BUCKET_TRAIN_DATA_PATH), nrows=1000)
+    df = pd.read_csv(f"gs://{BUCKET_NAME}/{BUCKET_TRAIN_DATA_PATH}", nrows=1000)
     return df
 
 
@@ -92,7 +92,7 @@ def save_model(reg):
     print("saved model.joblib locally")
 
     # Implement here
-    print("uploaded model.joblib to gcp cloud storage under \n => {}".format(storage_location))
+    print(f"uploaded model.joblib to gcp cloud storage under \n => {STORAGE_LOCATION}")
 
 
 if __name__ == '__main__':
