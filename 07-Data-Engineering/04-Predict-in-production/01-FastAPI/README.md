@@ -1,7 +1,7 @@
 
 Now that we have a performant model trained in the cloud, we will expose it to the world 🌍
 
-Today, we will create a **Prediction API** for our model, run it on our machine in order to make sure that everything works correctly. Then we will put it in the cloud so that everyone can play with our model!
+We will create a **Prediction API** for our model, run it on our machine in order to make sure that everything works correctly. Then we will put it in the cloud so that everyone can play with our model!
 
 In order to do so, today we will:
 - Challenge 1 : create a **Prediction API** using **FastAPI**
@@ -19,7 +19,7 @@ We want to use our best performing model in order to make predictions 🚀
 
 👌 In this case, you will quickly retrain a model on your machine. The code of the solution trains on very few rows and will allow you to proceed with the exercises of today 👌
 
-## A few considerations
+## Before we start - let's go through some important points
 
 ### About the version of your trained model + code
 
@@ -27,13 +27,13 @@ We want to use our best performing model in order to make predictions 🚀
 
 👉 If the `model.joblib` that you want to use today for your **Prediction API** corresponds to the latest version of you code, no worries 🎉
 
-👉 (or if you choose to retrain your code locally using the solution from Train at Scale, no worries either 🎉)
+👉 ...or if you choose to retrain your code locally using the solution from Train at Scale, no worries either 🎉
 
-The solution otherwise is to use for the prediction the version of your code/pipeline that was used for the training. If you need to do so, call a TA
+All in all: the solution is to use the version of your code/pipeline that was **used for the training** to run the prediction. If you don't know where to start - call a TA
 
 ### About the version of your trained model + packages
 
-⚠️ Also, we need to make sure that the version of the packages (`numpy`, `pandas`, `scikit-learn`, and so on) used in order to train the model are going to be the same as the ones used in order to load the `model.joblib` file ⚠️
+⚠️ Also, we need to make sure that the versions of the packages (`numpy`, `pandas`, `scikit-learn` and so on) used in order to train the model are going to be the same as the ones used in order to load the `model.joblib` file ⚠️
 
 👉 This is probably not going to be a concern if you trained your model recently since the versions probably did not evolve that fast
 
@@ -81,7 +81,7 @@ In `api/fast.py`, let's create a root endpoint that will welcome the developers 
 
 In order to do that, we will use **FastAPI**.
 
-⚠️ Usually, our API is going to be called from python code, inside of a notebook or a package, or from any language ran in a **Back-End**. That means that the code is not located inside of a web page. In this case, no issues 👌
+⚠️ Usually our API is going to be called from the python code inside of a notebook or a package or from any language ran in the **Back-End**. That means that the code is not located inside of a web page. In this case, no issues 👌
 
 We want our API to be quite open and to allow developers to plug it in the code that is going to run inside of a browser: the **JavaScript** code running in the browser when a web page is displayed.
 
@@ -104,6 +104,17 @@ app.add_middleware(
 
 👉 If we do not use the `add_middleware` method, then our API will only work when called from **Back-End** code (or similar), but not when called from the **JavaScript** code of a web page. Open this link in order to learn [more about CORS](https://fastapi.tiangolo.com/tutorial/cors/)...
 
+
+**Let's create our root endpoint**
+
+Add the below code right after *middleware*:
+
+```python
+@app.get("/")
+def index():
+    return {"greeting": "Hello world"}
+```
+
 The endpoint will simply return the following json content when a developer hits the root of our API : http://localhost:8000/
 
 ``` json
@@ -112,7 +123,12 @@ The endpoint will simply return the following json content when a developer hits
 }
 ```
 
-*Hint*: you may use the `make run_api` **Makefile** directive in order to run the **uvicorn** web server that will serve the API.
+*Hint*: you may create the `make run_api` **Makefile** directive in order to run the **uvicorn** web server that will serve the API:
+
+```python
+run_api:
+	uvicorn api.fast:app --reload  # load web server with code autoreload
+```
 
 Once the server is started, you can play with the API either directly: http://localhost:8000/
 
@@ -120,7 +136,7 @@ Once the server is started, you can play with the API either directly: http://lo
 
 ### Receive the parameters for the prediction
 
-We have a basic endpoint for our API, but that is not very useful...
+We have a basic endpoint for our API but that is not very useful...
 
 Let's create a `/predict_fare` endpoint that will be used for the predictions.
 
@@ -134,9 +150,9 @@ We want developers to provide the following parameters to the endpoint:
 
 As a response, let's first send back the provided values in order to make sure that everything is connected correctly:
 
-For example, when called with the following parameters: http://127.0.0.1:8000/predict_fare/2013-07-06 17:18:00 UTC/-73.950655/40.783282/-73.984365/40.769802/1
+For example, when called with the following parameters: `http://127.0.0.1:8000/predict_fare?pickup_datetime=2013-07-06 17:18:00 UTC&pickup_longitude=-73.950655&pickup_latitude=40.783282&dropoff_longitude=-73.984365&dropoff_latitude=40.769802&passenger_count=1`
 
-... The API would respond:
+...the API will respond:
 
 ``` json
 {
@@ -149,21 +165,23 @@ For example, when called with the following parameters: http://127.0.0.1:8000/pr
 }
 ```
 
+If you don't remember how to retrieve parameters from an API call go back to the lecture slides.
+
 ### Predicting the fare amount
 
 Now that the piping is done, let's make an actual prediction.
 
 But first, we need to store the API parameters as an observation in an `X_pred` dataframe.
 
-The columns should match the format of the `X_train` having served to train the pipeline of our model. Otherwise the pipeline will output a python error...
+The columns should match the format of the `X_train` used in order to train the pipeline of our model. Otherwise the pipeline will output a python error...
 
-*Hint*: the code provided for the TaxiFare model uses an additional **key** column. Its value (for example `key="2013-07-06 17:18:00.000000119"`) will not affect the model, but, if the column is missing, the pipeline will not accept the dataframe as an input...
+*Hint*: the code provided for the TaxiFare model uses an additional **key** column. Its value (for example `key="2013-07-06 17:18:00.000000119"`) will not affect the model however if the column is missing the pipeline will not accept the dataframe as an input...
 
-⚠️ Also, beware to the order of the columns when you create the dataframe! ⚠️ **Pandas** does not care about the order of the columns, but **Numpy** does, and you might end up surprised by the results if you build a dataframe with an incorrect order of columns...
+⚠️ Also, be careful with the order of the columns when you create the dataframe! ⚠️ **Pandas** does not care about the order of the columns but **Numpy** does and you might end up surprised by the results if you build a dataframe with an incorrect order of columns.
 
 Now that we have created a `X_pred` dataframe, let's make a prediction.
 
-Let's load our model, either from **Google Cloud Storage** or from our local hard drive.
+Let's load our model either from **Google Cloud Storage** or from our local hard drive.
 
 We just need to store the resulting prediction in our **json** response:
 

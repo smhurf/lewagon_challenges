@@ -3,19 +3,19 @@ We now have a working **Prediction API**, but it is not much use if it can only 
 
 We want to make it available to the world. In order to do that, the first step is to create a **Docker image** that will contain both the environement required in order to allow our code to run + the code of our API. Of course, remember that we still need the code of our pipeline along with the code of the API in order to be able to load our `model.joblib` file.
 
-In the next exercise, we will see how to put the Docker image in production so that it can be accessed from any machine on the internet 🌍
+In the next exercise we will see how to put the Docker image in production so that it can be accessed from any machine on the Internet 🌍
 
-For now, let's focus on creating a **Docker image** allowing us to run the code of our Prediction API on our machine.
+For now let's focus on creating a **Docker image** allowing us to run the code of our Prediction API on our machine.
 
 You can see the Docker image as some sort of runnable virtual environment containing all the packages for the app + our code.
 
-## Build a docker image for our API
+## Build a Docker image for our API
 
 Let's create a Docker image for our prediction API and use it locally.
 
 Let's start by creating the `Dockerfile` that will contain the instructions telling Docker how to build the image.
 
-In order to do so, copy the provided `Dockerfile` in your project (or create an empty one).
+In order to do so copy the provided `Dockerfile` in your project (or create an empty one).
 
 Your project should look like this:
 
@@ -42,7 +42,7 @@ Your project should look like this:
 └── setup.py
 ```
 
-Now, let's fill the content of the `Dockerfile` in order to create a recipe that will allow us to **build** our **Docker image** 👌
+Now let's fill the content of the `Dockerfile` in order to create a recipe that will allow us to **build** our **Docker image** 👌
 
 The most common instructions that we will meet in a `Dockerfile` are the following:
 - `FROM`: select a base image for our image (the environment in which we will run our code), this is usually the first instruction
@@ -52,7 +52,7 @@ The most common instructions that we will meet in a `Dockerfile` are the followi
 
 ### FROM instruction
 
-First, let's select the first layer on top of which we will build our **Prediction API** image.
+First let's select the first layer on top of which we will build our **Prediction API** image.
 
 Search for a base image in [Docker Hub](https://hub.docker.com/) which would contain a suitable version of python.
 
@@ -64,31 +64,31 @@ We have built a `Dockerfile` able to create an image based on a Linux distributi
 
 ### COPY instructions
 
-Second, we want to add our code to the image, so that the image can run our package.
+Secondly, we want to add our code to the image so that the image can run our package.
 
-Let's add `COPY` instructions in order to tell docker to copy in the image:
+Let's add `COPY` instructions in order to tell Docker to copy into the image the following files / code:
 - the trained model
 - the code of the project which is required in order to load the model
 - the code of our API
 - the list of requirements
 
-We are now able to build an image able to run our code, but what about the dependencies of our code? 🤔
+We are now able to build an image able to run our code but what about the dependencies of our code? 🤔
 
 ### RUN instruction
 
-We need to tell docker to install the dependencies of our code when the image is built.
+We need to tell Docker to install the dependencies of our code when the image is built.
 
 Let's use a `RUN` instruction in order to ask Docker to install the python packages required by our package.
 
 Looks like we are almost finished. Our `Dockerfile` now enables us to build an image:
 - based on a linux distribution
 - running python code
-- where our code is copied
-- and the dependencies of our code are installed
+- with the copy of our code
+- and having the dependencies of our code installed
 
 ### CMD instruction
 
-We now need to tell Docker what the image should do when it is instantiated inside of a **Docker container** and started. Otherwise we will only have started a container with our code and its dependencies, and that actually does nothing.
+We now need to tell Docker what the image should do when it is instantiated inside of a **Docker container** and started. Otherwise we will only have started a container with our code and its dependencies which actually does nothing.
 
 Let's add a `CMD` instruction in order to tell Docker to run our **Prediction API** at the bottom of the `Dockerfile`. Our Prediction API will be served by **uvicorn**.
 
@@ -96,13 +96,13 @@ Let's add a `CMD` instruction in order to tell Docker to run our **Prediction AP
 - The **host** parameter will tell **uvicorn** to listen to all network connections
 - The **port** parameter will tell **uvicorn** to listen to HTTP requests on the `PORT` environment variable configured by the cloud service running our Docker container
 
-If we fail to provide any of these parameters, our container will run but the **uvicorn** server will be unable to receive incoming HTTP requests.
+If we fail to provide any of these parameters our container will run but the **uvicorn** server will be unable to receive incoming HTTP requests.
 
-⚠️  Since we will be running **uvicorn** inside of our container, do not forget to add it to the `requirements.txt`, as well as **fastapi**!
+⚠️  Since we will be running **uvicorn** inside of our container, do not forget to add it to the `requirements.txt` as well as **fastapi**!
 
-## Make sure the docker daemon is running on your machine
+## Make sure the Docker daemon is running on your machine
 
-Now that we have created a `Dockerfile`, we are going to use **Docker** in order to build an image.
+Now that we have created a `Dockerfile` we are going to use **Docker** in order to build an image.
 
 In order to run the Docker commands, you need to make sure that your **Docker daemon** is running on your machine. The Docker daemon is the program that will allow us to run the Docker commands in order to build a Docker image and instantiate it into a runnable Docker container on our machine.
 
@@ -124,17 +124,50 @@ sudo service docker start
 
 Make sure the Docker application is running (you should see a whale in your menu bar).
 
-## Make sure the docker image works on our machine
+## Make sure the Docker image works on our machine
 
-Now let's build the image with a docker **build** command! ⏰
+Now let's build the image with a Docker **build** command! ⏰
+
+`docker build --tag=image-name .`
 
 Once built, the image should be visible in the list of images:
 
 ``` bash
 docker images
 ```
+Your should see a `image-name` image in the **REPOSITORY** column.
 
-Let's run it with a docker **run** command 👌
+Let's run it with a Docker **run** command 👌
+
+Now we can run on our machine a **container** based on the image we created... 🔥
+
+First, we will run the container **interactively** in order to see what was created inside of it...
+
+``` bash
+docker run -it -e PORT=8000 -p 8000:8000 image-name sh
+```
+
+Let's have a look a the content of the container:
+
+``` bash
+ls -la
+ls -la TaxiFareModel
+```
+
+Note that the autocompletion in the command line does not work...
+
+Once we are done, let's exit the terminal and stop the container
+
+``` bash
+exit
+```
+
+Now we can run the container as we would in production, without interactivity:
+
+``` bash
+docker run -e PORT=8000 -p 8000:8000 image-name
+```
+
 
 💡 *Remember*, since we configured the image with a `$PORT` environment variable, we need to provide it now. We also need to specify the mapping between the port inside of the image and the port at which we will contact the image.
 
@@ -153,7 +186,7 @@ Let's play with the API an receive your first prediction!
 ``` python
 import requests
 
-taxifare_api_url = "http://127.0.0.1:8000/predict_fare/FILL/THE/PARAMS/HERE"
+taxifare_api_url = "http://127.0.0.1:8000/predict_fare?FILL&THE&PARAMS&HERE"
 
 response = requests.get(
     taxifare_api_url
