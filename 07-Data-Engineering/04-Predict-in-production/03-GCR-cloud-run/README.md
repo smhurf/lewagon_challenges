@@ -1,11 +1,11 @@
 
 In the previous exercise, we have built a **Prediction API** Docker image that we are able to run on our local machine.
 
-There are 2 remaining steps in order to enable worldwide developers to play with it:
+There are 2 remaining steps in order to enable the developers from anywhere around the world to play with it:
 - Push the **Docker image** to **Google Container Registry**
 - Deploy the image on **Google Cloud Run** so that it gets instantiated into a **Docker container**
 
-The role of **Container Registry** will be to act as storage for our Docker image.
+The role of **Container Registry** will be to act as a storage for our Docker image.
 The role of **Cloud Run** will be to run a Docker container instantiated from our image.
 
 ## Push our prediction API image to Google Container Registry
@@ -16,19 +16,19 @@ It is in a way similar to **GitHub** allowing you to store your git repositories
 
 First, let's make sure to enable [Google Container Registry API](https://console.cloud.google.com/flows/enableapi?apiid=containerregistry.googleapis.com&redirect=https://cloud.google.com/container-registry/docs/quickstart) for your project in GCP.
 
-Once this is done, let's ensure that your GCP credentials are correclty registered for the command line.
+Once this is done, let's ensure that your GCP credentials are correctly registered for the command line.
 
 ``` bash
 gcloud auth list
 ```
 
-If your account is not listed, then it is time to authenticate:
+If your account is not listed then you have to authenticate:
 
 ``` bash
 gcloud auth login
 ```
 
-Now let's configure the gcloud command for the usage of docker.
+Now let's configure the gcloud command for the usage of Docker.
 
 ``` bash
 gcloud auth configure-docker
@@ -64,7 +64,7 @@ This should be pretty fast since Docker is pretty smart and is going to reuse al
 docker build -t eu.gcr.io/$PROJECT_ID/$DOCKER_IMAGE_NAME .
 ```
 
-Again, let's make sure that our image runs correctly, so that we avoid spending the time of pushing to the cloud an image that is not working.
+Again, let's make sure that our image runs correctly, so that we avoid spending the time on pushing an image that is not working to the cloud.
 
 ``` bash
 docker run -e PORT=8000 -p 8000:8000 eu.gcr.io/$PROJECT_ID/$DOCKER_IMAGE_NAME
@@ -82,7 +82,7 @@ The image should be visible in the GCP console [here](https://console.cloud.goog
 
 We have pushed the Docker image for our Prediction API to **Google Container Registry**. The image is now available for deployment by Google services such as **Cloud Run** and **Kubernetes Engine** (for massive scaling).
 
-We are going to deploy our image to production using **Google Cloud Run**. Cloud Run will be more than enough for our first hundreds of users. Cloud Run will instantiate the image into a container and run the `CMD` instruction inside of the `Dockerfile` of the image. This last step will start the `uvicorn` server serving our **Prediction API** to the world 🌍
+We are going to deploy our image to production using **Google Cloud Run**. Cloud Run will be more than enough for our first few hundreds of users. Cloud Run will instantiate the image into a container and run the `CMD` instruction inside of the `Dockerfile` of the image. This last step will start the `uvicorn` server serving our **Prediction API** to the world 🌍
 
 Let's run one last command 🤞
 
