@@ -50,9 +50,9 @@ cd ~/code/<user.github_nickname>/data-challenges/07-Data-Engineering/02-ML-Itera
 jupyter notebook
 ```
 
-- **boilerplate.ipynb** is a model training notebook that contains the code that we want to refactor into a package.
+👉 `boilerplate.ipynb` is a model training notebook that contains the code that we want to refactor into a package.
 
-- **usage.ipynb** is the notebook that will be using our package once the code of `boilerplate.ipynb` has been refactored in our package.
+👉 `usage.ipynb` is the notebook that will be using our package once the code of `boilerplate.ipynb` has been refactored in our package.
 
 The goal of this recap is to progressively migrate and refactor the model training code, from the `boilerplate.ipynb` notebook to our package, while ensuring that our package works using the `usage.ipynb` notebook.
 
@@ -93,7 +93,7 @@ The package should be able to:
 - Train a `RandomForestRegressor`
 - Evaluate the performance
 - Save the trained model to disk
-- Save the parameters and metrics of the run to https://mlflow.lewagon.co
+- Save the parameters and metrics of the run to the [Le Wagon MLFlow server](https://mlflow.lewagon.co)
 
 ## Second step: ParamTrainer class
 
