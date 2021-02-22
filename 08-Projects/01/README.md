@@ -77,7 +77,7 @@ pyenv local project_name
 
 This command creates a `.python-version` file in the directory of the project containing the name of the virtual env (`cat .python-version`). This is what allows pyenv to know which virtual env to use
 
-👉 From now on, all the commands that you run in the directory of your project will using the virtual env of your project
+👉 From now on, all the commands that you run in the directory (or in any sub directory) of your project will be using the virtual env of your project
 
 👉 All the commands that you run outside of the directory of your project will continue to use the lewagon virtual env that you used during the bootcamp
 
