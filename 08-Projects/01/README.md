@@ -87,7 +87,7 @@ This command creates a `.python-version` file in the directory of the project co
 
 Another way to toggle the virtual env between your new virtual env and the lewagon virtual env is to force the usage of a specific virtual env in a terminal window, independently of the directory in which the commands are executed.
 
-In order to go that, you can use either switch to the virtual env of your project for a terminal window:
+In order to go that, you can either switch to the virtual env of your project for a terminal window:
 
 ```bash
 pyenv activate project_name
