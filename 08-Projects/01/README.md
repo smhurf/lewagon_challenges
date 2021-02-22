@@ -99,7 +99,7 @@ Or revert back to the lewagon virtual env that you used during the bootcamp:
 pyenv activate lewagon
 ```
 
-👉 If you want to revert back to the previous behavior where the virtual env depends on the directory in which you are, just open a new window
+👉 If you want to revert back to the previous behavior where the virtual env depends on the directory in which you are, just open a new terminal window
 
 ### Install minimal packages
 
