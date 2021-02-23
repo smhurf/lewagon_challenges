@@ -77,29 +77,15 @@ pyenv local project_name
 
 This command creates a `.python-version` file in the directory of the project containing the name of the virtual env (`cat .python-version`). This is what allows pyenv to know which virtual env to use
 
+👉 You may store this file in `git`. If you do so, **make sure** that your teammates use the same name as you do for the virtual env of the project
+
 👉 From now on, all the commands that you run in the directory (or in any sub directory) of your project will be using the virtual env of your project
 
-👉 All the commands that you run outside of the directory of your project will continue to use the lewagon virtual env that you used during the bootcamp
+👉 All the commands that you run outside of the directory of your project will continue to use the *lewagon* virtual env that you used during the bootcamp
 
-🚨 This applies in particular to jupyter notebooks: make sure that your are located inside of the directory of your project when running `jupyter notebook` if you want to run in the virtual env of your project
+🚨 This applies in particular to jupyter notebooks: make sure that your are located inside of the directory of your project when running `jupyter notebook` if you want your code to run in the virtual env of your project
 
-## Usage of your virtual env
-
-Another way to toggle the virtual env between your new virtual env and the lewagon virtual env is to force the usage of a specific virtual env in a terminal window, independently of the directory in which the commands are executed.
-
-In order to do that, you can either switch to the virtual env of your project for a terminal window:
-
-```bash
-pyenv activate project_name
-```
-
-Or revert back to the lewagon virtual env that you used during the bootcamp:
-
-```bash
-pyenv activate lewagon
-```
-
-👉 If you want to revert back to the previous behavior where the virtual env depends on the directory in which you are, just open a new terminal window
+Using this setup, you can easily switch from the virtual env of a project to the one of another project... All you need to do in order to do so is to go in the directory of the project... Pretty handy 👌
 
 ### Install minimal packages
 
