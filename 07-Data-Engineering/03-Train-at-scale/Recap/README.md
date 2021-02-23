@@ -1,5 +1,5 @@
 
-** The goal of today's recap is to train a package in Google AI Platform**
+**The goal of today's recap is to train a package in Google AI Platform**
 
 ## Prerequisites
 
@@ -15,7 +15,7 @@ You also need to retrieve the name of your bucket from [Cloud Storage](https://c
 
 The bucket must contain a `data` directory containing a [train_1k.csv](https://wagon-public-datasets.s3.amazonaws.com/taxi-fare-ny/train_1k.csv) data file containing 1_000 rows.
 
-👉 You may use any other structure and update the code of the solution accordingly
+👉 You may use any other structure and update the code of the solution `data/train_1k.csv` accordingly
 
 ## Setup
 
@@ -53,7 +53,7 @@ cd ~/code/<user.github_nickname>/data-challenges/07-Data-Engineering/03-Train-at
 jupyter notebook
 ```
 
-👉 `gcp boilerplate.ipynb` contains the code that allows to download data from and upload data to Cloud Storage as well as train our model on the AI Platform.
+👉 `gcp boilerplate.ipynb` contains the code that allows to download data from and upload data to Cloud Storage as well as train our model in the AI Platform.
 
 You are now ready to 🎉
 
@@ -72,7 +72,7 @@ python -m taxifare.trainer
 
 Nothing seems to be happening 🤔
 
-That is because in the previous recap we were importing our package in a usage notebook, in which we were instanciating our `Trainer` class.
+That is because in the previous recap we were importing our package in a usage notebook, in which we were instantiating our `Trainer` class.
 
 Now, we want to be able to use our package out of the box.
 
@@ -110,16 +110,16 @@ Lets update the `get_data` function in `data.py` so that it downloads the data f
 The code is available in the **gcp boilerplate.ipynb** notebook.
 
 You have 2 options here:
-- Either use the `get_data_using_blob` function, which downloads the file locally in `train_1k.csv` before loading the DataFrame
-- Or use `get_data_using_pandas` function, which only downloads the requested number of rows from the CSV in order to create a DataFrame
+- Either use the `get_data_using_blob` function, which downloads the file locally as `train_1k.csv` before loading the DataFrame
+- Or use `get_data_using_pandas` function, which only downloads the requested number of rows from the CSV in Cloud Storage in order to create a DataFrame
 
 `get_data_using_blob`:
-- Pros: just to have a look at the code allowing to download any file from Cloud Storage
-- Cons: not very efficient to download the full CSV file if you only want to train on a small number of rows
+- *Pros*: just to have a look at the code allowing to download any file from Cloud Storage
+- *Cons*: not very efficient to download the full CSV file (especially if it is huge) if you only want to train on a small number of rows
 
 `get_data_using_pandas`:
-- Pros: allows to read a given number of lines from a CSV file
-- Cons: does not download the file locally
+- *Pros*: allows to read a given number of lines from a CSV file
+- *Cons*: does not download the file locally
 
 If you use `get_data_using_blob`, **remember** to update the name of the bucket and the path to the `train_1k.csv` file. You should see the file downloaded locally when running `ls -la`.
 
@@ -133,13 +133,13 @@ python -m taxifare.trainer
 
 👉 Whatever method you choose, you should still be able to train your model and see an updated `model.joblib` file with an update timestamp visible when running `ls -la`
 
-## Save trained model to Cloud Storage
+## Save the trained model to Cloud Storage
 
 Now that we are able to train from data in Cloud Storage, either by downloading it using a blob, or through retrieving only a given number of lines, the next step is to push our model to Cloud Storage once it is trained.
 
 Let's add some code in `data.py` allowing us to push our model to Cloud Storage.
 
-The code `save_model_to_gcp` function is available in the **gcp boilerplate.ipynb** notebook.
+The `save_model_to_gcp` function is available in the **gcp boilerplate.ipynb** notebook.
 
 **Remember** to update the name of your bucket in the code as well as the path in the bucket in which the model will be stored.
 
@@ -151,15 +151,15 @@ Let's train our model:
 python -m taxifare.trainer
 ```
 
-Once your model is trained, you should be able to see your model in Cloud Storage...
+Once your model is trained, you should be able to see it in Cloud Storage...
 
 👉 Either through the `gsutil` command:
 
 ``` bash
-gsutil ls -la gs://le-wagon-data/models/  # update according to your bucket name and model storage path
+gsutil ls -la gs://le-wagon-data/models/  # update the command according to your bucket name and model storage path
 ```
 
-👉 Or by browsing your bucket in the [Cloud Storage console](https://console.cloud.google.com/storage/) and going inside of your bucket and following the model storage path defined in your code
+👉 Or by browsing your bucket in the [Cloud Storage console](https://console.cloud.google.com/storage/) and going inside of your bucket and following the storage path for your model defined in your code
 
 ## Train in the AI Platform
 
@@ -171,17 +171,17 @@ The code for the `Makefile` is available in the **gcp boilerplate.ipynb** notebo
 
 **Remember** to update in the `Makefile` the environment variables for:
 - The name of your bucket
-- The name of the training directory (used by the AI Platform in order to storage your trained code)
-- Optionally change the region, the version of python and of the runtime
-- Adapt the name of the package and module if you changed them
+- The name of the training directory (used by the AI Platform in order to store the package that will be trained)
+- Optionally change the region, the version of python, and the version of the runtime
+- Adapt the name of the package and of the module if you changed them
 
-If you wish to show the students the code of the package stored in the bucket by the AI Platform, you should clear the content of the training directory in the bucket before submitting a training.
+If you wish to see where the code of the package is stored in the bucket by the AI Platform, you should clear the content of the training directory in the bucket before submitting a training. This way it will be easier to identify the storage location of the package.
 
 Also, we need to update our `MANIFEST.in` so that the subpackages in our package are correctly uploaded to the AI Platform (code available in the notebook):
-- The `graft` instructions allows to upload everything inside of the package to the AI Platform (in particular, we want our `taxifare/transformers` module to be correctly uploaded)
+- The `graft` instructions allows to upload everything inside of the package to the AI Platform (in particular, we want our `taxifare/transformers` package to be correctly uploaded)
 - The `global-exclude` instruction prevents us from uploading `__pycache__` files that are not required to the AI Platform
 
-Optionally, you may add a few `print()` statements in your code when your model is train. These will end up in the logs and the AI Platform and will allow you to see whether you model trained correctly.
+Optionally, you may add a few `print()` statements in your code in order to see how the model training unfolds. These will end up in the logs of the AI Platform and will allow you to see whether you model trained correctly.
 
 Your can now submit a training to the AI Platform:
 
@@ -189,9 +189,9 @@ Your can now submit a training to the AI Platform:
 make gcp_submit_training
 ```
 
-You may have a look at the command that is generated by the `Makefile` in order to verify that all the environment variables were correctly filled:
+You may have a look at the command that is generated by the `Makefile` in order to verify that all the environment variables are correctly filled:
 
-👉 It should look something like this:
+👉 The directive of the `Makefile` should output something similar to this:
 
 ``` bash
 gcloud ai-platform jobs submit training taxi_fare_training_20210223_175010 \
@@ -204,22 +204,28 @@ gcloud ai-platform jobs submit training taxi_fare_training_20210223_175010 \
     --stream-logs
 ```
 
-You may cancel the log streaming in the console anytime by pressing `Ctrl + C`.
+You may cancel the streaming of the logs in the console at anytime by pressing `Ctrl + C`.
 
 You should now be able to connect to the [AI Platform console](https://console.cloud.google.com/ai-platform/) in order to see your job running.
 
-Subjects of interest in the console:
+In the console, you may want to have a look at:
 
 👉 In **Jobs**, you should see your job being prepared and eventually training (this can be pretty long)
 
 Click on it, then **View Logs** in order to assess what is currenty happening.
 
-👉 You will find in the logs any python error that occurs when training your code, such as a missing packaged not being able to be imported, or any other code error
+👉 You will find in the logs any python error that occurs when training your code, such as a missing packages not being able to be imported, or any other code error
 
-The training is pretty long, you move on with the next part of this recap before coming back in order to have a look at the trained model.
+The training is pretty long... Before coming back here in order to have a look at the trained model, you may move on with the next part of this recap.
 
-Once the job is complete, you should find a trained model saved in your bucket. See is either using `gsutil` or through the console...
+Once the job is complete, you should find a trained model saved in your bucket. Have a look at it either using `gsutil` or through the console...
 
 👉 You may want to have a look at the content of the package stored in your bucket in the training directory once a job has been submitted (download it and extract it) in order to see how it differs from your local package, which files are uploaded and which are not
 
 ## Optional: go through the TaxiFare Deep Learning notebook in Colab
+
+Go to the challenge and follow the instructions in order to open in Google Colab a notebook containing a **Deep Learning** model training for the TaxiFare challenge.
+
+``` bash
+cd ~/code/<user.github_nickname>/data-challenges/07-Data-Engineering/03-Train-at-scale/06-Google-Colab
+```
