@@ -81,7 +81,7 @@ This command creates a `.python-version` file in the directory of the project co
 
 👉 From now on, all the commands that you run in the directory (or in any sub directory) of your project will be using the virtual env of your project
 
-👉 All the commands that you run outside of the directory of your project will continue to use the *lewagon* virtual env that you used during the bootcamp
+👉 All the commands that you run outside of the directory of your project will continue to use your *global* virtual env (set as *lewagon* on setup day by the command `pyenv global lewagon`)
 
 🚨 This applies in particular to jupyter notebooks: make sure that your are located inside of the directory of your project when running `jupyter notebook` if you want your code to run in the virtual env of your project
 
