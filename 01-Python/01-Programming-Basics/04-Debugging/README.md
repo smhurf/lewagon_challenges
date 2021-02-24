@@ -135,4 +135,4 @@ make
 
 You can see that the implementation we ask for is a little more complicated. We want the `full_name` method to behave correctly, in relation to whitespaces, when given a missing first name _or_ a missing last name.
 
- 💡 **Tip**: have a look at the [`str.join(iterable)`](https://docs.python.org/3.7/library/stdtypes.html?highlight=join#str.join) method.
+ 💡 **Tip**: have a look at the [`str.strip([chars])`](https://docs.python.org/3.7/library/stdtypes.html?highlight=strip#str.strip) method.
