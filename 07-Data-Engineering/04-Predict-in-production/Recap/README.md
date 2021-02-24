@@ -51,6 +51,8 @@ jupyter notebook
 
 You are now ready to 🎉
 
+Now that the jupyter server containing the notebooks with the code boilerplate is started, we will only use the first terminal window for our commands.
+
 ## Configuration
 
 Let's go inside of the project (you should be located in the same directory as the `Makefile`).

@@ -54,6 +54,8 @@ jupyter notebook
 
 👉 `usage.ipynb` is the notebook that will be using our package once the code of `boilerplate.ipynb` has been refactored in our package.
 
+Now that the jupyter server containing the notebooks with the code boilerplate is started, we will only use the first terminal window for our commands.
+
 The goal of this recap is to progressively migrate and refactor the model training code, from the `boilerplate.ipynb` notebook to our package, while ensuring that our package works using the `usage.ipynb` notebook.
 
 ## Decompose the code into elements for our package
