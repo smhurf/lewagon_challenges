@@ -26,7 +26,7 @@ class TestLateReleasedMovies(unittest.TestCase):
             "The Rescuers",
             "Waitress"
         ]
-        self.assertEqual(results, expected)
+        self.assertEqual(set(results), set(expected))
 
 
 
