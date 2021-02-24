@@ -55,6 +55,8 @@ jupyter notebook
 
 👉 `gcp boilerplate.ipynb` contains the code that allows to download data from and upload data to Cloud Storage as well as train our model in the AI Platform.
 
+Now that the jupyter server containing the notebooks with the code boilerplate is started, we will only use the first terminal window for our commands.
+
 You are now ready to 🎉
 
 ## Configuration
