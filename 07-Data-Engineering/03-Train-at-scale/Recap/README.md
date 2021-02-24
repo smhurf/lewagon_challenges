@@ -15,7 +15,7 @@ You also need to retrieve the name of your bucket from [Cloud Storage](https://c
 
 The bucket must contain a `data` directory containing a [train_1k.csv](https://wagon-public-datasets.s3.amazonaws.com/taxi-fare-ny/train_1k.csv) data file containing 1_000 rows.
 
-👉 You may use any other structure and update the code of the solution `data/train_1k.csv` accordingly
+👉 You may use any other path in the bucket (`data/train_1k.csv`) and update the code of the solution accordingly
 
 ## Setup
 
@@ -46,7 +46,7 @@ code .
 ```
 </details>
 
-👉 Open **another terminal window** for the notebooks. This way we will be able to add and commit the code of our package as it evolves using `git` commands
+👉 Open **another terminal window** for the notebooks. We will use the first terminal window in order to add and commit the code of our package as it evolves using `git` commands
 
 ``` bash
 cd ~/code/<user.github_nickname>/data-challenges/07-Data-Engineering/03-Train-at-scale/Recap
@@ -63,6 +63,12 @@ Make sure that your replace in the code that you copy from the notebook:
 - The name of the project
 - The name of the bucket
 - The path to the `train_1k.csv` file inside of the bucket
+
+Let's go inside of the project (you should be located in the same directory as the `Makefile`).
+
+``` bash
+cd taxifare
+```
 
 Let's run the solution locally:
 
@@ -181,7 +187,7 @@ Also, we need to update our `MANIFEST.in` so that the subpackages in our package
 - The `graft` instructions allows to upload everything inside of the package to the AI Platform (in particular, we want our `taxifare/transformers` package to be correctly uploaded)
 - The `global-exclude` instruction prevents us from uploading `__pycache__` files that are not required to the AI Platform
 
-Optionally, you may add a few `print()` statements in your code in order to see how the model training unfolds. These will end up in the logs of the AI Platform and will allow you to see whether you model trained correctly.
+Optionally, you may add a few `print()` statements in your code in order to see how the model training unfolds. These will end up in the logs of the AI Platform and will allow you to see whether your model trained correctly.
 
 Your can now submit a training to the AI Platform:
 
@@ -212,15 +218,15 @@ In the console, you may want to have a look at:
 
 👉 In **Jobs**, you should see your job being prepared and eventually training (this can be pretty long)
 
-Click on it, then **View Logs** in order to assess what is currenty happening.
+Click on it, then **View Logs** in order to assess what is currently happening.
 
-👉 You will find in the logs any python error that occurs when training your code, such as a missing packages not being able to be imported, or any other code error
+👉 You will find in the logs any python error that occurs when training your code, such as missing packages not being able to be imported, or any other code error
 
 The training is pretty long... Before coming back here in order to have a look at the trained model, you may move on with the next part of this recap.
 
 Once the job is complete, you should find a trained model saved in your bucket. Have a look at it either using `gsutil` or through the console...
 
-👉 You may want to have a look at the content of the package stored in your bucket in the training directory once a job has been submitted (download it and extract it) in order to see how it differs from your local package, which files are uploaded and which are not
+👉 Optionally, you may want to have a look at the content of the package stored in your bucket in the trainings directory once a job has been submitted (download it and extract it) in order to see how it differs from your local package, which files are uploaded and which are not
 
 ## Optional: go through the TaxiFare Deep Learning notebook in Colab
 
