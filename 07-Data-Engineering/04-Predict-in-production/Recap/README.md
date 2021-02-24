@@ -126,7 +126,7 @@ In the code of the endpoint, you should be able to `print()` the DataFrame built
 
 📐 Let's build a DataFrame from the API parameters and print it
 
-Once the code is done, call the endpoint using the **api usage.ipynb** notebook, and see how the DataFrame get printed in the console. The output should be similar to this:
+Once the code is done, call the endpoint using the **api usage.ipynb** notebook, and see how the DataFrame gets printed in the console. The output should be similar to this:
 
 Here is the print of our DataFrame:
 
