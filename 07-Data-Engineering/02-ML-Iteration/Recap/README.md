@@ -43,7 +43,7 @@ code .
 
 Let's open the **boilerplate.ipynb** and **usage.ipynb** notebooks and see how it works.
 
-👉 Open **another terminal window** for the notebooks. This way we will be able to add and commit the code of our package as it evolves using `git` commands
+👉 Open **another terminal window** for the notebooks. We will use the first terminal window in order to add and commit the code of our package as it evolves using `git` commands
 
 ``` bash
 cd ~/code/<user.github_nickname>/data-challenges/07-Data-Engineering/02-ML-Iteration/Recap
