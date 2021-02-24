@@ -44,7 +44,7 @@ How many directors are in this database?
 
 ### List of directors
 
-What is the list of all the directors sorted in alphabetical order?
+What is the list of all the names of all the directors sorted in alphabetical order?
 
 ### List of movies about "love"
 
