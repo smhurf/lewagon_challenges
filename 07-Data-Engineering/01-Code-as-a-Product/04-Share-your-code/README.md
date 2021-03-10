@@ -5,13 +5,6 @@ You have learned how to create a package, now we will see one of the benefits of
 
 ## How do I share my code ?
 
-Simply create a GitHub repository for your package, and then everyone will be able to install your package using:
-
-```bash
-pip install git+https://github.com/<user.github_nickname>/mlproject
-```
-
-🤔 Still not clear ?
 Remember the `packgenlite` package right ?
 You were able to install it in your virtual environment by running:
 
@@ -30,6 +23,15 @@ get_data()
 ```
 
 You are also able to play with its scripts... We will do the same thing with our package so that it allows you to share your code with other developers.
+
+
+🤔 So why can't your classmates install your package by using:
+
+```bash
+pip install git+https://github.com/<user.github_nickname>/mlproject
+```
+
+👉 You haven't created a public GitHub repository for your package yet!
 
 ## Share your own library
 
