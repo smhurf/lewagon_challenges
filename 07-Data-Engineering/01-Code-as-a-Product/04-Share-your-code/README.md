@@ -5,13 +5,6 @@ You have learned how to create a package, now we will see one of the benefits of
 
 ## How do I share my code ?
 
-Simply create a GitHub repository for your package, and then everyone will be able to install your package using:
-
-```bash
-pip install git+https://github.com/<user.github_nickname>/mlproject
-```
-
-🤔 Still not clear ?
 Remember the `packgenlite` package right ?
 You were able to install it in your virtual environment by running:
 
@@ -30,6 +23,15 @@ get_data()
 ```
 
 You are also able to play with its scripts... We will do the same thing with our package so that it allows you to share your code with other developers.
+
+
+🤔 So why can't your classmates install your package by using:
+
+```bash
+pip install git+https://github.com/<user.github_nickname>/mlproject
+```
+
+👉 You haven't created a public GitHub repository for your package yet!
 
 ## Share your own library
 
@@ -74,7 +76,44 @@ Then add some content:
 - Insert some code in that function, try to be creative 🎉
 👉 Make sure that everything works correcly on your machine before sharing your code... You do not want other developers to discover your bugs before you 😉
 
-Now lets publish your code:
+## Now lets publish your code:
+
+### Option 1 - using GH CLI (the hacker way)
+Let's make sure our new package doesn't have any remote connections already:
+```bash
+git remote -v
+```
+nothing should return in the terminal.  If it does you may have created your new package inside an existing git hub repository!
+
+Now it's time to use some terminal magic to create a new **public** repository on github linked to our local repository, run:
+```bash
+gh repo create
+```
+- enter a repository name (this should mirror your package name)
+- enter a brief description of your package
+- select public as the type
+- enter Y to confirm
+
+
+Let's check our remote connections again, this time we should see an _origin_ connection:
+```bash
+git remote -v
+```
+
+You can also view the repository directly on github with:
+```bash
+gh repo view --web
+```
+
+🤔 Doesn't look like any of our code is there yet?  We still need to push our work from the local repository on our machine up to github!
+```bash
+git add .
+git commit -m "Initial Push"
+git push -u origin master
+```
+
+
+### Option 2 - manually create and link
 - Create a [new public repository](https://github.com/new) on GitHub named after the name of your package
 👉 The repository needs to be public, otherwise you will not be able to share your package easily with anyone...
 - Follow the instructions in the `... or push an existing repository from the command line` section:
