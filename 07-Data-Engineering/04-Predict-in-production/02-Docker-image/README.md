@@ -110,7 +110,7 @@ In order to run the Docker commands, you need to make sure that your **Docker da
 
 Make sure that the `Docker.app` is running (you should see a whale in your menu bar).
 
-<img src="https://raw.githubusercontent.com/lewagon/data-challenges/data-engv2/07-Data-Engineering/04-Predict-in-production/02-Docker-image/docker_daemon.png?token=ACMEB76B3JR6QR5JLY37XL27Z5TTC" width="150" alt="finding your PROJECT_ID in GCP">
+<img src="https://raw.githubusercontent.com/lewagon/data-challenges/master/07-Data-Engineering/04-Predict-in-production/02-Docker-image/docker_daemon.png?token=ACMEB73MAOA6APS2SDPVOXTAJIZXQ" width="150" alt="finding your PROJECT_ID in GCP">
 
 ### Linux/WSL2
 
