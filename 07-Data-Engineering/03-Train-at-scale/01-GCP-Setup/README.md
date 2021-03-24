@@ -27,11 +27,10 @@ We need to install a new cli called gcloud. Once you are authenticated, this too
 brew install --cask google-cloud-sdk
 ```
 
-Then copy these lines in your `~/.aliases`:
+Then run this command:
+
 ```bash
-export CLOUDSDK_PYTHON="/usr/local/opt/python@3.8/libexec/bin/python"
-source "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc"
-source "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc"
+/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/install.sh
 ```
 **Restart** your terminal.
 
