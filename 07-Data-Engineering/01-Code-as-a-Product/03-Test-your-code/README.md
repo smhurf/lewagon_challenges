@@ -17,7 +17,7 @@ Create two new files:
 
 ```bash
 touch mlproject/lib.py
-touch tests/lib_test.py
+touch tests/test_lib.py
 ```
 
 and copy paste the below code into them:
@@ -30,7 +30,7 @@ def hello_world():
 ```
 
 ```python
-# tests/lib_test.py
+# tests/test_lib.py
 from mlproject.lib import hello_world
 
 def test_length_of_hello_world():
@@ -45,7 +45,7 @@ make test
 
 You just ran all the tests under `test/`.
 
-👉 You might notice that `pytest` indicates that 2 tests ran successfully, while `lib_test.py` only contains one... If you want to avoid that, you need to update the `Makefile` so that `__init__.py` is not called by `pytest`. For example, you could prefix all of your test files with `test_`, then modify the call to `pytest` in the `Makefile` using `tests/test_*.py`. Or you could run `python -m pytest` instead.
+👉 You might notice that `pytest` indicates that 2 tests ran successfully, while `lib_test.py` only contains one... If you want to avoid that, you need to update the `Makefile` so that `__init__.py` is not called by `pytest`. For example, you could continue to prefix all of your test files with `test_`, then modify the call to `pytest` in the `Makefile` using `tests/test_*.py`. Or you could run `python -m pytest` instead.
 
 ## Create your own test
 
