@@ -17,8 +17,11 @@ You have 5 minutes per person (Q&A included) to convince the Olist CEO of your r
 
 👉 You will have to make a slide-based presentation using Jupyter Notebook **nbconvert**
 
+- Remember to enable slideshow view in your notebook and mark each cell appropriately
+- Then run the below, replacing `your_notebook.ipynb` with the name of your file
+
 ```bash
-jupyter nbconvert --to slides --post serve <your_notebook.ipynb>
+jupyter nbconvert --to slides --post serve your_notebook.ipynb
 ```
 
 💫 Stop analysis by 2pm to have time to polish your presentation and speech
