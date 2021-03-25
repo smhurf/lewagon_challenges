@@ -6,7 +6,7 @@ class TestReality(unittest.TestCase):
     random.seed(1)
     # Test for play_one_game
     def test_play_one_game_1(self):
-        expected = 1
+        expected = 0
         random.seed(1)
         self.assertEqual(play_one_game(1), expected)
 
@@ -16,18 +16,18 @@ class TestReality(unittest.TestCase):
         self.assertEqual(play_one_game(10), expected)
 
     def test_play_one_game_100(self):
-        expected = 46
+        expected = 54
         random.seed(1)
         self.assertEqual(play_one_game(100), expected)
 
     def test_play_one_game_1000(self):
-        expected = 485
+        expected = 515
         random.seed(1)
         self.assertEqual(play_one_game(1000), expected)
 
     # Test for play_n_game
     def test_play_n_game_1(self):
-        expected = 1
+        expected = 0
         random.seed(1)
         self.assertEqual(play_n_game(1,1)[1], expected)
 
