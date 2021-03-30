@@ -12,8 +12,8 @@ Beyond training models, you will see how you can make your models available to t
 - In the Cloud Console, on the project list, select or create a Cloud project. You can name it `Wagon Bootcamp` for example
 - Notice the `ID` automatically created for the project. If you used the suggestion for the project name, it should look like `wagon-bootcamp-123456`. This `PROJECT_ID` will be refered to later and used all over the code in order to identify the GCP project your code will be interacting with. You will be able to access it anytime in the project list (click to zoom):
 
-<a href="https://raw.githubusercontent.com/lewagon/data-images/master/DE/gcp-show-project-id.png">
-  <img src="https://raw.githubusercontent.com/lewagon/data-images/master/DE/gcp-show-project-id.png" width="150" alt="finding your PROJECT_ID in GCP">
+<a href="https://raw.githubusercontent.com/lewagon/data-images/master/DE/gcp-show-project-id.png" target="_blank">
+  <img src="https://raw.githubusercontent.com/lewagon/data-images/master/DE/gcp-show-project-id.png" width="450" alt="finding your PROJECT_ID in GCP">
 </a>
 
 - Make sure that billing is enabled for your Google Cloud project. Don't worry, as a first time user, you have a **$300 credit** to use for Google Cloud resources, which will be more than enough for this project.
