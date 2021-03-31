@@ -62,7 +62,7 @@ play_data   = ['No','Yes','Yes','Yes','Yes','Yes','No','No','Yes','Yes','No','Ye
 likelihood("Sunny", "Yes", weather_data, play_data) = 3/9 = 0.33333
 ```
 
-### 3. Posterior Probability P(play\|weather)
+### 3. Posterior Probability $P(play|weather)$
 
 Congratulations, it's almost finished.
 
