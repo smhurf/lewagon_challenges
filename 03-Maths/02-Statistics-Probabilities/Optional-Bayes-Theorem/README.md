@@ -20,8 +20,8 @@ By doing so, we will also demonstrate the **Bayes Theorem** by calculating each 
 
 Where :
 - P(play) is our **prior** belief on the probability of the class (Play = Yes or No) given all data we have seen so far
-- P(weather\|play) is the **likelihood** of observing this type of weather, given whether or not the match was played
-- P(play\|weather) is the **posterior** probability of actually playing or not, given the weather condition
+- $P(weather|play)$ is the **likelihood** of observing this type of weather, given whether or not the match was played
+- $P(play|weather)$ is the **posterior** probability of actually playing or not, given the weather condition
 - P(weather) is a constant, from the point of view of our problem: it does not depends on the choice of playing or not
 
 Let's start!
@@ -76,4 +76,3 @@ Congratulations, it's almost finished.
 Thanks to what you've learned in this challenge, could you answer these questions :
 - Matches will always be played if the weather is sunny. Is this statement correct?
 - If you know for sure that it will be raining during the next game, Do you think the game will be cancelled?
-
