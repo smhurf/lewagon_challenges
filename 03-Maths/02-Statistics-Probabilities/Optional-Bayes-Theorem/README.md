@@ -68,7 +68,7 @@ Congratulations, it's almost finished.
 
 ❓ Using Bayes Theorem and the two function coded before, implement the function `posterior_probability(play, weather, weather_data, play_data)` which gives you P(play|weather)
 
-❓ Compare the result you found with a direct counting of P(play\|weather) using the likelihood function with the arguments reversed:
+❓ Compare the result you found with a direct counting of $P(play|weather)$ using the likelihood function with the arguments reversed:
 `likelihood(play, weather, play_data, weather_data)`
 
 ### 4. Step back and understand
@@ -76,5 +76,4 @@ Congratulations, it's almost finished.
 Thanks to what you've learned in this challenge, could you answer these questions :
 - Matches will always be played if the weather is sunny. Is this statement correct?
 - If you know for sure that it will be raining during the next game, Do you think the game will be cancelled?
-
 
