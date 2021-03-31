@@ -48,7 +48,7 @@ prior_probability(event, list_events)
 ==> 0.66666
 ```
 
-### 2. Likelihood P(weather\|play)
+### 2. Likelihood $P(weather|play)$
 
 Well done, now we will implement a function to calculate the likelihood of observing a given weather, knowing whether or not the match was played. Basically, that means that we want to calculate the probability of an event (ex: weather = 'Sunny') being `True` given that the other event (ex: play=Yes) was `True`
 
@@ -76,6 +76,5 @@ Congratulations, it's almost finished.
 Thanks to what you've learned in this challenge, could you answer these questions :
 - Matches will always be played if the weather is sunny. Is this statement correct?
 - If you know for sure that it will be raining during the next game, Do you think the game will be cancelled?
-
 
 
