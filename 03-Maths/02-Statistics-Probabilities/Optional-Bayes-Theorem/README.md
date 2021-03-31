@@ -19,10 +19,10 @@ By doing so, we will also demonstrate the **Bayes Theorem** by calculating each 
 
 
 Where :
-- P(play) is our **prior** belief on the probability of the class (Play = Yes or No) given all data we have seen so far
-- P(weather|play) is the **likelihood** of observing this type of weather, given whether or not the match was played
-- P(play|weather) is the **posterior** probability of actually playing or not, given the weather condition
-- P(weather) is a constant, from the point of view of our problem: it does not depends on the choice of playing or not
+- $P(play)$ is our **prior** belief on the probability of the class (Play = Yes or No) given all data we have seen so far
+- $P(weather|play)$ is the **likelihood** of observing this type of weather, given whether or not the match was played
+- $P(play|weather)$ is the **posterior** probability of actually playing or not, given the weather condition
+- $P(weather)$ is a constant, from the point of view of our problem: it does not depends on the choice of playing or not
 
 Let's start!
 
@@ -48,7 +48,7 @@ prior_probability(event, list_events)
 ==> 0.66666
 ```
 
-### 2. Likelihood P(weather|play)
+### 2. Likelihood $P(weather|play)$
 
 Well done, now we will implement a function to calculate the likelihood of observing a given weather, knowing whether or not the match was played. Basically, that means that we want to calculate the probability of an event (ex: weather = 'Sunny') being `True` given that the other event (ex: play=Yes) was `True`
 
@@ -62,13 +62,13 @@ play_data   = ['No','Yes','Yes','Yes','Yes','Yes','No','No','Yes','Yes','No','Ye
 likelihood("Sunny", "Yes", weather_data, play_data) = 3/9 = 0.33333
 ```
 
-### 3. Posterior Probability P(play|weather)
+### 3. Posterior Probability $P(play|weather)$
 
 Congratulations, it's almost finished.
 
 ❓ Using Bayes Theorem and the two function coded before, implement the function `posterior_probability(play, weather, weather_data, play_data)` which gives you P(play|weather)
 
-❓ Compare the result you found with a direct counting of P(play|weather) using the likelihood function with the arguments reversed:
+❓ Compare the result you found with a direct counting of $P(play|weather)$ using the likelihood function with the arguments reversed:
 `likelihood(play, weather, play_data, weather_data)`
 
 ### 4. Step back and understand
@@ -76,6 +76,3 @@ Congratulations, it's almost finished.
 Thanks to what you've learned in this challenge, could you answer these questions :
 - Matches will always be played if the weather is sunny. Is this statement correct?
 - If you know for sure that it will be raining during the next game, Do you think the game will be cancelled?
-
-
-
