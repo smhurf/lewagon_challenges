@@ -72,6 +72,12 @@ Let's:
 
 👉 Run our Front-End locally.
 
+*Hint*: use python in order to server your website with the following command, then go to http://localhost:8000/
+
+``` bash
+python -m http.server
+```
+
 👉 Deploy our Front-End on **Github Pages**.
 
 *Hint*: alternatively, you may use this Le Wagon **Prediction API** if you you do not have one in production:
