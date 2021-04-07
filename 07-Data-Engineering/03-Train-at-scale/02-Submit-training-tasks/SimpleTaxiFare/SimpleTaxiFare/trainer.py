@@ -86,13 +86,16 @@ def train_model(X_train, y_train):
 def save_model(reg):
     """method that saves the model into a .joblib file and uploads it on Google Storage /models folder
     HINTS : use joblib library and google-cloud-storage"""
+    # saving the trained model to disk is mandatory to then be able to upload it to GCP storage
 
-    # saving the trained model to disk is mandatory to then beeing able to upload it to storage
-    # Implement here
+    # ***Implement a local save here***
+
     print("saved model.joblib locally")
 
-    # Implement here
-    print(f"uploaded model.joblib to gcp cloud storage under \n => {STORAGE_LOCATION}")
+    storage_location = f"models/{MODEL_NAME}/{MODEL_VERSION}/model.joblib"
+    # ***Implement a GCP upload to the storage_location here***
+
+    print(f"uploaded model.joblib to gcp cloud storage under \n => {storage_location}")
 
 
 if __name__ == '__main__':
