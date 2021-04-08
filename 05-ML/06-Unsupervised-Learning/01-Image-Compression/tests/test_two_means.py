@@ -7,6 +7,5 @@ class TestTwoMeans(ChallengeResultTestCase):
         self.assertEqual(len(np.unique(self.result.clusters)), 2)
 
     def test_imbalanced_clusters(self):
-        unique, counts = np.unique(self.result.clusters, return_counts=True)
-        data = dict(zip(unique, counts))
-        self.assertEqual(data[1] / data[0], 3)
+        _, counts = np.unique(self.result.clusters, return_counts=True)
+        self.assertEqual(max(counts) / min(counts), 3)
