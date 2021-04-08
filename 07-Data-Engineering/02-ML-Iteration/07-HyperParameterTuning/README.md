@@ -8,14 +8,6 @@ The idea is to tune the hyperparameters of this estimator. The most important pa
 - `max_depth`
 - `n_estimators`
 
-# Prerequisite
-Please keep in mind that the `save_model()` method saves locally your model under the `model.joblib` file.
-
-You may want to upload to **Google Cloud Storage** the different trained models in separate bucket directories in order to save them. In order to do that, you may have a look at the content of the `gcp.py` file.
-
-You will later load your best performing model to submit redictions to kaggle.
-
-
 # Reminder on Hyperparameter tuning
 To perform hyperparameters search, you have the choice between three `search` mechanisms:
 - [GridSearch](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.GridSearchCV.html)
