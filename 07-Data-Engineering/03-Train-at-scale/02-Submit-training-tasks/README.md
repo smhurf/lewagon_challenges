@@ -9,7 +9,7 @@ This model will be a simple linear model **`fare_amount ~ C * distance`**
 # Reminders
 
 ## 1. Packaging
-Here a quick reminder of our packaging notions from Monday. To package python code you have to do nothing more than:
+Here a quick reminder of our packaging notions from [Code as a product](https://kitt.lewagon.com/karr/data-lectures.kitt/07-Data-Engineering_01.slides.html?title=Code+as+a+Product&program_id=10#/). To package python code you have to do nothing more than:
  - structure your code in `.py` files (modules) in the directory of your package
  - make sure you have an `__init__.py` file
  - add a `setup.py` file
@@ -89,7 +89,7 @@ pip install -r requirements.txt
 
 ## Check that the code runs locally
 
-In VS code, open the `Makefile` and set the global variables:
+In VS Code, open the `Makefile` and set the global variables:
 
 - `BUCKET_NAME` (where GCP will store training material)
 
@@ -98,7 +98,7 @@ Then open the `SimpleTaxiFare/trainer.py` and set the global variables:
 - `BUCKET_NAME` (where the training data is stored)
 - `BUCKET_TRAIN_DATA_PATH` (should be `data/UPLOADED_FILE_NAME.csv`, `data/train_1k.csv` if you did not change the makefile)
 
-Take a look at the `run_locally` command within our MakeFile, it provides a little shortcut for us to be able to run our `trainer.py` file.  Now from the terminal we can run:
+Take a look at the `run_locally` command within our `MakeFile`, it provides a little shortcut for us to be able to run our `trainer.py` file.  Now from the terminal we can run:
 
 ```bash
 make run_locally
@@ -204,7 +204,7 @@ JOB_NAME=taxi_fare_training_pipeline_$(shell date +'%Y%m%d_%H%M%S')
 
 Fore more information about latest runtimes check out the [documentation](https://cloud.google.com/ai-platform/training/docs/runtime-version-list?hl=en).
 
-After understanding how the command is run and filling in the Makefile variables with your own GCP details you can now submit your first training task on GCP just by running our make command in the terminal:
+After understanding how the command is run and filling in the `Makefile` variables with your own GCP details you can now submit your first training task on GCP just by running our make command in the terminal:
 
 ```bash
 make gcp_submit_training
