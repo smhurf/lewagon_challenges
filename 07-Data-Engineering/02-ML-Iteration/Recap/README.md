@@ -23,23 +23,9 @@ pip install -e .
 
 Let's open our package in order to edit our code:
 
-<details>
-  <summary markdown='span'><strong>MacOS and Linux</strong></summary>
-
-```bash
-stt
-```
-
-</details>
-
-<details>
-  <summary markdown='span'><strong>Windows</strong></summary>
-
 ```bash
 code .
 ```
-
-</details>
 
 Let's open the **boilerplate.ipynb** and **usage.ipynb** notebooks and see how it works.
 
