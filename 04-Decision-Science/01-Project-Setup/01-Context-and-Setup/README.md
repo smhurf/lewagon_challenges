@@ -89,11 +89,7 @@ ls -a
 Next lets open the file using your text editor, choose from the options below:
 
 ```bash
-# Windows - Visual Studio Users
 code .zshrc
-
-# Mac - Sublime Text Users
-st .zshrc
 ```
 
 Now in your terminal run:
