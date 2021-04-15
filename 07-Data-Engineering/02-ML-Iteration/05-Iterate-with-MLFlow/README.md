@@ -1,6 +1,6 @@
 # Iterate with MlFlow
 
-Now that we have built a simple model and tracked the results with MLflow, we want to make it better! The ultimate goal is having a model that makes more accurate predictions on the test set, hence getting a RMSE as low as possible.
+Now that we have already built a simple model, we want to make it better! The ultimate goal is having a model that makes more accurate predictions on the test set, hence getting a RMSE as low as possible.
 
 **So what can we do?**
 
@@ -11,7 +11,7 @@ There are many different things that make models better:
 
 In this series of exercise, you will get hands on using the [MLFlow Tracking Api](https://www.mlflow.org/docs/latest/tracking.html) in order to experiment with different features, models and parameters.
 
-We now have a good workflow to make model improvements and it is very important to track all our different experiments. We want to be able to save all our different training runs and compare their performance
+Since that now we have a good workflow to make model improvements, it is very important to track all our different experiments. We want to be able to save all our different training runs and compare their performance.
 
 This is what MLFlow tracking is about.
 
@@ -37,25 +37,27 @@ Please add the following method to your trainer (and fill its content):
     # mlflow methods
 ```
 
-Do not forget to add and import for the `joblib` package and to call the `save_model` method in your `if main` block of code (`if __name__ == "__main__":`)
+Do not forget to add and import for the `joblib` package and to call the `save_model` method in your `ifmain` block of code (`if __name__ == "__main__":`)
 
 👉 We will call the `save_model()` method in order to push data to MLflow, keep it in mind for later
-👉 Once you're happy with your model's performance, you will submit your best model’s predictions to kaggle
+👉 Once you're happy about your final model, you can submit your best model's predictions to Kaggle
 
 Last thing, we suggested here a package structure to organize your code and your run, feel free to tweak is as you like if need be.
 ## 0. Define your experiment name
-You will all continue to log your run results and parameters on the same MLFLOW instance hosted on le wagon server.  Make sure, you will have your own global `EXPERIMENT_NAME` variable defined inside `trainer.py` as follows:
+You will all log your results and parameters of all your runs on the same MLFLOW instance hosted on Le Wagon server.
+From now on, you will have your own `experiment` defined inside `trainer.py` as follow:
 ```python
-EXPERIMENT_NAME = "[Country][City][github]TaxiFareModel"
+experiment = "TaxifareModel_YOURNAME"
 ```
 
 ## 1. Try different models <a name=part2></a>
 - Think about the different estimators that you know that can be used to solve prediction problems
 - Implement a short script that will loop through all estimators, train the model and evaluate it on a validation set.
 👉 Here you might need to tweek `TaxiFareModel` package
+- Be careful: make sure you **cross validate** all your trainings
 - View results with on [wagon_hosted_mlflow server](https://mlflow.lewagon.co/#/experiments/0)
 
-And last advice, while building your pipeline, run it on small datasample
+And last advice, while building your pipeline, run it on a small datasample, and preferably locally.
 
 ## 2. Features engineering and selection <a name=part3></a>
 **Now it is time to be creative!**
@@ -66,16 +68,18 @@ You just tried different models, and you now see that some estimators may be mor
 💡`direction`, `manhattan distance`, `euclidian distance`, `geohash`
 - Use some "context knowledge" to generate new features that you think might be explaining the fares.
  👉 For example: we know that taxis apply a fixed amount for airport transfers
-- Try different methods for removing outliers
-- Look at how the size of the training set helps to reduce the RMSE on the validation set
+- Try different methods for outliers removals
+- Look at how the size of training set helps reducing the RMSE on the validation set
 
 ### 💡 Suggested method to track influence of Feature Engineering:
 You will use the benefits of Pipelines integrated into our custom class.
-Start with one additional feature: `distance_to_center`(go back to data-challenges/07-Data-Engineering/02-ML-Iteration/01-Kaggle-Taxi-Fare notebook to find complete feature engineering options):
+We will start with one additional feature: `distance_to_center`:
+- Get back to the `data-challenges/07-Data-Engineering/02-ML-Iteration/01-Kaggle-Taxi-Fare` notebook with complete feature engineering
+- Implement a Custom Transformer inside `encoders.py` called `DistanceToCenter` which adds `distance_to_center`
+💡 Use notions from Pipeline's custom transformers here
+- Adapt the `set_pipeline` method inside our main `Trainer` class so that it integrates your new bloc
+- Modify params to feed to our `Trainer` class in order to easily run 2 runs to compare the influence of added feature
+- Launch 2 new runs and check the influence of the `distance_to_center` new feature
 
-1. Implement a Custom Transformer class inside encoders.py called `DistanceToCenter`, which returns a `distance_to_center` column
-2. Add a feature engineering block `feateng_block` variable to your `set_pipeline()` method which holds all the available pre-processing pipelines (now including distance_to_center)
-3. Update the params being fed to the `Trainer()` class at the start of a run to specify which pipelines within the block to use in the final pipeline for that particular run
-4. launch 2 new runs, one with the `distance_to_center` being used during training and one without, then compare their scores
-5. Once you understand the process, add as many features as you want and analyse the impact on performances from different combinations
-Bonus - Use [PolynomialFeatures](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.PolynomialFeatures.html) transfomer to generate new features from distance.
+Once you've added the new feature, add as many features as you want and analyse the impact on performances
+Bonus - Use a [PolynomialFeatures](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.PolynomialFeatures.html) transfomer to generate new features from distance.
