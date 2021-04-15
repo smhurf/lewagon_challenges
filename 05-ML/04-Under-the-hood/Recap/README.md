@@ -2,6 +2,8 @@
 
 Let's correct the optional challenge together!
 
-Open `gradient_descent_advanced.ipynb` in `jupyter notebook`.
-
+```bash
+cd ~/code/<user.github_nickname>/data-challenges/05-ML/04-Under-the-hood/Optional-Gradient-Descent-Advanced
+jupyter notebook gradient_descent_advanced.ipynb
+```
 
