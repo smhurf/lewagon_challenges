@@ -34,6 +34,7 @@ Then run this command:
 ```bash
 /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/install.sh
 ```
+
 **Restart** your terminal.
 
 ### Ubuntu/WSL2
