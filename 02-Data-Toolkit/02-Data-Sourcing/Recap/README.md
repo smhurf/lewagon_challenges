@@ -1,7 +1,7 @@
 Once you are in the proper folder, please run:
 
 ```bash
-jupyter notebook reboot.ipynb
+jupyter notebook Recap.ipynb
 ```
 
 ---

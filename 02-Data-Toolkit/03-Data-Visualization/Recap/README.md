@@ -5,5 +5,5 @@ The purpose of this reboot is to choose the right data visualization for a given
 Launch the notebook from your terminal:
 
 ```bash
-jupyter notebook From-Data-to-Viz.ipynb
+jupyter notebook Recap.ipynb
 ```
