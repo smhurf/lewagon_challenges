@@ -33,7 +33,7 @@ mlflow ui
 👉 Check [here](http://127.0.0.1:5000/#/) your local mlflow tracking server
 
 MLFlow defines experiments and runs, you have different runs inside one experiment
-For instance for experiment *test_experiment*, you'll have :
+For instance for experiment *model_experiment*, you'll have :
  - 1 run for a linear model
  - 1 run for Randomforest model
 For each run you will logs parameters and metrics
@@ -41,7 +41,7 @@ For each run you will logs parameters and metrics
 Open `ml_flow_test.py` and inspect the code that will allow you to log your first params on your local instance:
 
 ```python
-from  mlflow.tracking import MlflowClient
+from mlflow.tracking import MlflowClient
 EXPERIMENT_NAME = "test_experiment"
 client = MlflowClient()
 try:
@@ -54,16 +54,12 @@ for model in ["linear", "Randomforest"]:
     client.log_metric(run.info.run_id, "rmse", 4.5)
     client.log_param(run.info.run_id, "model", model)
 ```
-Execute the script from your terminal and return to your [local mlflow server](http://127.0.0.1:5000/#/) to check the postings
-```bash
-python -m ml_flow_test.trainer
-```
 
 ## Hosted MLFlow server
 
 For simplicity purpose, le wagon ran `mlflow ui` on its own server so that we all have the same [mlflow server](https://mlflow.lewagon.co/#/experiments/0) to log our future experiments
 
-We will now log the same parameters on this remote instance. For that we will slightly modify `ml_flow_test.py` to log info to the remote server.  Be sure to update the `yourname` variable to find your log:
+We will now log same parameter on remote instance. For that we will slightly modify `ml_flow_test.py` to log info to the remote server:
 ```python
 import mlflow
 from mlflow.tracking import MlflowClient
@@ -87,14 +83,10 @@ for model in ["linear", "Randomforest"]:
     client.log_param(run.info.run_id, "model", model)
     client.log_param(run.info.run_id, "student_name", yourname)
 ```
-Execute the updated script and check out the [hosted mlflow server](https://mlflow.lewagon.co/#/experiments/94) for "test_experiment" to visualise your log
-
-```bash
-python -m ml_flow_test.trainer
-```
+Check out [mlflow server](https://mlflow.lewagon.co/) to visualise your logs
 
 ## Mlfow integrated to our Taxifare ml project
-Now we will add a few methods to our existing class in order to start logging our own training runs
+Now we will add a few methods to our existing class in order to start logging training runs
 For that we will add following methods to our Trainer() class (don't forget the necessary imports!):
 ```python
 class Trainer():
@@ -134,10 +126,11 @@ We've done the hard work, we can now easily log any param and metric by simply a
 `self.mlflow_log_param(param, value)` or `self.mlflow_log_metric(metric_name, metric_value)`
 
 anywhere in our class:
-- Define 2 global variables at the beginning of `trainer.py` be sure to insert your own country, city and github username:
+- Define 2 global variables at the beginning `trainer.py`:
 ```python
 MLFLOW_URI = "https://mlflow.lewagon.co/"
-EXPERIMENT_NAME = "[Country][City][github]TaxiFareModel"
+myname = "youshouldwriteyournameinstead"
+EXPERIMENT_NAME = f"TaxifareModel_{myname}"
 ```
 - log the model name and rmse at correct place inside `Trainer()` class
 - run whole workflow:
