@@ -15,9 +15,16 @@ In order to do so, today we will:
 
 We want to use our best performing model in order to make predictions 🚀
 
-👌 If you prefer to do so, you may download the solution of the challenge `07-Data-Engineering/03-Train-at-scale/03-Train-taxiFare-on-gcp` 👌
+**Where to start?**
 
-👌 In this case, you will quickly retrain a model on your machine. The code of the solution trains on very few rows and will allow you to proceed with the exercises of today 👌
+We will use the package we provided for you in the current directory, `TaxiFareModel`. In order to avoid creating a `git` repository within the `data-challenges`, let's move it outside!
+`cp TaxiFareModel ~/code/<user.github_nickname>/`
+`cd ~/code/<user.github_nickname>/TaxiFareModel `
+`pip install -e .`
+`git init`
+
+Make sure to update the variables in `params.py` and in the `Makefile` which will enable you to connect to your project on Google Cloud.
+
 
 ## Before we start - let's go through some important points
 
@@ -25,17 +32,14 @@ We want to use our best performing model in order to make predictions 🚀
 
 ⚠️ Do not forget that we cannot load a `model.joblib` file without the code that was used in order to train it! After all, we need to be using the exact same pipeline ⚠️
 
-👉 If the `model.joblib` that you want to use today for your **Prediction API** corresponds to the latest version of you code, no worries 🎉
+👉 You can run `make run_locally` to train the model and save it within your project. If it's not working for you, make a ticket.
 
-👉 ...or if you choose to retrain your code locally using the solution from Train at Scale, no worries either 🎉
-
-All in all: the solution is to use the version of your code/pipeline that was **used for the training** to run the prediction. If you don't know where to start - call a TA
 
 ### About the version of your trained model + packages
 
-⚠️ Also, we need to make sure that the versions of the packages (`numpy`, `pandas`, `scikit-learn` and so on) used in order to train the model are going to be the same as the ones used in order to load the `model.joblib` file ⚠️
+⚠️ We need to make sure that the versions of the packages (`numpy`, `pandas`, `scikit-learn` and so on) used in order to train the model are going to be the same as the ones used in order to load the `model.joblib` file ⚠️
 
-👉 This is probably not going to be a concern if you trained your model recently since the versions probably did not evolve that fast
+👉 This is probably not going to be a concern if you trained your model just now (no new versions of the packages)
 
 👉 You may encounter this issue in the future if you try to load a `model.joblib` file for your **Prediction API** a few months from now. The solution is to pin the versions of the packages in your `requirements.txt`. Remember the **AI Platform RUNTIME** ? The [version of the runtime](https://cloud.google.com/ai-platform/training/docs/runtime-version-list) that you used for the training allows you to know which versions of the packages to use.
 
@@ -46,12 +50,6 @@ Do you remember having consumed an API during the Python module using the `reque
 Today we are going to create your own API allowing other developers to ask our model for predictions.
 
 ### First step: let's create an API endpoint and test it
-
-👉 Let's copy the provided boilerplate inside of our project (copy the `api` directory inside of your project right next to the `TaxiFareModel` directory, **not** inside of it)
-
-👉 Let's also copy the notebooks directory at the same location, the notebook will be one way of testing your API
-
-👉 Let's ⚠️ **append** ⚠️ the content of the `Makefile` to the Makefile of your project
 
 Your project should look like this (use the `tree` command):
 
@@ -150,7 +148,7 @@ We want developers to provide the following parameters to the endpoint:
 
 As a response, let's first send back the provided values in order to make sure that everything is connected correctly:
 
-For example, when called with the following parameters: `http://127.0.0.1:8000/predict_fare?pickup_datetime=2013-07-06 17:18:00 UTC&pickup_longitude=-73.950655&pickup_latitude=40.783282&dropoff_longitude=-73.984365&dropoff_latitude=40.769802&passenger_count=1`
+For example, when called with the following parameters: `http://127.0.0.1:8000/predict_fare?key=2013-07-06 17:18:00.0000001&pickup_datetime=2013-07-06 17:18:00 UTC&pickup_longitude=-73.950655&pickup_latitude=40.783282&dropoff_longitude=-73.984365&dropoff_latitude=40.769802&passenger_count=1`
 
 ...the API will respond:
 
@@ -195,7 +193,7 @@ We just need to store the resulting prediction in our **json** response:
 
 ⚠️ The notebook is built to query an API responding to the following URL... Maybe you will want to adapt the way the notebook works if you choose a different format for your API ⚠️
 
-`http://127.0.0.1:8000/predict_fare/?key=2012-10-06 12:10:20.0000001&pickup_datetime=2012-10-06 12:10:20 UTC&pickup_longitude=40.7614327&pickup_latitude=-73.9798156&dropoff_longitude=40.6513111&dropoff_latitude=-73.8803331&passenger_count=2`
+`http://127.0.0.1:8000/predict_fare?key=2013-07-06 17:18:00.0000001&pickup_datetime=2013-07-06 17:18:00 UTC&pickup_longitude=-73.950655&pickup_latitude=40.783282&dropoff_longitude=-73.984365&dropoff_latitude=40.769802&passenger_count=1`
 
 Congratulations, you just created your first API! 🎉
 
