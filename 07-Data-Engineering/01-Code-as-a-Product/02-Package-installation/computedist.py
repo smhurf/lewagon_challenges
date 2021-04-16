@@ -26,7 +26,7 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=description)
     parser.add_argument('--coords',
                         nargs='+',
-                        help='mails to send hardware alerts',
+                        help='list of coordinates',
                         required=False)
     parser.add_argument('--prod',
                         action='store_true',

@@ -1,4 +1,3 @@
-
 ## Objective
 
 Understand how tests work and implement your first test.
