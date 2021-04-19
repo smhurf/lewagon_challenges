@@ -22,21 +22,9 @@ cd ~/code/<user.github_nickname>/taxifare_predictinprod
 
 Let's open our package in order to edit our code:
 
-<details>
-  <summary markdown='span'><strong>MacOS and Linux</strong></summary>
-
-```bash
-stt
-```
-</details>
-
-<details>
-  <summary markdown='span'><strong>Windows</strong></summary>
-
 ```bash
 code .
 ```
-</details>
 
 👉 Open **another terminal window** for the notebooks. We will use the first terminal window in order to add and commit the code of our package as it evolves using `git` commands
 
