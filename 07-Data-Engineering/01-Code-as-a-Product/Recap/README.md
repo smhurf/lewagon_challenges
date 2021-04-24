@@ -7,11 +7,12 @@
 
 ### 🤔 How can you create a new package?
 
-Let's create a **bbquote** package that will allow us to retrieve quotes Breaking Bad quotes...
+Let's create a **bbquote** package that will allow us to retrieve Breaking Bad quotes...
 
 <details>
   <summary markdown='span'><strong>Hint</strong></summary>
 
+<br>
 
 **`packgenlite package-name`**
 
@@ -35,6 +36,7 @@ Let's use the [Breaking Bad API](https://breaking-bad-quotes.herokuapp.com/v1/qu
 <details>
   <summary markdown='span'><strong>Hint</strong></summary>
 
+<br>
 
 **You can create a new `*.py` file within the `bbquote` directory containing an `__init__.py` file.**
 
@@ -68,6 +70,7 @@ Let's call our method from the terminal using **python** and **ipython**, and fr
 <details>
   <summary markdown='span'><strong>Hint</strong></summary>
 
+<br>
 
 **No.**
 
@@ -76,7 +79,7 @@ In order to be able to do that you have to run:
 `pip install -e .`
 which will make the package executable from any location and will also listen to **any updates of the package files** (similar to `%autoreload`)
 
-**👉 You can now call the method by importing it from `bbquote.lib` anywhere on your machine or you can execute the `lib.py` file directly by running: `python bbquote/lib.py`.**
+**👉 You can now call the method by importing it from `bbquote.lib` anywhere on your machine or you can execute the `lib.py` file directly by running: `python -m bbquote.lib`.**
 </details>
 
 <br>
@@ -88,6 +91,7 @@ Let's create a script displaying a breaking bad quote.
 <details>
   <summary markdown='span'><strong>Hint</strong></summary>
 
+<br>
 
 **You can create a script which will import and call the method.**
 
@@ -110,6 +114,8 @@ Anyone has an idea?
 <details>
   <summary markdown='span'><strong>Hint</strong></summary>
 
+<br>
+
 Edit your `~/.zshrc` and add the name of your `bbquote-run` script at the very bottom...
 
 Now open a new terminal window and see what happens!
@@ -123,12 +129,13 @@ Let's write some tests and play with Continuous Integration...
 <details>
   <summary markdown='span'><strong>Hint</strong></summary>
 
+<br>
 
 There are multiple reasons for introducing testing in our projects and all of the below reasons are valid. The right question is: why _wouldn't_ you introduce testing? 🤔
 
 - We want to make sure our package and its methods are working correctly in different circumstances
 - In case our teammate is updating the code, we are making sure the updates will not crash the package functionality
-- Tests are part of Continuous Integration - it helps to maintain the quality of our code before commiting the merge on a remote repository.
+- Tests are part of Continuous Integration - it helps to maintain the quality of our code before committing the merge on a remote repository.
 </details>
 <br>
 
@@ -139,12 +146,16 @@ Let's release our package to the world!
 <details>
   <summary markdown='span'><strong>Hint</strong></summary>
 
+<br>
 
 **We can create a new app on Heroku and push our code with additional configuration.**
 
 In order to be able to display our project on an accessible url we have to use a cloud platform enabling us to build, run and operate applications. Heroku is one of such providers. In order to deploy our application and display the functionality of the `get_quote` method we can:
 
-1. Create an `app.py` file with simple frontend calling the method
+<details>
+  <summary markdown='span'><strong>1. Create an `app.py` file with simple frontend calling the method</strong></summary>
+
+<br>
 
 app.py:
 ``` python
@@ -156,10 +167,25 @@ author, quote = get_quote()  # assuming the function returns an author and a quo
 
 f"{quote}, {author}"
 ```
+</details>
 
-2. Add `streamlit` to the `requirements.txt`
 
-3. Add a `setup.sh` and `Procfile` for configuration
+<details>
+  <summary markdown='span'><strong>2. Add `streamlit` to the `requirements.txt`</strong></summary>
+
+<br>
+
+requirements.txt:
+```
+streamlit
+```
+</details>
+
+
+<details>
+  <summary markdown='span'><strong>3. Add a `setup.sh` and `Procfile` for Heroku configuration</strong></summary>
+
+<br>
 
 setup.sh:
 ```
@@ -182,14 +208,41 @@ Procfile:
 ```
 web: sh setup.sh && streamlit run app.py
 ```
+</details>
 
-3. Create a new app on heroku by running: `heroku create <unique-app-name>`
 
-4. Push our code to Heroku: `git push heroku master`
+<details>
+  <summary markdown='span'><strong>4. Create a new app on heroku</strong></summary>
 
-5. Set the dynos to run our web application: `heroku ps:scale web=1`
+<br>
+
+`heroku create <unique-app-name>`
+
+</details>
+
+
+<details>
+  <summary markdown='span'><strong>5. Push our code to Heroku</strong></summary>
+
+<br>
+
+`git push heroku master`
+</details>
+
+
+<details>
+  <summary markdown='span'><strong>6. Set the dynos to run our web application</strong></summary>
+
+<br>
+
+`heroku ps:scale web=1`
+</details>
+
+
+<br>
 
 In case the application has an error, don't forget to check the logs: `heroku logs --tail`.
+
 </details>
 <br>
 
@@ -200,10 +253,12 @@ Let's activate Continous Deployment...
 <details>
   <summary markdown='span'><strong>Hint</strong></summary>
 
-Yes, this process is called Continuous Deployment. With additional configuration in the `pythonpackage.yml` we can ask Github to deploy the latest code to Heroku for us if all the tests will pass.
+<br>
+
+Yes, this process is called Continuous Deployment. With additional configuration in the `pythonpackage.yml` we can ask GitHub to deploy the latest code to Heroku for us if all the tests will pass.
 
 
-1. Do not forget to fill `HEROKU_API_KEY` and `HEROKU_EMAIL` in the GitHub secrets of the repository
+**1. Do not forget to fill `HEROKU_API_KEY` and `HEROKU_EMAIL` in the GitHub secrets of the repository**
 
 </details>
 <br>
