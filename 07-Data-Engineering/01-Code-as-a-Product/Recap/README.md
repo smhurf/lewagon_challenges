@@ -146,7 +146,42 @@ In order to be able to display our project on an accessible url we have to use a
 
 1. Create an `app.py` file with simple frontend calling the method
 
-2. Add a `setup.sh` and `Procfile` for configuration
+app.py:
+``` python
+import streamlit as st
+
+from bbquote.quote import get_quote
+
+author, quote = get_quote()  # assuming the function returns an author and a quote
+
+f"{quote}, {author}"
+```
+
+2. Add `streamlit` to the `requirements.txt`
+
+3. Add a `setup.sh` and `Procfile` for configuration
+
+setup.sh:
+```
+mkdir -p ~/.streamlit/
+
+echo "\
+[general]\n\
+email = \"your-email@domain.com\"\n\
+" > ~/.streamlit/credentials.toml
+
+echo "\
+[server]\n\
+headless = true\n\
+enableCORS=false\n\
+port = $PORT\n\
+" > ~/.streamlit/config.toml
+```
+
+Procfile:
+```
+web: sh setup.sh && streamlit run app.py
+```
 
 3. Create a new app on heroku by running: `heroku create <unique-app-name>`
 
@@ -166,6 +201,10 @@ Let's activate Continous Deployment...
   <summary markdown='span'><strong>Hint</strong></summary>
 
 Yes, this process is called Continuous Deployment. With additional configuration in the `pythonpackage.yml` we can ask Github to deploy the latest code to Heroku for us if all the tests will pass.
+
+
+1. Do not forget to fill `HEROKU_API_KEY` and `HEROKU_EMAIL` in the GitHub secrets of the repository
+
 </details>
 <br>
 
