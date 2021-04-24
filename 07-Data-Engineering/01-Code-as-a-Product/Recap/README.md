@@ -103,6 +103,19 @@ Do not forget to add the script to your `setup.py` file!
 </details>
 <br>
 
+### 🤔 Optional: how to start every new terminal window with a nice productive quote?
+
+Anyone has an idea?
+
+<details>
+  <summary markdown='span'><strong>Hint</strong></summary>
+
+Edit your `~/.zshrc` and add the name of your `bbquote-run` script at the very bottom...
+
+Now open a new terminal window and see what happens!
+</details>
+<br>
+
 ### 🤔 Let's now write a test for our `get_quote` method. But wait, why do we even need a test?
 
 Let's write some tests and play with Continuous Integration...
