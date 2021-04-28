@@ -81,7 +81,7 @@ cp -r ~/code/<user.github_nickname>/data-challenges/07-Data-Engineering/02-ML-It
 - Download 2 subsets of the full `train.csv` dataset:
   - [train_1k.csv](https://wagon-public-datasets.s3.amazonaws.com/taxi-fare-ny/train_1k.csv) with 1_000 rows
   - [train_10k.csv](https://wagon-public-datasets.s3.amazonaws.com/taxi-fare-ny/train_10k.csv) with 10_000 rows
-- Move them in the `raw_data` folder
+- Move them to the `raw_data` folder
 - Make sure your package has the following architecture:
 
 ```bash
@@ -125,7 +125,7 @@ _NB: We provide you with the same functions so that we all get and clean data th
 
 #### `encoders.py`
 
-Let's store in `encoders.py` the custom encoders and transformers you have for distance and time features.
+Let's store the custom encoders and transformers you have for distance and time features in `encoders.py`.
 
 **Reminder**
 
