@@ -17,8 +17,8 @@ def spent_per_customer(db):
     pass
 
 def best_employee(db):
-    '''return the first and last name of the best employee (the one
-    who sells the most in terms of amount of money'''
+    '''Implement the best_employee method to determine who’s the best employee! By “best employee”, we mean the one who sells the most.
+    We expect the function to return a tuple like: ('FirstName', 'LastName', 6000 (the sum of all purchase)). The order of the information is irrelevant'''
     pass
 
 def orders_per_customer(db):
