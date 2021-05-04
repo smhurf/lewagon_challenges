@@ -186,7 +186,7 @@ There are 2 ways to create a bucket:
 
 ### The hacker's way (**recommended**)
 
-- Open `Makefile` and copy the following lines
+- Open `Makefile` in your `TaxiFareModel` project and copy the following lines.
 
 ```make
 # project id
@@ -203,6 +203,8 @@ set_project:
 create_bucket:
     @gsutil mb -l ${REGION} -p ${PROJECT_ID} gs://${BUCKET_NAME}
 ```
+
+We need to fix the indentations as you copied the code with __spaces__ and we need to replace them with __tabs__. If you don't do it you'll probably see an error about `missing separator` while running the commands. If you can't figure it out yourself, make a ticket.
 
 - Use the predefined bash commands from `Makefile` to create your bucket
 
@@ -222,7 +224,7 @@ make create_bucket
 
 ## Upload your dataset
 
-- Add the following lines to your `Makefile`
+- Add the following lines to your `Makefile` (don't forget about the indentation!)
 
 ```make
 # path of the file to upload to gcp (the path of the file should be absolute or should match the directory where the make command is run)
