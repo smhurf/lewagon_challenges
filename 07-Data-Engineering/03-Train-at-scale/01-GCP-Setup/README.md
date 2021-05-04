@@ -48,6 +48,9 @@ sudo apt-get install google-cloud-sdk-app-engine-python
 ```
 👉 [Install documentation](https://cloud.google.com/sdk/docs/install#deb)
 
+### Windows
+[Install and initialize the Cloud SDK](https://cloud.google.com/sdk/docs/install#windows)
+
 
 ## Configure Cloud sdk
 - Authenticate the gcloud tool with the google account you used for GCP. This will open a browser tab for authentication to your google account
@@ -95,9 +98,7 @@ Make sure you understand what you do there and overall why you do it:
   - Locate your service account and click on the 3 dots on the right and click on `Manage Keys`
   - Click on `Create new key`
   - Select `JSON`. Click on `Create`
-  - Download the `JSON` file, and store it somewhere you'll remember, for example:
-    - macOS :point_right: `/Users/YOUR_USER_NAME/Documents/gcp_keys/YOUR_FILENAME_FOR_SECRET_KEY.json`
-    - Ubuntu / WSL2 :point_right: `/home/YOUR_USER_NAME/Documents/gcp_keys/YOUR_FILENAME_FOR_SECRET_KEY.json`
+  - Download the `JSON` file, and store it somewhere you'll remember, for example `/Users/YOUR_USER_NAME/Documents/gcp_keys/YOUR_FILENAME_FOR_SECRET_KEY.json`
   - Avoid using spaces in the name of the file, it will be easier to use it
 
 ⚠️ **MOST IMPORTANT STEP** ⚠️
@@ -105,16 +106,13 @@ Make sure you understand what you do there and overall why you do it:
 You will define a new env variable called `GOOGLE_APPLICATION_CREDENTIALS`, referring to the path where you stored your secret key.
 Every time you'll want to interact with GCP products, either via cli interface or with any python official gcp package, you program will look for the `GOOGLE_APPLICATION_CREDENTIALS` env variable to find the secret key path on your computer.
 Last thing, make sure that the path you indicate is the **absolute path**, ie `/Users/YOUR_USER_NAME/Documents/gcp_keys/YOUR_FILENAME_FOR_SECRET_KEY.json` and not `~/Documents/gcp_keys/YOUR_FILENAME_FOR_SECRET_KEY.json`
-- Add the following line to your `~/.aliases`:
-  - for macOSX
-  ```
-  export GOOGLE_APPLICATION_CREDENTIALS=/Users/YOUR_USER_NAME/Documents/gcp_keys/YOUR_FILENAME_FOR_SECRET_KEY.json
-  ```
-  - for Ubuntu / WSL2
+- Add the following line:
+  - to your `~/.aliases` for macOSX/linux/WSL2
+  - to your `.bash_profile` for Windows
 
-  ```
-  export GOOGLE_APPLICATION_CREDENTIALS=/home/YOUR_USER_NAME/Documents/gcp_keys/YOUR_FILENAME_FOR_SECRET_KEY.json
-  ```
+```
+export GOOGLE_APPLICATION_CREDENTIALS=/Users/YOUR_USER_NAME/Documents/gcp_keys/YOUR_FILENAME_FOR_SECRET_KEY.json
+```
 
 - **Restart** your terminal and run:
 ```bash
@@ -186,16 +184,17 @@ There are 2 ways to create a bucket:
 
 ### The hacker's way (**recommended**)
 
-- Open `Makefile` and copy the following lines
+- Open `Makefile` in your `TaxiFareModel` project and copy the following lines.
 
 ```make
-# project id
-PROJECT_ID=XXX  # Replace with your Project's ID
+# project id - replace with your Project's ID
+PROJECT_ID=XXX
 
-# bucket name
-BUCKET_NAME=XXX # follow the convention of wagon-ml-[YOUR_LAST_NAME]-[BATCH_NUMBER]
+# bucket name - follow the convention of wagon-ml-[YOUR_LAST_NAME]-[BATCH_NUMBER]
+BUCKET_NAME=XXX
 
-REGION=europe-west1 # Choose your region https://cloud.google.com/storage/docs/locations#available_locations
+# Choose your region https://cloud.google.com/storage/docs/locations#available_locations
+REGION=europe-west1
 
 set_project:
     @gcloud config set project ${PROJECT_ID}
@@ -203,6 +202,8 @@ set_project:
 create_bucket:
     @gsutil mb -l ${REGION} -p ${PROJECT_ID} gs://${BUCKET_NAME}
 ```
+
+We need to fix the indentations as you copied the code with __spaces__ and we need to replace them with __tabs__. If you don't do it you'll probably see an error about `missing separator` while running the commands. If you can't figure it out yourself, make a ticket.
 
 - Use the predefined bash commands from `Makefile` to create your bucket
 
@@ -222,7 +223,7 @@ make create_bucket
 
 ## Upload your dataset
 
-- Add the following lines to your `Makefile`
+- Add the following lines to your `Makefile` (don't forget about the indentation!)
 
 ```make
 # path of the file to upload to gcp (the path of the file should be absolute or should match the directory where the make command is run)
