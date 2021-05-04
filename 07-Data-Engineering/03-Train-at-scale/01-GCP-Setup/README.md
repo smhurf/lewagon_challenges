@@ -48,9 +48,6 @@ sudo apt-get install google-cloud-sdk-app-engine-python
 ```
 👉 [Install documentation](https://cloud.google.com/sdk/docs/install#deb)
 
-### Windows
-[Install and initialize the Cloud SDK](https://cloud.google.com/sdk/docs/install#windows)
-
 
 ## Configure Cloud sdk
 - Authenticate the gcloud tool with the google account you used for GCP. This will open a browser tab for authentication to your google account
@@ -98,7 +95,9 @@ Make sure you understand what you do there and overall why you do it:
   - Locate your service account and click on the 3 dots on the right and click on `Manage Keys`
   - Click on `Create new key`
   - Select `JSON`. Click on `Create`
-  - Download the `JSON` file, and store it somewhere you'll remember, for example `/Users/YOUR_USER_NAME/Documents/gcp_keys/YOUR_FILENAME_FOR_SECRET_KEY.json`
+  - Download the `JSON` file, and store it somewhere you'll remember, for example:
+    - macOS :point_right: `/Users/YOUR_USER_NAME/Documents/gcp_keys/YOUR_FILENAME_FOR_SECRET_KEY.json`
+    - Ubuntu / WSL2 :point_right: `/home/YOUR_USER_NAME/Documents/gcp_keys/YOUR_FILENAME_FOR_SECRET_KEY.json`
   - Avoid using spaces in the name of the file, it will be easier to use it
 
 ⚠️ **MOST IMPORTANT STEP** ⚠️
@@ -106,13 +105,16 @@ Make sure you understand what you do there and overall why you do it:
 You will define a new env variable called `GOOGLE_APPLICATION_CREDENTIALS`, referring to the path where you stored your secret key.
 Every time you'll want to interact with GCP products, either via cli interface or with any python official gcp package, you program will look for the `GOOGLE_APPLICATION_CREDENTIALS` env variable to find the secret key path on your computer.
 Last thing, make sure that the path you indicate is the **absolute path**, ie `/Users/YOUR_USER_NAME/Documents/gcp_keys/YOUR_FILENAME_FOR_SECRET_KEY.json` and not `~/Documents/gcp_keys/YOUR_FILENAME_FOR_SECRET_KEY.json`
-- Add the following line:
-  - to your `~/.aliases` for macOSX/linux/WSL2
-  - to your `.bash_profile` for Windows
+- Add the following line to your `~/.aliases`:
+  - for macOSX
+  ```
+  export GOOGLE_APPLICATION_CREDENTIALS=/Users/YOUR_USER_NAME/Documents/gcp_keys/YOUR_FILENAME_FOR_SECRET_KEY.json
+  ```
+  - for Ubuntu / WSL2
 
-```
-export GOOGLE_APPLICATION_CREDENTIALS=/Users/YOUR_USER_NAME/Documents/gcp_keys/YOUR_FILENAME_FOR_SECRET_KEY.json
-```
+  ```
+  export GOOGLE_APPLICATION_CREDENTIALS=/home/YOUR_USER_NAME/Documents/gcp_keys/YOUR_FILENAME_FOR_SECRET_KEY.json
+  ```
 
 - **Restart** your terminal and run:
 ```bash
