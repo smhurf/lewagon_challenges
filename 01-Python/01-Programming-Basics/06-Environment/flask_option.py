@@ -2,11 +2,9 @@
 
 import os
 
-
 def start():
     """returns the right message"""
-    pass
-
+    pass  # YOUR CODE HERE
 
 if __name__ == "__main__":
     print(start())
