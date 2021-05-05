@@ -1,8 +1,7 @@
 # pylint: disable=missing-docstring
 
 # TODO: add some currency rates
-RATES = {
-}
+RATES = {}
 
 
 
