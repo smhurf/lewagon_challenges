@@ -88,7 +88,7 @@ pip install kaggle
 ```
 
 - get a token following the instructions [here](https://github.com/Kaggle/kaggle-api#api-credentials)
-👉 summarized steps : on [Kaggle[(https://www.kaggle.com)], click on `My Account`, then `Create New API Token`. The token should be saved under `~/.kaggle/kaggle.json` (or `C:\Users\<Windows-username>\.kaggle\kaggle.json` for Windows users)
+👉 summarized steps : on [Kaggle[(https://www.kaggle.com)], click on _My Account_, then _Create New API Token_. The token should be saved under `~/.kaggle/kaggle.json` (or `C:\Users\<Windows-username>\.kaggle\kaggle.json` for Windows users)
 
 - test the installation
 
