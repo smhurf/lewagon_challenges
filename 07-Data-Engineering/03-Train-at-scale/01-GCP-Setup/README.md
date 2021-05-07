@@ -185,7 +185,7 @@ You can list the buckets of your project in [Navigation menu / Storage / Browser
 First, we will download the `train_1k.csv` file:
 
 ``` bash
-curl --silent 'https://wagon-public-datasets.s3.amazonaws.com/taxi-fare-ny/train_1k.csv' > ~/code/gmanchon/TaxiFareModel/raw_data/train_1k.csv
+curl --silent 'https://wagon-public-datasets.s3.amazonaws.com/taxi-fare-ny/train_1k.csv' > ~/code/<user.github_nickname>/TaxiFareModel/raw_data/train_1k.csv
 ```
 
 You will need to reference the location of the file in your code.
