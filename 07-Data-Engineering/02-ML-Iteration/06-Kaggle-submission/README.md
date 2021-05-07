@@ -41,7 +41,7 @@ You might wonder why we ran `make install` ?
 👉 So **they need to be installed as a package** with `pip install . -U`
 
 💡 The main takeaway here is that you cannot use a trained model without the code used in order to generate it
-💡 Another takeaway is that you may have trouble using a model trained with old versions of ML packages (numpy, pandas, sklearn, etc) unless you use it in a virtual environmnent where the same versions are installed
+💡 Another takeaway is that you may have trouble using a model trained with old versions of ML packages (NumPy, pandas, Scikit-learn, etc) unless you use it in a virtual environment where the same versions are installed
 
 # Use your model to make a prediction on a Kaggle test set
 
