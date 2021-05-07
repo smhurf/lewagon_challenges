@@ -46,10 +46,11 @@ You might wonder why we ran `make install` ?
 # Use your model to make a prediction on a Kaggle test set
 
 We will use the `predict.py` file provided with the challenge. Copy the file to the location of your TaxiFareModel project.
+<details>
+<summary> 💡 Hint </summary>
 
 ``` bash
 cp ~/code/<user.github_nickname>/data-challenges/07-Data-Engineering/02-ML-Iteration/06-Kaggle-submission/predict.py ~/code/<user.github_nickname>/TaxiFareModel/TaxiFareModel
-```
 
 Inspect the code inside of `predict.py` and identify the following steps:
 - loading the trained pipeline from `model.joblib`
