@@ -1,4 +1,3 @@
-
 # Trained pipeline
 
 You will now create your first Kaggle submission.
