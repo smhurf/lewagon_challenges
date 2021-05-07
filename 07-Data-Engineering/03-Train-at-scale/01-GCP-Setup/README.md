@@ -182,7 +182,7 @@ You can list the buckets of your project in [Navigation menu / Storage / Browser
 
 💡 Use the `train_1k.csv` training file in order to test the upload and the model training quickly. Eventually you are going to want to upload the full dataset in order to create a better model.
 
-First, lets download the `train_1k.csv` file:
+First, we will download the `train_1k.csv` file:
 
 ``` bash
 curl --silent 'https://wagon-public-datasets.s3.amazonaws.com/taxi-fare-ny/train_1k.csv' > ~/code/gmanchon/TaxiFareModel/raw_data/train_1k.csv
