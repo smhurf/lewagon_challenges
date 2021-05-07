@@ -70,7 +70,7 @@ You might need to login to Kaggle or register [here](https://www.kaggle.com/acco
 
 Now that your first submission is done, you may want to train on a bigger sample and see how your score evolves.
 
-In order to do that, modify the parameters used in order to train the model and use 1 000 000 lines. You only need to set `n_rows=1_000_000` inside of `trainer.py`.
+To do so, modify the parameters used in order to train the model and use 1 000 000 lines. You only need to set `n_rows=1_000_000` inside of `trainer.py`.
 
 Then again:
 
