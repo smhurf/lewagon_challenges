@@ -22,8 +22,6 @@ We are going to create a separate project for our website in order to keep thing
 
 👉 Separating the code for the model training + prediction API from the code of the website will allow the package for the website to be very light.
 👉 Using separate projects will also ease the deployment of the interface
-👉 Using separated projects will also ease the deployment of the interface
-👉 Having separated projects will also ease the deployment of the interface
 
 Actually, the package for our website will not require to contain any Data Science related code, since the website will be using our own API in order to make predictions.
 
