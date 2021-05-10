@@ -2,7 +2,7 @@
 In the previous challenges, we created a project containing the code allowing us to:
 - **Train a model** at scale from the Kaggle New York City Taxi Fare Prediction dataset
 - Build a containerized **Prediction API** allowing to make predictions based on this model
-- Deploy our this API on **Google Cloud Run** to make it available to the world 🌍
+- Deploy this API on **Google Cloud Run** to make it available to the world 🌍
 
 We have a live API allowing developers all over the world to predict the fare amount for a taxi ride in New York City 🎉
 
@@ -21,6 +21,9 @@ We are going to create a separate project for our website in order to keep thing
 🤔 Why would we want to split our code into 2 projects ?
 
 👉 Separating the code for the model training + prediction API from the code of the website will allow the package for the website to be very light.
+👉 Using separate projects will also ease the deployment of the interface
+👉 Using separated projects will also ease the deployment of the interface
+👉 Having separated projects will also ease the deployment of the interface
 
 Actually, the package for our website will not require to contain any Data Science related code, since the website will be using our own API in order to make predictions.
 
@@ -33,7 +36,7 @@ In this exercise, we are going to clone a repository containing an existing Taxi
 
 This will give us an overview of what can be done in order to expose an API.
 
-We will create a new project directory for the code of our website. This directory will be located inside of our project directory where we store all of our GitHub repositories: `~/code/<user.github_nickname>`.
+We will create a new project directory for the code of our website. This directory will be located inside of our *project**s** directory* where we store all of our GitHub repositories: `~/code/<user.github_nickname>`.
 
 Then in the next challenge, we will code our own website from scratch with Streamlit 🎉 And this second website will also have a project of its own...
 

@@ -9,7 +9,7 @@ We are going to use **Streamlit** which will allow us to create a website very e
 
 We will create a new project directory for the code of our website.
 
-Again, this directory will be located inside of our projects directory: `~/code/<user.github_nickname>`.
+Again, this directory will be located inside of our *project**s** directory*: `~/code/<user.github_nickname>`.
 
 Create a new project directory named `TaxiFareWebsite`.
 
