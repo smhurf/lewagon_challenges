@@ -8,13 +8,6 @@ In order to do so, we will:
 - Challenge 2 : create a **Docker image** containing the environment required in order to run the code of our API
 - Challenge 3 : push this image to **Google Cloud Run** so that it is instantiated as a **Docker container** that will run our code and allow developers all over the world to use it
 
-### Recap from Train at Scale
-
-- We trained our TaxiFare model in the cloud using the power of the **AI Platform**
-- We saved one or more versions of our trained model in `model.joblib` files in **Google Cloud Storage**
-
-We want to use our best performing model in order to make predictions 🚀
-
 **Where to start?**
 
 We will use the package we provided for you in the current directory, `TaxiFareModel`. In order to avoid creating a `git` repository within the `data-challenges`, let's move it outside!
