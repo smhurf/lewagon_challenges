@@ -1,5 +1,5 @@
 
-We saw in the previous challenge how to plug a website to our **Prediction API** in order to allow regular users make prediction.
+We saw in the previous challenge how to plug a website to our **Prediction API** in order to allow regular users to make prediction.
 
 Now let's create our own website ! 🔥
 
@@ -9,7 +9,7 @@ We are going to use **Streamlit** which will allow us to create a website very e
 
 We will create a new project directory for the code of our website.
 
-Again, this directory will be located inside of our local GitHub directory where we store all of our GitHub repositories: `~/code/<user.github_nickname>`.
+Again, this directory will be located inside of our *project**s** directory*: `~/code/<user.github_nickname>`.
 
 Create a new project directory named `TaxiFareWebsite`.
 
@@ -143,7 +143,7 @@ https://taxifare.lewagon.ai/predict?pickup_datetime=2012-10-06%2012:10:20&pickup
 
 Let's inspect `app.py` and check what is being done inside...
 
-Replace the URL to the prediction API with our own and update the code accordingly.
+Replace the URL to the prediction API with your own and update the code accordingly.
 
 Now let's get crazy with the page content 🎉
 
