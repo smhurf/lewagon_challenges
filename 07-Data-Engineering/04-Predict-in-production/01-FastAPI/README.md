@@ -231,9 +231,9 @@ Why is that ?
 
 👉 This parameter is used in order to create Kaggle submissions for the Taxi Fare challenge
 
-Because we trained our pipeline with the `key` parameter, it needs to be provided. But the `key` parameer would make no sense for a developer.
+Because we trained our pipeline with the `key` parameter, it needs to be provided. But the `key` parameter would make no sense for a developer.
 
-Two solutions: we could retrain our pipeline without the `key` feature, which adds no value for the prediction. Or provide a hard coded value so that the piping works. We choose the later approach.
+Two solutions: we could retrain our pipeline without the `key` feature which adds no value for the prediction. Or provide a hard coded value so that the piping works. We choose the later approach.
 
 👉 You need to fill the column with some hard coded value (such as "2013-07-06 17:18:00.000000119") in order to allow the pipeline to train.
 
