@@ -10,7 +10,7 @@ In order to do so, we will:
 
 ## Project setup
 
-We will start with a clean slate for these challenges. The project on which we will be working is similar, but the code is organized in a different way.
+We will start with a clean slate for these challenges. The project on which we will be working is similar to the codebase you worked with until now, but the code is organized in a different way.
 
 First, we will copy the code for the challenges of **Predict in prod** in your *project**s** directory*: `~/code/<user.github_nickname>`.
 
