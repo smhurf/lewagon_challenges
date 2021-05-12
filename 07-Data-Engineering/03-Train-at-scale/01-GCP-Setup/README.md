@@ -196,7 +196,7 @@ You will need to reference the location of the file in your code.
 </summary>
 
 
-  From your terminal, go to the TaxiFareModel project that you created yesterday:
+  From your terminal, go to the TaxiFareModel project that you created:
 
   ``` bash
   cd ~/code/<user.github_nickname>/TaxiFareModel
@@ -213,14 +213,14 @@ There are 2 ways to create a bucket:
 
 - Open `Makefile` in your `TaxiFareModel` project and copy the following lines.
 
-```make
-# project id - replace with your Project's ID
+``` bash
+# project id - replace with your GCP project id
 PROJECT_ID=XXX
 
-# bucket name - follow the convention of wagon-ml-[YOUR_LAST_NAME]-[BATCH_NUMBER]
+# bucket name - replace with your GCP bucket name
 BUCKET_NAME=XXX
 
-# Choose your region https://cloud.google.com/storage/docs/locations#available_locations
+# choose your region from https://cloud.google.com/storage/docs/locations#available_locations
 REGION=europe-west1
 
 set_project:
@@ -230,7 +230,7 @@ create_bucket:
     @gsutil mb -l ${REGION} -p ${PROJECT_ID} gs://${BUCKET_NAME}
 ```
 
-We need to fix the indentations as you copied the code with __spaces__ and we need to replace them with __tabs__. If you don't do it you'll probably see an error about `missing separator` while running the commands. If you can't figure it out yourself, make a ticket.
+We need to fix the indentations as you copied the code with __spaces__ and we need to replace them with __tabs__. If you do not do it you will probably see an error about `missing separator` while running the commands. If you cannot figure it out yourself, make a ticket.
 
 - Use the predefined bash commands from `Makefile` to create your bucket
 
@@ -241,26 +241,26 @@ make create_bucket
 
 👉 Check on [Storage](https://console.cloud.google.com/storage) that your bucket has been created.
 
-### The UI way (just to know)
+### The UI way (optionally)
 
-- Go to [Storage](https:A//console.cloud.google.com/storage) and create a bucket from there
+- Go to [Storage](https://console.cloud.google.com/storage) and create a bucket from there
 - Select `Location type`: `Region` since we will not need to access our bucket from all over the world
-- Bucket should be created in the nearest region (`europe-west1` for France)
+- Buckets should be created in the nearest region (`europe-west1` for France)
 - Keep other options default
 
 ## Upload your dataset
 
-- Add the following lines to your `Makefile` (don't forget about the indentation!)
+- Add the following lines to your `Makefile` (do not forget about the indentation)
 
-```make
-# path of the file to upload to gcp (the path of the file should be absolute or should match the directory where the make command is run)
-LOCAL_PATH="XXX" # Replace with your local path to the `train_1k.csv` and make sure to put it between quotes
+``` bash
+# path to the file to upload to GCP (the path to the file should be absolute or should match the directory where the make command is ran)
+# replace with your local path to the `train_1k.csv` and make sure to put the path between quotes
+LOCAL_PATH="XXX"
 
-# bucket directory in which to store the uploaded file (we choose to name this data as a convention)
+# bucket directory in which to store the uploaded file (`data` is an arbitrary name that we choose to use)
 BUCKET_FOLDER=data
 
-# name for the uploaded file inside the bucket folder (here we choose to keep the name of the uploaded file)
-# BUCKET_FILE_NAME=another_file_name_if_I_so_desire.csv
+# name for the uploaded file inside of the bucket (we choose not to rename the file that we upload)
 BUCKET_FILE_NAME=$(shell basename ${LOCAL_PATH})
 
 upload_data:
@@ -268,12 +268,12 @@ upload_data:
     @gsutil cp ${LOCAL_PATH} gs://${BUCKET_NAME}/${BUCKET_FOLDER}/${BUCKET_FILE_NAME}
 ```
 
-- Finally use the predefined bash command from `Makefile` to upload your file to
+- Finally use the predefined bash command from `Makefile` to upload your file
 
 ```bash
 make upload_data
 ```
 
-👉 Check on [Storage](https://console.cloud.google.com/storage) that your file was correctly uploaded. You should see a `train_1k.csv` file in the `data` folder of your bucket. Look at the content of the `Makefile`. Can you see how the command used in order to upload the file is built ?
+👉 Check on [Storage](https://console.cloud.google.com/storage) that your file was correctly uploaded. You should see a `train_1k.csv` file in the `data` folder of your bucket. Look at the content of the `Makefile`. You can see how the command used in order to upload the file was built
 
 🚀 Congrats!
