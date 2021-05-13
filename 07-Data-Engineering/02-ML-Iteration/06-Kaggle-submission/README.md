@@ -42,7 +42,7 @@ Wait a bit and verify that your pipeline has been saved as `model.joblib`.
 You might wonder why we ran `make install` ?
 
 **This step is important**
-👉 You remember that your whole pipeline is integrated inside of your `model.joblib` file
+👉 Remember that your whole pipeline is integrated inside of your `model.joblib` file
 👉 That includes the custom encoders written inside of `encoders.py`
 👉 Once we have a trained pipeline, we will use it to make the predictions that we will submit to Kaggle. The quality of these predictions will determine our score
 👉 When executing predictions from our loaded pipeline, the pipeline will be looking for the code of the `TimeFeaturesEncoder` and `DistanceTransformer` classes
