@@ -6,7 +6,9 @@ Beyond training models, you will see how you can make your models available to t
 
 🚨 If you are a student of the **Part-Time Bootcamp**, go back to the setup to create a GCP account now:
 
-👉 Go to the **Google Cloud Platform setup** section of https://github.com/lewagon/data-setup
+👉 Go to the **Google Cloud Platform setup** section of the `data-setup` repo:
+- [macOSX](https://github.com/lewagon/data-setup/blob/master/macOS.md#google-cloud-platform-setup)
+- [Ubuntu/WSL2](https://github.com/lewagon/data-setup/blob/master/LINUX.md#google-cloud-platform-setup)
 
 # Google Cloud Platform services
 
@@ -33,7 +35,7 @@ You will need a bucket to store data, code and trained models.
 
 ⚠️ **IMPORTANT**: Bucket names must be **globally unique** since they are accessible worldwide. Please respect the naming convention `wagon-data-[BATCH_NUMBER]-[YOUR_LAST_NAME]`
 
-In the same as the `PROJECT_ID` is used in your code in order to identify your project, the `BUCKET_NAME` will be used in your code in order to identify an online storage location where you will store your data and your models.
+In the same way as the `PROJECT_ID` is used in your code in order to identify your project, the `BUCKET_NAME` is used in your code in order to identify an online storage location where you store your data and your models.
 
 You can list the buckets of your project in [Navigation menu / Storage / Browser](https://console.cloud.google.com/storage/browser).
 
