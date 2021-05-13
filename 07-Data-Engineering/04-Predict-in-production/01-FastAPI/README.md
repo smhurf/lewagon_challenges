@@ -208,13 +208,13 @@ We need to convert the time input by the user (and assume it is a time on the ti
 from datetime import datetime
 import pytz
 
-# create a datetime object from the user provided date
-provided_time = "2021-05-30 10:12:00"
-naive = datetime.strptime(provided_time, "%Y-%m-%d %H:%M:%S")
+# create a datetime object from the user provided datetime
+pickup_datetime = "2021-05-30 10:12:00"
+pickup_datetime = datetime.strptime(pickup_datetime, "%Y-%m-%d %H:%M:%S")
 
 # localize the user datetime with NYC timezone
-local = pytz.timezone("US/Eastern")
-local_dt = local.localize(naive, is_dst=None)
+eastern = pytz.timezone("US/Eastern")
+localized_pickup_datetime = eastern.localize(pickup_datetime, is_dst=None)
 ```
 
 </details>
@@ -230,7 +230,7 @@ Once we have a localized user time, we want to convert it to UTC so that it can 
 
 ``` python
 # localize the datetime to UTC
-utc_dt = local_dt.astimezone(pytz.utc)
+utc_pickup_datetime = localized_pickup_datetime.astimezone(pytz.utc)
 ```
 
 </details>
@@ -247,7 +247,7 @@ Remember the specific format expected by the pipeline (an `object`, not a `datet
 
 
 ``` python
-utc_dt.strftime("%Y-%m-%d %H:%M:%S UTC")
+formatted_pickup_datetime = utc_pickup_datetime.strftime("%Y-%m-%d %H:%M:%S UTC")
 ```
 
 </details>
