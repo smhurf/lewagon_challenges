@@ -4,7 +4,7 @@ In the previous challenge, we trained a basic model on GCP. We will now integrat
 
 Deploy, train and use your pipeline model with GCP.
 
-You've trained and evaluated your first Pipeline on your laptop, now you'll do everything on GCP.
+You've trained and evaluated your first Pipeline on your laptop, now you'll do everything on GCP - in the cloud.
 
 ## Complete `TaxiFareModel/trainer.py` to be trainable and deployable to GCP
 
