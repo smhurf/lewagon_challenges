@@ -3,7 +3,7 @@
 Before carrying on, make sure that you understood:
 - The structure of the `Trainer` class from the first challenge
 - The way to log a metric and a parameter on a hosted MLflow server such as https://mlflow.lewagon.co/
-- How to pass a variable number of keyword argument parameters to a function or method using `**kwargs`, and how to access them in the function or method
+- How to pass multiple keyword argument parameters to a function or method using `**kwargs` and how to access them in the function or method
 
 If any of these is unclear, make a ticket.
 
@@ -28,7 +28,7 @@ Do not forget to add and import for the `joblib` package and to call the `save_m
 👉 We will call the `save_model` method in order to push data to MLflow, keep it in mind for later
 👉 Once you're happy about your final model, you can submit your best model's predictions to Kaggle
 
-Last thing, we suggested here a package structure to organize your code and your run, feel free to reorganize it as you wish.
+Last thing, we suggested a package structure to organize your code and your run, feel free to reorganize it as you wish.
 
 ## Set a name for your experiment
 
@@ -54,7 +54,7 @@ Now that you are all set, have a go at as many runs as you wish for your experim
 
 View the results on https://mlflow.lewagon.co/
 
-And as always, while building the pipeline and updating the code, run at first on small data samples in order to iterate quickly on code errors, and preferably on your own machine.
+And as always, while building the pipeline and updating the code, first train your models on small data samples in order to iterate quickly on code errors, and preferably on your own machine.
 
 Then once your modified code is all set, you can play with the big datasets and train your pipeline in the cloud.
 
@@ -84,7 +84,7 @@ We will start with one additional feature: `distance_to_center`:
 - Get back to the `data-challenges/07-Data-Engineering/02-ML-Iteration/01-Kaggle-Taxi-Fare` notebook with complete feature engineering
 - Implement a custom transformer inside of `encoders.py` called `DistanceToCenter` which adds the `distance_to_center` feature
 - Adapt the `set_pipeline` method inside our main `Trainer` class so that it integrates this new block
-- Modify the parameters fed to our `Trainer` class in order to easily run 2 runs to compare the influence of the added feature
+- Modify the parameters fed to our `Trainer` class in order to easily execute 2 runs to compare the influence of the added feature
 - Launch 2 new runs and check the influence of the `distance_to_center` feature
 
 Once you've added the new feature, add as many features as you want and analyse the impact on the performances of the trained pipeline
