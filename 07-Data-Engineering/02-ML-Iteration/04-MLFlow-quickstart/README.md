@@ -5,7 +5,7 @@ Now that we have built a simple model, we want to make it better! The ultimate g
 **So what can we do?**
 
 We can try to improve our model by:
-- building and trying to use different or more features
+- building and trying to use different or additional features
 - testing different estimators (linear, non linear, etc)
 - tuning the hyperparameters of our pipeline
 
@@ -58,11 +58,11 @@ mlflow ui
 
 You just saved your first experiment in a local MLflow server on your machine 🎉
 
-That is just fine, but what if you want to share your results with your team or want to train your model on another machine... How will you be able to contact your machine then ?
+That is just fine, but what if you want to share your results with your team or want to train your model on another machine... How will you be able to contact your machine then?
 
 ## Hosted MLflow server
 
-In order to solve this issue, we will next be using a hosted MLflow server. The server will be reachable from any machine on the Internet. It will be able to store the results of experiments resulting from the training of models on any machine connected to the Internet. Anyone on the Internet will be able to observe the results of the experiments.
+In order to solve this issue, we will be using a hosted MLflow server. The server will be reachable from any machine on the Internet. It will be able to store the results of experiments resulting from the training of models on any machine connected to the Internet. Anyone on the Internet will be able to observe the results of the experiments.
 
 We will be using a Le Wagon hosted MLflow server in order to do this : https://mlflow.lewagon.co/
 
@@ -148,14 +148,14 @@ class Trainer():
 
 Notice how [@memoized_property](https://pypi.org/project/memoized-property/) is actually quite powerful:
 - It is a decorator
-- Is defines its decorated function as a [property](https://www.geeksforgeeks.org/python-property-function/)
+- It defines its decorated function as a [property](https://www.geeksforgeeks.org/python-property-function/)
 - The property is memoized <=> only set at first call
 
 Once the code is appended to our trainer, we can log parameters and metrics in MLflow from any method in our `Trainer` class by using:
 - `self.mlflow_log_param(param_name, param_value)`
 - `self.mlflow_log_metric(metric_name, metric_value)`
 
-One last thing: we need to defined in our class the URL of the MLflow server and the name of our experiment:
+One last thing: we need to define the URL of the MLflow server and the name of our experiment in our class :
 
 ``` python
 MLFLOW_URI = "https://mlflow.lewagon.co/"
