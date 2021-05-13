@@ -12,7 +12,7 @@ In order to do so, we will:
 
 We will start with a clean slate for these challenges. The project on which we will be working is similar to the codebase you worked with until now, but the code is organized in a different way.
 
-First, we will copy the code for the challenges of **Predict in prod** in your *project**s** directory*: `~/code/<user.github_nickname>`.
+First, we will copy the code for the challenges of **Predict in production** in your *projects directory*: `~/code/<user.github_nickname>`.
 
 ``` bash
 cp ~/code/<user.github_nickname>/data-challenges/07-Data-Engineering/04-Predict-in-production/01-FastAPI/TaxiFareModel ~/code/<user.github_nickname>/TFM_PredictInProd
@@ -49,7 +49,7 @@ You are all set 🎉
 
 ⚠️ Do not forget that we cannot load a `model.joblib` file without the code that was used in order to train it! After all, we need to be using the exact same pipeline ⚠️
 
-👉 In order to load a model, the code that was used in order to train it needs to be installed on the machine
+👉 The loading of the model requires the code used to train the model to be installed on the machine.
 
 ### About the version of your trained model + packages
 
@@ -63,7 +63,7 @@ This is probably not going to be a concern if you trained your model just now (n
 
 In order to avoid these issues and proceed with the challenges, we are going to retrain our model on a small dataset.
 
-👉 You can run `make run_locally` to train the model and save it within your project. If it's not working for you, make a ticket.
+👉 You can run `make run_locally` to train the model and save it within your project. If it's not working for you, ask for a TA.
 
 ``` bash
 make run_locally
@@ -205,7 +205,7 @@ Now that the piping is done, let's make an actual prediction.
 
 #### Build a dataframe for the prediction
 
-First, we need to store the API parameters as an observation in an `X_pred` dataframe.
+First, we need to store the API parameters as an observation in an `X_pred` `DataFrame`.
 
 The columns should match the format of the `X_train` used in order to train the pipeline of our model. Otherwise the pipeline will output a python error...
 
@@ -302,7 +302,7 @@ utc_dt.strftime("%Y-%m-%d %H:%M:%S UTC")
 
 #### Make a prediction
 
-Now that we have created a `X_pred` dataframe that matches our pipeline, let's make a prediction.
+Now that we have created a `X_pred` `DataFrame` that matches our pipeline, let's make a prediction.
 
 Let's load the model from the trained `model.joblib`.
 
