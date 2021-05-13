@@ -15,9 +15,9 @@ Remember that a packaged python project is nothing more than
 - having sub directories containing python files (`.py` files also knwown as modules)
 - the sub directories (also known as packages) containing python files should also contain an `__init__.py` file
 
-Having a python project packaged basically means that its code will to be able to function in any context, since its `setup.py` and dependencies (`requirements.txt`, `MANIFEST.in` formally describe how to use it.
+Having a python project packaged basically means that its code will be able to function in any context, since its `setup.py` and dependencies (`requirements.txt`, `MANIFEST.in`) formally describe how to use it.
 
-In our case we want our packaged project to be run on the servers of the `AI Platform` so that our model is trained.
+In our case we want our packaged project to be run on the servers of the `AI Platform` in order to train our model.
 
 ### Running python files from the command line
 
@@ -36,8 +36,8 @@ The usual way would be to refer to the file by its path relative to our current 
 python SimpleTaxiFare/trainer.py
 ```
 
-Please note that the prefered way is to use the modular import with the following syntax:
-- replace the directory separators (usually `/`) by dots `.` and avoid the trailing `/py`
+Please note that the preferred way is to use the modular import with the following syntax:
+- replace the directory separators (usually `/`) with dots `.` and remove the trailing `.py`
 
 👉 The modular `-m` import makes it very easy in the code to import a python module from within another python module, independently of their location in the subdirectories of the project
 
@@ -45,7 +45,7 @@ Please note that the prefered way is to use the modular import with the followin
 python -m SimpleTaxiFare.trainer
 ```
 
-⚠️ Of course this assumes that the `trainer.py` contains some code outside of a function or class bootstrapping the code workflow, or nothing fancy will happen. Such a code might be located inside of an [`ifmain` block](https://stackoverflow.com/a/419185) for example
+⚠️ Of course this assumes that the `trainer.py` contains some code outside of a function or class bootstrapping the code workflow, otherwise nothing fancy will happen. Such a code might be located for example inside of an [`ifmain` block](https://stackoverflow.com/a/419185)
 
 ## Project setup
 
@@ -83,7 +83,7 @@ You are all set 🎉
 
 ## Have a look at the structure of the packaged project
 
-Let's have a look at the provided packaged project structure for our code.
+Let's have a look at the provided packaged project structure of our code.
 
 ``` bash
 .                             # packaged project directory
@@ -132,7 +132,7 @@ if __name__ == '__main__':
     """ runs a training """
 ```
 
-👉 Get help from the [Cloud Storage documentation](https://pypi.org/project/google-cloud-storage/) to understand how the code uploads a file to a bucket
+👉 Get help from the [Cloud Storage documentation](https://pypi.org/project/google-cloud-storage/) to understand how to upload a file to a bucket through your python code
 
 ## Run the code locally
 
@@ -180,7 +180,7 @@ GCP will:
 
 👉 Install the package and its requirements thanks to `setup.py`
 
-👉 Run a training on the AI Platform machine through the parameters passed to the `gcloud ai-platform` command in the `Makefile` (that means `python -m SimpleTaxiFare.trainer`)
+👉 Run a training on the AI Platform machine through the parameters passed to the `gcloud ai-platform` command in the `Makefile` (that means it will execute `python -m SimpleTaxiFare.trainer` in the cloud)
 
 👉 We can sit back and relax, close our computer, grab a coffee and come back when the training is finished
 
@@ -200,11 +200,11 @@ We need to make sure that they match with the versions listed in `requirements.t
 
 Finally, let's train our packaged project on the AI Platform.
 
-The GCP Command Line Interface (CLI) `gcloud` installed allows us to trigger actions on GCP. It provides commands allowing to use all of its APIs.
+The GCP Command Line Interface (CLI) `gcloud` installed on your computer allows us to trigger actions on GCP. It provides commands allowing us to use all of its APIs.
 
 In particular it provides a command which allows us to request the online training of the model provided in our packaged project.
 
-Do not be scared by the command below. If you read throroughly, then take a look at the `Makefile`, you will see that it only provides the parameters required in order to descrive the environment in which we want the code of our packaged project to run.
+Do not be scared by the command below. If you read thoroughly, then take a look at the `Makefile`, you will see that it only provides the parameters required in order to describe the environment in which we want the code of our packaged project to run.
 
 The `gcloud ai-platform jobs submit training` command requires:
 - `JOB_NAME`: an arbitrary name allowing us to identify a training occurence, which will be visible in the [GCP console](https://console.cloud.google.com/ai-platform/jobs) once it has ran
