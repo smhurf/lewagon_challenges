@@ -246,10 +246,7 @@ Our model was trained using UTC though (remember the content of the dataset wher
 We need to convert the time input by the user (and assume it is a time on the timezone of NYC).
 
 <details>
-<summary>
-  💡 Hint: how to localize the user provided datetime to the NYC timezone ?
-</summary>
-
+  <summary markdown='span'><strong> 💡 Hint: how to localize the user provided datetime to the NYC timezone ? </strong></summary>
 
 ``` python
 from datetime import datetime
@@ -270,10 +267,7 @@ localized_pickup_datetime = eastern.localize(pickup_datetime, is_dst=None)
 Once we have a localized user time, we want to convert it to UTC so that it can be fed to our pipeline.
 
 <details>
-<summary>
-  💡 Hint: how to convert a localized datetime to UTC ?
-</summary>
-
+  <summary markdown='span'><strong> 💡 Hint: how to convert a localized datetime to UTC ? </strong></summary>
 
 ``` python
 # localize the datetime to UTC
@@ -288,10 +282,7 @@ Remember the specific format expected by the pipeline (an `object`, not a `datet
 👉 Convert the data accordingly
 
 <details>
-<summary>
-  💡 Hint: how to convert a datetime to the format expected by the pipeline ?
-</summary>
-
+  <summary markdown='span'><strong> 💡 Hint: how to convert a datetime to the format expected by the pipeline ? </strong></summary>
 
 ``` python
 formatted_pickup_datetime = utc_pickup_datetime.strftime("%Y-%m-%d %H:%M:%S UTC")
