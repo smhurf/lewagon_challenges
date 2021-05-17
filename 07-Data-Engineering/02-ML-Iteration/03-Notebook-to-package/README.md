@@ -27,7 +27,7 @@ Let's create a packaged project from the code of the notebook. In order to achie
 pip install git+https://github.com/krokrob/packgenlite
 ```
 
-- Create a new packaged project called `TaxiFareModel` in your *project**s** directory*: `~/code/<user.github_nickname>`.
+- Create a new packaged project called `TaxiFareModel` in your *projects directory*: `~/code/<user.github_nickname>`.
 
 ``` bash
 cd ~/code/<user.github_nickname>
@@ -142,7 +142,7 @@ Make sure that you are confident with the following notions:
 - attributes and methods of a class
 - the `**kwargs` argument of a function and how to use it, (help [HERE](https://www.programiz.com/python-programming/args-and-kwargs) if unclear)
 
-If you are not confident with any of these elements or the general structure of the code, make a ticket.
+If you are not confident with any of these elements or the general structure of the code, ask for a TA.
 
 ### Test your packaged project
 

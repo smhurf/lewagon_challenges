@@ -89,7 +89,7 @@ create_bucket:
     @gsutil mb -l ${REGION} -p ${PROJECT_ID} gs://${BUCKET_NAME}
 ```
 
-We need to fix the indentations as you copied the code with __spaces__ and we need to replace them with __tabs__. If you do not do it you will probably see an error about `missing separator` while running the commands. If you cannot figure it out yourself, make a ticket.
+We need to fix the indentations as you copied the code with __spaces__ and we need to replace them with __tabs__. If you do not do it you will probably see an error about `missing separator` while running the commands. If you cannot figure it out yourself, ask for a TA.
 
 - Use the predefined bash commands from `Makefile` to create your bucket
 

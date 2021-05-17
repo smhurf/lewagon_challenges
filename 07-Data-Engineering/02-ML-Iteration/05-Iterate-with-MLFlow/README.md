@@ -5,7 +5,7 @@ Before carrying on, make sure that you understood:
 - The way to log a metric and a parameter on a hosted MLflow server such as https://mlflow.lewagon.co/
 - How to pass multiple keyword argument parameters to a function or method using `**kwargs` and how to access them in the function or method
 
-If any of these is unclear, make a ticket.
+If any of these is unclear, ask for a TA.
 
 In order to iterate, we will need a few packages:
 

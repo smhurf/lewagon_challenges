@@ -51,7 +51,7 @@ python -m SimpleTaxiFare.trainer
 
 We will start with a clean slate for these challenges. The project on which we will be working is similar to the codebase you worked with until now, but the code is organized in a different way.
 
-First, we will copy the code for the challenges of **Train at scale** in your *project**s** directory*: `~/code/<user.github_nickname>`.
+First, we will copy the code for the challenges of **Train at scale** in your *projects directory*: `~/code/<user.github_nickname>`.
 
 ``` bash
 cp ~/code/<user.github_nickname>/data-challenges/07-Data-Engineering/03-Train-at-scale/02-Submit-training-tasks/SimpleTaxiFare ~/code/<user.github_nickname>/TFM_TrainAtScale
@@ -264,6 +264,6 @@ When your job is finished, have a look at your [bucket](https://console.cloud.go
 
 You just trained your first model online! 🎉
 
-Make sure that you are comfortable with the way the `run_locally` and `gcp_submit_training` directives of the `Makefile` work and how and in which context they call `trainer.py` (make a ticket if you need to).
+Make sure that you are comfortable with the way the `run_locally` and `gcp_submit_training` directives of the `Makefile` work and how and in which context they call `trainer.py` (ask for a TA if you need to).
 
 Next step: we will make a prediction from that online model! 🚀
