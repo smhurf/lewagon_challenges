@@ -8,15 +8,40 @@ In order to do so, we will:
 - Challenge 2 : create a **Docker image** containing the environment required in order to run the code of our API
 - Challenge 3 : push this image to **Google Cloud Run** so that it is instantiated as a **Docker container** that will run our code and allow developers all over the world to use it
 
-**Where to start?**
+## Project setup
 
-We will use the package we provided for you in the current directory, `TaxiFareModel`. In order to avoid creating a `git` repository within the `data-challenges`, let's move it outside!
-`cp TaxiFareModel ~/code/<user.github_nickname>/`
-`cd ~/code/<user.github_nickname>/TaxiFareModel `
-`pip install -e .`
-`git init`
+We will start with a clean slate for these challenges. The project on which we will be working is similar to the codebase you worked with until now, but the code is organized in a different way.
 
-Make sure to update the variables in `params.py` and in the `Makefile` which will enable you to connect to your project on Google Cloud.
+First, we will copy the code for the challenges of **Predict in production** in your *projects directory*: `~/code/<user.github_nickname>`.
+
+``` bash
+cp ~/code/<user.github_nickname>/data-challenges/07-Data-Engineering/04-Predict-in-production/01-FastAPI/TaxiFareModel ~/code/<user.github_nickname>/TFM_PredictInProd
+```
+
+Then, we will create a local git repository for the project:
+
+``` bash
+cd ~/code/<user.github_nickname>/TFM_PredictInProd
+git init
+```
+
+Then, we will install the package so it can be imported:
+
+``` bash
+pip install -e .
+```
+
+Once this is done, make sure to update the variables in the project so that they match your Google Cloud Platform account.
+
+In `TaxiFareModel/params.py` :
+- `EXPERIMENT_NAME`: name of your experiment in the Le Wagon MLFlow server
+- `BUCKET_NAME`: name of a bucket in your GCP account
+
+In `Makefile`:
+- `PROJECT_ID`: name of a project in your GCP account
+- `BUCKET_NAME`: name of a bucket in your GCP account
+
+You are all set 🎉
 
 ## Before we start - let's go through some important points
 
@@ -24,21 +49,31 @@ Make sure to update the variables in `params.py` and in the `Makefile` which wil
 
 ⚠️ Do not forget that we cannot load a `model.joblib` file without the code that was used in order to train it! After all, we need to be using the exact same pipeline ⚠️
 
-👉 You can run `make run_locally` to train the model and save it within your project. If it's not working for you, make a ticket.
+👉 The loading of the model requires the code used to train the model to be installed on the machine.
 
 ### About the version of your trained model + packages
 
 ⚠️ We need to make sure that the versions of the packages (`numpy`, `pandas`, `scikit-learn` and so on) used in order to train the model are going to be the same as the ones used in order to load the `model.joblib` file ⚠️
 
-👉 This is probably not going to be a concern if you trained your model just now (no new versions of the packages)
+This is probably not going to be a concern if you trained your model just now (no new versions of the packages).
 
 👉 You may encounter this issue in the future if you try to load a `model.joblib` file for your **Prediction API** a few months from now. The solution is to pin the versions of the packages in your `requirements.txt`. Remember the **AI Platform RUNTIME** ? The [version of the runtime](https://cloud.google.com/ai-platform/training/docs/runtime-version-list) that you used for the training allows you to know which versions of the packages to use.
 
+### Solution
+
+In order to avoid these issues and proceed with the challenges, we are going to retrain our model on a small dataset.
+
+👉 You can run `make run_locally` to train the model and save it within your project. If it's not working for you, ask for a TA.
+
+``` bash
+make run_locally
+```
+
 ## Let's create our first Prediction API exposing our model
 
-Do you remember having consumed an API during the Python module using the `requests` package?
+Do you remember having consumed an API during the Python module using the `requests` package ?
 
-Today we are going to create your own API allowing other developers to ask our model for predictions.
+We are going to create our own API allowing other developers to ask our model for predictions.
 
 ### First step: let's create an API endpoint and test it
 
@@ -67,7 +102,7 @@ Your project should look like this (use the `tree` command):
 └── setup.py
 ```
 
-In `api/fast.py`, let's create a root endpoint that will welcome the developers using our API.
+In `TaxiFareModel/api/fast.py`, let's create a root endpoint that will welcome the developers using our API.
 
 In order to do that, we will use **FastAPI**.
 
@@ -119,7 +154,15 @@ run_api:
 	uvicorn api.fast:app --reload  # load web server with code autoreload
 ```
 
-Once the server is started, you can play with the API either directly: http://localhost:8000/
+⚠️ After you paste this code, verify in your `Makefile` that the character before the `uvicorn` command is a tabulation, not a space (remember that the directives of the `Makefile` must start by a tabulation) ⚠️
+
+Once the directive is pasted in the `Makefile` you will be able to run:
+
+``` bash
+make run_api
+```
+
+When the server is started, you will be able to play with the API either directly: http://localhost:8000/
 
 ... Or through the **Swagger** documentation: http://localhost:8000/docs (click on the endpoint you wish to play with, then hit **Try it out**)
 
@@ -162,7 +205,7 @@ Now that the piping is done, let's make an actual prediction.
 
 #### Build a dataframe for the prediction
 
-First, we need to store the API parameters as an observation in an `X_pred` dataframe.
+First, we need to store the API parameters as an observation in an `X_pred` `DataFrame`.
 
 The columns should match the format of the `X_train` used in order to train the pipeline of our model. Otherwise the pipeline will output a python error...
 
@@ -182,13 +225,17 @@ passenger_count         int64
 
 #### Handle the `key` column
 
-*Hint*: the code provided for the TaxiFare model uses an additional **key** column. Its value (for example `key="2013-07-06 17:18:00.000000119"`) will not affect the model however if the column is missing the pipeline will not accept the dataframe as an input...
+Notice that our pipeline requires a `key` parameter that we do not ask from the developer using our API.
 
-We cannot ask the developer calling our API to provide a value for the key column, as this data does not make sense for our API.
+Why is that ?
 
-Yet the column needs to exist in the dataframe that is passed to the pipeline for the prediction.
+👉 This parameter is used in order to create Kaggle submissions for the Taxi Fare challenge
 
-👉 You need to fill the column with some hard coded value in order to allow the pipeline to train.
+Because we trained our pipeline with the `key` parameter, it needs to be provided. But the `key` parameter would make no sense for a developer.
+
+Two solutions: we could retrain our pipeline without the `key` feature which adds no value for the prediction. Or provide a hard coded value so that the piping works. We choose the later approach.
+
+👉 You need to fill the column with some hard coded value (such as "2013-07-06 17:18:00.000000119") in order to allow the pipeline to train.
 
 #### Localize the datetime provided by the developer
 
@@ -255,7 +302,7 @@ formatted_pickup_datetime = utc_pickup_datetime.strftime("%Y-%m-%d %H:%M:%S UTC"
 
 #### Make a prediction
 
-Now that we have created a `X_pred` dataframe, let's make a prediction.
+Now that we have created a `X_pred` `DataFrame` that matches our pipeline, let's make a prediction.
 
 Let's load the model from the trained `model.joblib`.
 
