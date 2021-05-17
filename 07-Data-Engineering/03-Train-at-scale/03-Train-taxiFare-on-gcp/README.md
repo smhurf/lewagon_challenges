@@ -14,7 +14,7 @@ Here we go back with the pipeline including:
 
 Start from the `TaxiFareModel` package solution of `07-Data-Engineering/02-ML-Iteration/04-MLFlow-quickstart`, but feel free to use your own package as well.
 
-Move the solution to the *project**s** directory*: `~/code/<user.github_nickname>`.
+Move the solution to the *projects directory*: `~/code/<user.github_nickname>`.
 
 <details>
   <summary markdown='span'><strong>How to move it to the *project**s** directory ?</strong></summary>
