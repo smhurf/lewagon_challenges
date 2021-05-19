@@ -50,7 +50,7 @@ curl --silent 'https://wagon-public-datasets.s3.amazonaws.com/taxi-fare-ny/train
 ❓ You will need to reference the location of the file in your code, how to find the local path to `train_1k.csv`?
 
 <details>
-<summary>💡 Hint</summary>
+  <summary markdown='span'><strong> 💡 Hint </strong></summary>
 
 From your terminal, go to the TaxiFareModel project that you created:
 

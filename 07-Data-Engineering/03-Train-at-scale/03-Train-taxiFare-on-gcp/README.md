@@ -17,7 +17,7 @@ Start from the `TaxiFareModel` package solution of `07-Data-Engineering/02-ML-It
 Move the solution to the *projects directory*: `~/code/<user.github_nickname>`.
 
 <details>
-  <summary markdown='span'><strong>How to move it to the *project**s** directory ?</strong></summary>
+  <summary markdown='span'><strong> How to move it to the *projects directory* ? </strong></summary>
 
 
   ``` bash

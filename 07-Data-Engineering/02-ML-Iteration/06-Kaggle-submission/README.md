@@ -57,7 +57,7 @@ You might wonder why we ran `make install` ?
 We will use the `predict.py` file provided with the challenge. Copy the file to the location of your `TaxiFareModel` project.
 
 <details>
-<summary> 💡 Hint </summary>
+  <summary markdown='span'><strong> 💡 Hint </strong></summary>
 
 ``` bash
 cp ~/code/<user.github_nickname>/data-challenges/07-Data-Engineering/02-ML-Iteration/06-Kaggle-submission/predict.py ~/code/<user.github_nickname>/TaxiFareModel/TaxiFareModel
