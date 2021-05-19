@@ -47,24 +47,23 @@ First, we will download the `train_1k.csv` file:
 curl --silent 'https://wagon-public-datasets.s3.amazonaws.com/taxi-fare-ny/train_1k.csv' > ~/code/<user.github_nickname>/TaxiFareModel/raw_data/train_1k.csv
 ```
 
-You will need to reference the location of the file in your code.
+❓ You will need to reference the location of the file in your code, how to find the local path to `train_1k.csv`?
 
 <details>
-<summary>
-  💡 Hint: how to find the local path to <code>train_1k.csv</code>?
-</summary>
+<summary>💡 Hint</summary>
 
+From your terminal, go to the TaxiFareModel project that you created:
 
-  From your terminal, go to the TaxiFareModel project that you created:
+``` bash
+cd ~/code/<user.github_nickname>/TaxiFareModel
+```
 
-  ``` bash
-  cd ~/code/<user.github_nickname>/TaxiFareModel
-  ```
+From there, go to the `raw_data` directory. You should see the [train_1k.csv](https://wagon-public-datasets.s3.amazonaws.com/taxi-fare-ny/train_1k.csv) file inside.
 
-  From there, go to the <code>raw_data</code> directory. You should see the [train_1k.csv](https://wagon-public-datasets.s3.amazonaws.com/taxi-fare-ny/train_1k.csv) file inside.
+In order to reference it, print the local path with `pwd`.
 
-  In order to reference it, print the local path with <code>pwd</code>.
 </details>
+<br>
 
 There are 2 ways to create a bucket:
 
@@ -100,7 +99,7 @@ make create_bucket
 
 👉 Check on [Storage](https://console.cloud.google.com/storage) that your bucket has been created.
 
-### The UI way (optionally)
+### The UI way (alternative)
 
 - Go to [Storage](https://console.cloud.google.com/storage) and create a bucket from there
 - Select `Location type`: `Region` since we will not need to access our bucket from all over the world
