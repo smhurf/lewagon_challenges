@@ -37,7 +37,7 @@ packgenlite TaxiFareModel
 - Copy the code that we provide into your project
 
 <details>
-  <summary markdown='span'><strong>💡 How to copy the code from the challenge to the packaged project ?</strong></summary>
+  <summary markdown='span'><strong>💡 How to copy the code from the challenge to the packaged project ? </strong></summary>
 
 
 ```bash

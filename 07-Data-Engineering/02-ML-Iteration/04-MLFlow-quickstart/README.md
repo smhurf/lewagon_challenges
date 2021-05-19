@@ -22,7 +22,7 @@ We now have a good workflow for bringing improvements to our model. We want to t
 Copy `ml_flow_test.py` from the challenge directory to the directory of your packaged project.
 
 <details>
-  <summary markdown='span'><strong>💡 How to copy `ml_flow_test.py` from the challenge to the packaged project ?</strong></summary>
+  <summary markdown='span'><strong>💡 How to copy `ml_flow_test.py` from the challenge to the packaged project ? </strong></summary>
 
 
 ```bash
