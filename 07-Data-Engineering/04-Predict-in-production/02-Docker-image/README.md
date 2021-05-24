@@ -21,6 +21,11 @@ Your project should look like this:
 
 ```
 .
+├── api
+│   ├── __init__.py
+│   └── fast.py
+├── notebooks
+│   └── API\ usage.ipynb
 ├── TaxiFareModel
 │   ├── __init__.py
 │   ├── data.py
@@ -29,15 +34,11 @@ Your project should look like this:
 │   ├── params.py
 │   ├── trainer.py
 │   └── utils.py
-├── api
-│   ├── __init__.py
-│   └── fast.py
-├── notebooks
-│   └── API\ usage.ipynb
 ├── Dockerfile
-├── predict.py
 ├── Makefile
 ├── MANIFEST.in
+├── model.joblib
+├── predict.py
 ├── requirements.txt
 └── setup.py
 ```
@@ -112,7 +113,7 @@ Make sure that the `Docker.app` is running (you should see a whale in your menu 
 
 <img src="https://raw.githubusercontent.com/lewagon/data-challenges/master/07-Data-Engineering/04-Predict-in-production/02-Docker-image/docker_daemon.png?token=ACMEB73MAOA6APS2SDPVOXTAJIZXQ" width="150" alt="finding your PROJECT_ID in GCP">
 
-### Linux/WSL2
+### Linux
 
 Start the Docker service:
 
@@ -120,9 +121,14 @@ Start the Docker service:
 sudo service docker start
 ```
 
-### Windows
+### WSL2
 
 Make sure the Docker application is running (you should see a whale in your menu bar).
+If you prefer a "command line" way :point_right: you can also use the below command to start the Docker service:
+
+```bash
+sudo service docker start
+```
 
 ## Make sure the Docker image works on our machine
 
@@ -186,7 +192,7 @@ Let's play with the API an receive your first prediction!
 ``` python
 import requests
 
-taxifare_api_url = "http://127.0.0.1:8000/predict_fare?FILL&THE&PARAMS&HERE"
+taxifare_api_url = "http://127.0.0.1:8000/predict?FILL&THE&PARAMS&HERE"
 
 response = requests.get(
     taxifare_api_url

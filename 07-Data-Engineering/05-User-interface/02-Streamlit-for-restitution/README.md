@@ -1,5 +1,5 @@
 
-We saw in the previous challenge how to plug a website to our **Prediction API** in order to allow regular users make prediction.
+We saw in the previous challenge how to plug a website to our **Prediction API** in order to allow regular users to make prediction.
 
 Now let's create our own website ! 🔥
 
@@ -9,7 +9,7 @@ We are going to use **Streamlit** which will allow us to create a website very e
 
 We will create a new project directory for the code of our website.
 
-Again, this directory will be located inside of our local GitHub directory where we store all of our GitHub repositories: `~/code/<user.github_nickname>`.
+Again, this directory will be located inside of our *projects directory*: `~/code/<user.github_nickname>`.
 
 Create a new project directory named `TaxiFareWebsite`.
 
@@ -103,9 +103,9 @@ See ? No need to load a `model.joblib` file in this app, we do not even need to 
 🤔 How could we call our API ? Off course... The `requests` package 💡
 '''
 
-url = 'https://taxifare.lewagon.ai/predict_fare/'
+url = 'https://taxifare.lewagon.ai/predict'
 
-if url == 'https://taxifare.lewagon.ai/predict_fare/':
+if url == 'https://taxifare.lewagon.ai/predict':
 
     st.markdown('Maybe you want to use your own API for the prediction, not the one provided by Le Wagon...')
 
@@ -139,13 +139,11 @@ We have a website of our own running on our machine 🎉
 
 https://taxifare.lewagon.ai/
 
-⚠️ Pay attention to the format of the parameters, this API uses a `/` before the querystring... You need to provide it 😉
-
-https://taxifare.lewagon.ai/predict_fare/?key=2012-10-06%2012:10:20.0000001&pickup_datetime=2012-10-06%2012:10:20%20UTC&pickup_longitude=40.7614327&pickup_latitude=-73.9798156&dropoff_longitude=40.6513111&dropoff_latitude=-73.8803331&passenger_count=2
+https://taxifare.lewagon.ai/predict?pickup_datetime=2012-10-06%2012:10:20&pickup_longitude=40.7614327&pickup_latitude=-73.9798156&dropoff_longitude=40.6513111&dropoff_latitude=-73.8803331&passenger_count=2
 
 Let's inspect `app.py` and check what is being done inside...
 
-Replace the URL to the prediction API with our own and update the code accordingly.
+Replace the URL to the prediction API with your own and update the code accordingly.
 
 Now let's get crazy with the page content 🎉
 
@@ -165,9 +163,18 @@ Are we not missing something ?
 
 🤔 How are the packages that `app.py` is using going to be installed on **Heroku** ?
 
-We need to add a `setup.py`, a `MANIFEST.in`, and a `requirements.txt` containing the name of the required packages to our project!
+We need to add a `setup.py`, a `MANIFEST.in`, and a `requirements.txt` containing the name of the required packages to our project! We also need a `Procfile` and a `setup.sh` in order for Heroku to know how to run our website. As well as a `Makefile` to ease the use of the command line.
 
-Let's fill their content...
+Let's copy the files provided in the challenge to your web project...
+
+<details>
+  <summary markdown='span'><strong> 💡 Hint: how to copy `setup.py` and other provided files to the web project ? </strong></summary>
+
+``` bash
+cp -r ~/code/<user.github_nickname>/data-challenges/07-Data-Engineering/05-User-interface/02-Streamlit-for-restitution/* ~/code/<user.github_nickname>/TaxiFareWebsite
+```
+
+</details>
 
 The project should now look like this:
 
@@ -194,6 +201,15 @@ Create an app for our website on **Heroku**... Remember the app name should be u
 
 ```bash
 heroku create YOUR_APP_NAME --region eu
+```
+
+Remember that **Heroku** uses git in order to retrieve the files of your project to put in production.
+
+👉 You need to `git add` and `git commit` the files of your project that you want to push to production before pushing your code to **Heroku**
+
+``` bash
+git add --all
+git commit -m "code ready to be deployed to production"
 ```
 
 Finally, we can push our website to **Heroku** 🚀
