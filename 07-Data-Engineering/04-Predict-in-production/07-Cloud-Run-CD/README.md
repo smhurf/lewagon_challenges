@@ -5,11 +5,115 @@ In order to do that, we will use **Cloud Build** 🛠
 
 ## Create a Docker project
 
-TODO: you need a repository with a properly configured Dockerfile.
+In order to use **Continous Deployment** to **Cloud Run**, we need a repository with a properly configured Dockerfile.
 
-👉 Make sure that your container runs locally before attempting to configure the **Continuous Deployment** to **Cloud Run**
+We will create a very simple API project with just 3 files...
+
+### api.py
+
+The `api.py` will contain a rudimentary `FastAPI` API with a root endpoint:
+
+``` python
+from fastapi import FastAPI
+
+app = FastAPI()
+
+
+@app.get("/")
+def root():
+    return "Hello from Cloud Run CD"
+```
+
+### Dockerfile
+
+The `Dockerfile` is based on a python image and uses `uvicorn` in order to serve the API.
+
+``` Dockerfile
+FROM python:3.8-buster
+
+COPY api.py api.py
+
+RUN pip install -U pip
+RUN pip install fastapi uvicorn
+
+CMD uvicorn api:app --host 0.0.0.0 --port $PORT
+```
+
+### .gitignore
+
+The `.gitignore` will contain the list of files we do not want to store in git:
+
+```
+__pycache__
+```
+
+### Project
+
+Create a new project called `TestCloudRunCD` in your *projects directory*: `~/code/<user.github_nickname>`.
+
+``` bash
+cd ~/code/<user.github_nickname>
+mkdir TestCloudRunCD
+```
+
+Create the `api.py`, `Dockerfile` and `.gitignore` files in the project and fill their content.
+
+``` bash
+cd TestCloudRunCD
+touch api.py
+touch Dockerfile
+touch .gitignore
+```
+
+Now we need a **git** repository, because:
+- We always want our code to be stored in **git**, whatever its use
+- The **Continuous Deployment** is going to detect when our commits are pushed to **GitHub** in order to trigger a deployment to production
+
+Let's create a new **git** repository:
+
+``` bash
+git init
+```
+
+We also need a corresponding repository on **GitHub** on which to sync our code:
+
+``` bash
+gh repo create
+```
+
+Now we can commit our code:
+
+``` bash
+git add --all
+git diff --staged
+git commit -m "initial commit"
+```
+
+And finally push our code to **GitHub**:
+
+``` bash
+git push origin master
+```
+
+👉 As always, make sure that your container runs locally before attempting to configure the **Continuous Deployment** to **Cloud Run**
+
+Build the image:
+
+``` bash
+docker build -t test .
+```
+
+Test it locally:
+
+``` bash
+docker run -e PORT=8080 -p 8001:8080 test
+```
+
+👉 The API should be visible on http://localhost:8001/
 
 ## Create and configure a Cloud Run service for Continuous Deployment
+
+Now that we have a project that works, let's configure **Continous Deployment** to **Cloud Run** 🚀
 
 First, let's [enable the Cloud Build API](https://console.cloud.google.com/flows/enableapi?apiid=sourcerepo.googleapis.com,cloudbuild.googleapis.com) ⚙️
 
@@ -145,7 +249,7 @@ Step #0 - "Build": a181a2736d7a: Pull complete
 Step #0 - "Build": Digest: sha256:6dc13b6b1ab55370895d75a2ac5a285abaf8821764c7467b2a52e45c601477b3
 Step #0 - "Build": Status: Downloaded newer image for python:3.8-buster
 Step #0 - "Build":  ---> e7d3be492e61
-Step #0 - "Build": Step 2/5 : COPY app.py app.py
+Step #0 - "Build": Step 2/5 : COPY api.py api.py
 Step #0 - "Build":  ---> 07314cd21657
 Step #0 - "Build": Step 3/5 : RUN pip install -U pip
 Step #0 - "Build":  ---> Running in 25e3ea8cde29
