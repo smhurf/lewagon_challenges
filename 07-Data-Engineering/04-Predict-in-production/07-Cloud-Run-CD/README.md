@@ -222,6 +222,17 @@ In order to decommision the service:
 - Select the build Docker images
 - Delete the images
 
+Now you can remove the trigger from **GitHub**:
+- Go to your **GitHub** repository
+- In **Settings**
+- Go to **Integrations**
+- Next to the **Google Cloud Build** app, click on **Configure**
+- You can either uninstall the app or remove your repository from the list of accessed repositories
+
+You may want to revoke the access of :
+- In your GitHub account, in [Applications](https://github.com/settings/apps/authorizations)
+- Revoke the access of the **Google Cloud Build** app
+
 ## Debugging
 
 You should be able to limit the number of errors occuring on **Cloud Run** by first making sure that your container runs correctly on your machine.
