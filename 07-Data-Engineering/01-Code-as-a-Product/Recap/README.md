@@ -216,7 +216,9 @@ web: sh setup.sh && streamlit run app.py
 
 <br>
 
-`heroku create <unique-app-name>`
+``` bash
+heroku create <unique-app-name>
+```
 
 </details>
 
@@ -226,7 +228,10 @@ web: sh setup.sh && streamlit run app.py
 
 <br>
 
-`git push heroku master`
+``` bash
+git push heroku master
+```
+
 </details>
 
 
@@ -235,7 +240,10 @@ web: sh setup.sh && streamlit run app.py
 
 <br>
 
-`heroku ps:scale web=1`
+``` bash
+heroku ps:scale web=1
+```
+
 </details>
 
 
