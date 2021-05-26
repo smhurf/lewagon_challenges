@@ -176,7 +176,7 @@ f"{quote}, {author}"
 <br>
 
 requirements.txt:
-```
+``` python
 streamlit
 ```
 </details>
@@ -188,7 +188,7 @@ streamlit
 <br>
 
 setup.sh:
-```
+``` bash
 mkdir -p ~/.streamlit/
 
 echo "\
@@ -205,7 +205,7 @@ port = $PORT\n\
 ```
 
 Procfile:
-```
+``` bash
 web: sh setup.sh && streamlit run app.py
 ```
 </details>

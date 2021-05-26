@@ -27,7 +27,7 @@ In order to do so copy the provided `Dockerfile` in your project (or create an e
 
 Your project should look like this:
 
-```
+``` bash
 .
 ├── api
 │   ├── __init__.py
