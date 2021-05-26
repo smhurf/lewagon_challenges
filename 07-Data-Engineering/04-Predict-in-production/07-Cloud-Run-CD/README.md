@@ -28,7 +28,7 @@ def root():
 
 The `Dockerfile` is based on a python image and uses `uvicorn` in order to serve the API.
 
-``` Dockerfile
+```
 FROM python:3.8-buster
 
 COPY api.py api.py
