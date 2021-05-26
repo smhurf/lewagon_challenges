@@ -1,4 +1,14 @@
 
+## Objective
+
+Setup **Continuous Deployment** from your **GitHub repository** to **Cloud Run**.
+
+**Cloud Build** will detect the new versions of your code pushed to the production branch of your GitHub repository.
+
+Whenever a new commit is pushed, Cloud Build will build the Docker image for your project, push it to Container Registry and deploy to Cloud Run.
+
+## Context
+
 The goal of this challenge is to setup **Continuous Deployment** from a **GitHub repository** to a **Cloud Run service**.
 
 In order to do that, we will use **Cloud Build** 🛠
