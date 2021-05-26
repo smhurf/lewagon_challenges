@@ -18,11 +18,11 @@ Let's create a **bbquote** package that will allow us to retrieve Breaking Bad q
 
 In order to create a new package you can run:
 
-`packgenlite bbquote`
-
-`cd bbquote`
-
-`tree`
+``` bash
+packgenlite bbquote
+cd bbquote
+tree
+```
 
 You should see the entire project structure created by the `packgenlite` tool.
 </details>
