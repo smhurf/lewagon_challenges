@@ -266,7 +266,7 @@ Let's activate Continous Deployment...
 Yes, this process is called Continuous Deployment. With additional configuration in the `pythonpackage.yml` we can ask GitHub to deploy the latest code to Heroku for us if all the tests will pass.
 
 
-**1. Do not forget to fill `HEROKU_API_KEY` and `HEROKU_EMAIL` in the GitHub secrets of the repository**
+⚠️ Do not forget to fill `HEROKU_API_KEY` and `HEROKU_EMAIL` in the GitHub secrets of the repository
 
 </details>
 <br>
