@@ -17,6 +17,42 @@ In order to do that, we will use **Cloud Build** 🛠
 
 We will create a very simple API project with just 3 files...
 
+### Project
+
+Create a new project called `TestCloudRunCD` in your *projects directory*: `~/code/<user.github_nickname>`.
+
+``` bash
+cd ~/code/<user.github_nickname>
+mkdir TestCloudRunCD
+```
+
+Create the `api.py`, `Dockerfile` and `.gitignore` files in the project and fill their content.
+
+``` bash
+cd TestCloudRunCD
+touch api.py
+touch Dockerfile
+touch .gitignore
+```
+
+Now we need a **git** repository, because:
+- We always want our code to be stored in **git**, whatever its use
+- The **Continuous Deployment** is going to detect when our commits are pushed to **GitHub** in order to trigger a deployment to production
+
+Let's create a new **git** repository:
+
+``` bash
+git init
+```
+
+We also need a corresponding repository on **GitHub** on which to sync our code:
+
+``` bash
+gh repo create
+```
+
+Now that the project is setup, let's start coding! 🚀
+
 ### api.py
 
 The `api.py` will contain a rudimentary `FastAPI` API with a root endpoint:
@@ -55,41 +91,9 @@ The `.gitignore` will contain the list of files we do not want to store in git:
 __pycache__
 ```
 
-### Project
+### Create our first commit
 
-Create a new project called `TestCloudRunCD` in your *projects directory*: `~/code/<user.github_nickname>`.
-
-``` bash
-cd ~/code/<user.github_nickname>
-mkdir TestCloudRunCD
-```
-
-Create the `api.py`, `Dockerfile` and `.gitignore` files in the project and fill their content.
-
-``` bash
-cd TestCloudRunCD
-touch api.py
-touch Dockerfile
-touch .gitignore
-```
-
-Now we need a **git** repository, because:
-- We always want our code to be stored in **git**, whatever its use
-- The **Continuous Deployment** is going to detect when our commits are pushed to **GitHub** in order to trigger a deployment to production
-
-Let's create a new **git** repository:
-
-``` bash
-git init
-```
-
-We also need a corresponding repository on **GitHub** on which to sync our code:
-
-``` bash
-gh repo create
-```
-
-Now we can commit our code:
+Now that the base content of the project is done, we can commit our code:
 
 ``` bash
 git add --all
