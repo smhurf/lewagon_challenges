@@ -121,8 +121,6 @@ docker run -e PORT=8080 -p 8001:8080 test
 
 ## Create and configure a Cloud Run service for Continuous Deployment
 
-Now that we have a project that works, let's configure **Continous Deployment** to **Cloud Run** 🚀
-
 First, let's [enable the Cloud Build API](https://console.cloud.google.com/flows/enableapi?apiid=sourcerepo.googleapis.com,cloudbuild.googleapis.com) ⚙️
 
 Then, go to [Cloud Run](https://console.cloud.google.com/run).
