@@ -15,8 +15,6 @@ In order to do that, we will use **Cloud Build** 🛠
 
 ## Create a Docker project
 
-In order to use **Continous Deployment** to **Cloud Run**, we need a repository with a properly configured Dockerfile.
-
 We will create a very simple API project with just 3 files...
 
 ### api.py
