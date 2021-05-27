@@ -216,7 +216,7 @@ A new version of your service is put to production on [Cloud Run](https://consol
 
 Once you are done using the service, as always, you will decommission it.
 
-🚨 The proper way to decommision the service is not just to delete the **Cloud Run** service, as it will be automatically recreated whenever you push a new version of your code to the production branch of your repository
+🚨 The proper way to decommission the service is not just to delete the **Cloud Run** service, as it will be automatically recreated whenever you push a new version of your code to the production branch of your repository
 
 In order to decommision the service:
 - Go to [Cloud Build](http://console.cloud.google.com/cloud-build)
@@ -249,9 +249,9 @@ You should be able to limit the number of errors occuring on **Cloud Run** by fi
 
 But there are still some errors that will only be visible once your container is in production:
 
-In order to understand what is going on, there are two options.
+In order to understand what is going on, there are two options:
 
-### Have a look at the build history
+### Option 1: check the build history
 
 If your service fails to start, you may want to verify that the image build properly.
 
@@ -276,7 +276,7 @@ Step #0 - "Build": Step 3/5 : RUN pip install -U pip
 Step #0 - "Build":  ---> Running in 25e3ea8cde29
 ```
 
-### Have a look at the logs of your service
+### Option 2: check the logs of your service
 
 This is always the first thing to check once your service is running...
 
