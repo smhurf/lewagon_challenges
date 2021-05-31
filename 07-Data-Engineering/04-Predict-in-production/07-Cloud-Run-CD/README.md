@@ -51,7 +51,7 @@ We also need a corresponding repository on **GitHub** on which to sync our code:
 gh repo create
 ```
 
-🚨 Pay attention to the name of the repository that you create: **Container Registry** will only work correctly with repositories having a name following the **kebab-case** naming convention (`my-repo-name`)
+🚨 Pay attention to the name of the repository that you create: **Container Registry** will only work correctly with repositories having a name following the [**kebab-case** naming convention](https://betterprogramming.pub/string-case-styles-camel-pascal-snake-and-kebab-case-981407998841): `my-repo-name`
 
 Now that the project is setup, let's start coding! 🚀
 
@@ -147,7 +147,7 @@ Install the **Google Cloud Build** app on the project repository:
 - Click **Install Google Cloud Build**
 - If asked to, select the your GitHub account
 - Check **Only selected repositories**
-- Select the repository of your project (🚨 **Container Registry** will only work correctly with repositories having a name following the **kebab-case** naming convention: `my-repo-name`)
+- Select the repository of your project (🚨 **Container Registry** will only work correctly with repositories having a name following the [**kebab-case** naming convention](https://betterprogramming.pub/string-case-styles-camel-pascal-snake-and-kebab-case-981407998841): `my-repo-name`
 - Click **Install**
 
 Select the source repository:
