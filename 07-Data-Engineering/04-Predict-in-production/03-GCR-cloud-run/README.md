@@ -31,7 +31,12 @@ Copy-paste the following command in the terminal and hit `Enter` to execute the 
 
 </details>
 
+<details>
+  <summary markdown='span'><strong> 💡 Why ? </strong></summary>
+
 If your computer uses Apple Silicon, the images built by Docker are using ARM processor instructions. The machines running in Google Cloud Platform are running on x86 compatible processors, as are the vast majority of the machines of the cloud service providers. Because ARM and x86 processor instructions are not compatible with one another, it will not be possible to run an image built from Docker running on an Apple Silicon machine in Cloud Run.
+
+</details>
 
 ## Push our prediction API image to Google Container Registry
 
