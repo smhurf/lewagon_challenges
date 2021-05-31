@@ -16,7 +16,7 @@ There are 2 remaining steps in order to enable the developers from anywhere arou
 The role of **Container Registry** will be to act as a storage for our Docker image.
 The role of **Cloud Run** will be to run a Docker container instantiated from our image.
 
-🚨 Attention **Apple Silicon** users, please follow these instructions instead of completing this challenge 🙏
+🚨 If you are an **Apple Silicon** user, skip this challenge and proceed with the **CD to Cloud Run** challenge.
 
 <details>
   <summary markdown='span'><strong> 💡 How do I know whether my Mac is an Apple Silicon computer ? </strong></summary>
@@ -32,8 +32,6 @@ Copy-paste the following command in the terminal and hit `Enter` to execute the 
 </details>
 
 If your computer uses Apple Silicon, the images built by Docker are using ARM processor instructions. The machines running in Google Cloud Platform are running on x86 compatible processors, as are the vast majority of the machines of the cloud service providers. Because ARM and x86 processor instructions are not compatible with one another, it will not be possible to run an image built from Docker running on an Apple Silicon machine in Cloud Run.
-
-👉 In this case, proceed to the **CD to Cloud Run** challenge and follow the instructions using the API project on which you were working. These instructions will allow you to have **Cloud Build** build and push to production a Docker image for your project compatible with **Cloud Run**.
 
 ## Push our prediction API image to Google Container Registry
 
